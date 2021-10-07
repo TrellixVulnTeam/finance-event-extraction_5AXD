@@ -1,0 +1,534 @@
+10/07/2021 16:53:14 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+10/07/2021 16:53:15 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-chinese-config.json from cache at /home/MSAI/s200048/.cache/torch/transformers/8a3b1cfe5da58286e12a0f5d7d182b8d6eca88c08e26c332ee3817548cf7e60a.f12a4f986e43d8b328f5b067a641064d67b91597567a06c7b122d1ca7dfd9741
+10/07/2021 16:53:15 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 5,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 21128
+}
+
+10/07/2021 16:53:16 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-chinese-vocab.txt from cache at /home/MSAI/s200048/.cache/torch/transformers/8a0c070123c1f794c42a29c6904beb7c1b8715741e235bee04aca2c7636fc83f.9b42061518a39ca00b8b52059fd2bede8daa613f8a8671500e518a8c29de8c00
+10/07/2021 16:53:17 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-chinese-pytorch_model.bin from cache at /home/MSAI/s200048/.cache/torch/transformers/b1b5e295889f2d0979ede9a78ad9cb5dc6a0e25ab7f9417b315f0a2c22f4683d.929717ca66a3ba9eb9ec2f85973c6398c54c38a4faa464636a491d7a705f7eb6
+10/07/2021 16:53:19 - INFO - transformers.modeling_utils -   Weights of DMBERT not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+10/07/2021 16:53:19 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in DMBERT: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+10/07/2021 16:53:25 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='./ACE05/', device=device(type='cuda', index=0), do_eval=True, do_infer=False, do_lower_case=True, do_test=True, do_train=True, eval_all_checkpoints=False, evaluate_during_training=True, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=2, learning_rate=5e-05, local_rank=-1, logging_steps=300, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-chinese', model_type='bert', n_gpu=1, no_cuda=False, num_train_epochs=10.0, output_dir='./ACE_CN', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=42, per_gpu_train_batch_size=42, save_steps=1000, seed=2, server_ip='', server_port='', task_name='ace', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+10/07/2021 16:53:25 - INFO - __main__ -   Creating features from dataset file at ./ACE05/
+10/07/2021 16:53:25 - INFO - utils_ee -   LOOKING AT ./ACE05/ train
+10/07/2021 16:53:26 - INFO - __main__ -   Training number: 25632
+convert examples to features: 0it [00:00, ?it/s]10/07/2021 16:53:26 - INFO - utils_ee -   Writing example 0 of 25632
+10/07/2021 16:53:26 - INFO - utils_ee -   *** Example ***
+10/07/2021 16:53:26 - INFO - utils_ee -   example_id: train-0
+10/07/2021 16:53:26 - INFO - utils_ee -   input_ids: 101 8182 2399 8110 3299 8176 3189 8024 1062 1385 5869 752 833 4908 741 5815 2634 117 1062 1385 4664 752 7270 2476 2295 3418 2945 1333 6369 1153 1762 2496 3189 794 753 5277 2356 1767 6579 1057 3315 1062 1385 5500 4873 11750 5500 8024 2779 3632 100 4680 1184 1062 1385 7770 5052 2898 1 3300 1062 1385 5500 4873 1066 6369 8250 108 108 8108 108 108 8192 5500 511 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:53:26 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:53:26 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:53:26 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:53:26 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:53:26 - INFO - utils_ee -   label: 0
+10/07/2021 16:53:26 - INFO - utils_ee -   *** Example ***
+10/07/2021 16:53:26 - INFO - utils_ee -   example_id: train-1
+10/07/2021 16:53:26 - INFO - utils_ee -   input_ids: 101 1062 1385 2970 2971 5500 5500 691 3777 1298 4868 4125 7415 1730 3300 7361 1062 1385 8020 809 678 5042 4917 100 4868 4125 7415 1730 100 8021 6858 4761 8024 4868 4125 7415 1730 754 8182 2399 8110 3299 8114 3189 510 8176 3189 6858 6814 3918 1766 6395 1171 769 3211 2792 6395 1171 769 3211 5143 5320 743 1057 3315 1062 1385 5500 819 1394 6369 10308 108 108 8241 5500 8024 4385 2199 100 1072 860 2658 1105 1062 1440 1963 678 1 8038 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:53:26 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:53:26 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:53:26 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:53:26 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:53:26 - INFO - utils_ee -   label: 0
+convert examples to features: 81it [00:00, 803.09it/s]convert examples to features: 164it [00:00, 812.65it/s]convert examples to features: 246it [00:00, 809.91it/s]convert examples to features: 327it [00:00, 809.16it/s]convert examples to features: 408it [00:00, 774.62it/s]convert examples to features: 490it [00:00, 786.21it/s]convert examples to features: 569it [00:00, 783.71it/s]convert examples to features: 650it [00:00, 791.17it/s]convert examples to features: 731it [00:00, 795.14it/s]convert examples to features: 818it [00:01, 815.23it/s]convert examples to features: 900it [00:01, 790.41it/s]convert examples to features: 980it [00:01, 775.86it/s]convert examples to features: 1063it [00:01, 790.54it/s]convert examples to features: 1148it [00:01, 805.09it/s]convert examples to features: 1235it [00:01, 823.44it/s]convert examples to features: 1321it [00:01, 831.39it/s]convert examples to features: 1405it [00:01, 824.55it/s]convert examples to features: 1490it [00:01, 828.76it/s]convert examples to features: 1573it [00:01, 823.03it/s]convert examples to features: 1656it [00:02, 810.52it/s]convert examples to features: 1744it [00:02, 829.14it/s]convert examples to features: 1831it [00:02, 840.04it/s]convert examples to features: 1916it [00:02, 842.97it/s]convert examples to features: 2005it [00:02, 854.82it/s]convert examples to features: 2096it [00:02, 870.50it/s]convert examples to features: 2189it [00:02, 888.12it/s]convert examples to features: 2281it [00:02, 896.02it/s]convert examples to features: 2371it [00:02, 880.92it/s]convert examples to features: 2460it [00:02, 870.41it/s]convert examples to features: 2548it [00:03, 854.77it/s]convert examples to features: 2634it [00:03, 852.65it/s]convert examples to features: 2720it [00:03, 824.89it/s]convert examples to features: 2805it [00:03, 828.01it/s]convert examples to features: 2888it [00:03, 810.93it/s]convert examples to features: 2977it [00:03, 831.34it/s]convert examples to features: 3061it [00:03, 825.25it/s]convert examples to features: 3147it [00:03, 833.07it/s]convert examples to features: 3232it [00:03, 834.43it/s]convert examples to features: 3316it [00:04, 828.13it/s]convert examples to features: 3399it [00:04, 817.63it/s]convert examples to features: 3483it [00:04, 823.69it/s]convert examples to features: 3566it [00:04, 821.29it/s]convert examples to features: 3649it [00:04, 799.90it/s]convert examples to features: 3730it [00:04, 797.38it/s]convert examples to features: 3824it [00:04, 838.20it/s]convert examples to features: 3908it [00:04, 821.34it/s]convert examples to features: 3991it [00:04, 804.20it/s]convert examples to features: 4072it [00:04, 784.74it/s]convert examples to features: 4151it [00:05, 785.15it/s]convert examples to features: 4231it [00:05, 783.77it/s]convert examples to features: 4318it [00:05, 807.83it/s]convert examples to features: 4399it [00:05, 808.44it/s]convert examples to features: 4489it [00:05, 831.91it/s]convert examples to features: 4573it [00:05, 813.45it/s]convert examples to features: 4656it [00:05, 816.19it/s]convert examples to features: 4741it [00:05, 824.86it/s]convert examples to features: 4827it [00:05, 832.36it/s]convert examples to features: 4911it [00:05, 816.14it/s]convert examples to features: 4993it [00:06, 811.98it/s]convert examples to features: 5075it [00:06, 791.98it/s]convert examples to features: 5155it [00:06, 790.77it/s]convert examples to features: 5242it [00:06, 812.70it/s]convert examples to features: 5324it [00:06, 811.38it/s]convert examples to features: 5413it [00:06, 832.98it/s]convert examples to features: 5497it [00:06, 824.99it/s]convert examples to features: 5580it [00:06, 822.09it/s]convert examples to features: 5663it [00:06, 822.69it/s]convert examples to features: 5746it [00:07, 819.12it/s]convert examples to features: 5828it [00:07, 811.37it/s]convert examples to features: 5910it [00:07, 784.00it/s]convert examples to features: 5989it [00:07, 782.14it/s]convert examples to features: 6072it [00:07, 792.85it/s]convert examples to features: 6152it [00:07, 782.65it/s]convert examples to features: 6231it [00:07, 775.37it/s]convert examples to features: 6309it [00:07, 771.11it/s]convert examples to features: 6392it [00:07, 785.55it/s]convert examples to features: 6471it [00:07, 786.74it/s]convert examples to features: 6554it [00:08, 797.97it/s]convert examples to features: 6640it [00:08, 815.12it/s]convert examples to features: 6727it [00:08, 831.02it/s]convert examples to features: 6811it [00:08, 817.37it/s]convert examples to features: 6894it [00:08, 819.20it/s]convert examples to features: 6976it [00:08, 817.74it/s]convert examples to features: 7064it [00:08, 831.25it/s]convert examples to features: 7151it [00:08, 842.25it/s]convert examples to features: 7236it [00:08, 827.52it/s]convert examples to features: 7323it [00:08, 838.03it/s]convert examples to features: 7407it [00:09, 824.70it/s]convert examples to features: 7490it [00:09, 802.15it/s]convert examples to features: 7571it [00:09, 794.53it/s]convert examples to features: 7654it [00:09, 802.06it/s]convert examples to features: 7738it [00:09, 809.90it/s]convert examples to features: 7820it [00:09, 806.29it/s]convert examples to features: 7901it [00:09, 804.71it/s]convert examples to features: 7987it [00:09, 820.12it/s]convert examples to features: 8070it [00:09, 808.08it/s]convert examples to features: 8151it [00:09, 798.51it/s]convert examples to features: 8235it [00:10, 808.81it/s]convert examples to features: 8319it [00:10, 815.54it/s]convert examples to features: 8401it [00:10, 807.84it/s]convert examples to features: 8489it [00:10, 828.37it/s]convert examples to features: 8572it [00:10, 826.41it/s]convert examples to features: 8655it [00:10, 808.39it/s]convert examples to features: 8739it [00:10, 817.59it/s]convert examples to features: 8827it [00:10, 830.26it/s]convert examples to features: 8911it [00:10, 826.24it/s]convert examples to features: 8997it [00:11, 834.44it/s]convert examples to features: 9081it [00:11, 826.16it/s]convert examples to features: 9164it [00:11, 826.02it/s]convert examples to features: 9247it [00:11, 817.05it/s]convert examples to features: 9329it [00:11, 812.64it/s]convert examples to features: 9411it [00:11, 807.05it/s]convert examples to features: 9493it [00:11, 810.84it/s]convert examples to features: 9581it [00:11, 830.24it/s]convert examples to features: 9678it [00:11, 870.85it/s]convert examples to features: 9769it [00:11, 880.66it/s]convert examples to features: 9859it [00:12, 884.59it/s]convert examples to features: 9952it [00:12, 897.46it/s]10/07/2021 16:53:38 - INFO - utils_ee -   Writing example 10000 of 25632
+convert examples to features: 10050it [00:12, 920.88it/s]convert examples to features: 10143it [00:12, 912.31it/s]convert examples to features: 10235it [00:12, 893.19it/s]convert examples to features: 10330it [00:12, 906.98it/s]convert examples to features: 10421it [00:12, 905.86it/s]convert examples to features: 10512it [00:12, 899.35it/s]convert examples to features: 10602it [00:12, 875.22it/s]convert examples to features: 10691it [00:12, 878.89it/s]convert examples to features: 10788it [00:13, 905.54it/s]convert examples to features: 10886it [00:13, 927.29it/s]convert examples to features: 10979it [00:13, 906.85it/s]convert examples to features: 11070it [00:13, 644.45it/s]convert examples to features: 11159it [00:13, 698.63it/s]convert examples to features: 11245it [00:13, 738.18it/s]convert examples to features: 11335it [00:13, 780.23it/s]convert examples to features: 11423it [00:13, 806.55it/s]convert examples to features: 11508it [00:14, 798.01it/s]convert examples to features: 11596it [00:14, 820.10it/s]convert examples to features: 11681it [00:14, 823.34it/s]convert examples to features: 11766it [00:14, 830.24it/s]convert examples to features: 11854it [00:14, 844.27it/s]convert examples to features: 11940it [00:14, 848.25it/s]convert examples to features: 12029it [00:14, 859.64it/s]convert examples to features: 12118it [00:14, 867.07it/s]convert examples to features: 12206it [00:14, 848.80it/s]convert examples to features: 12297it [00:14, 866.15it/s]convert examples to features: 12390it [00:15, 882.26it/s]convert examples to features: 12479it [00:15, 871.11it/s]convert examples to features: 12567it [00:15, 861.81it/s]convert examples to features: 12654it [00:15, 841.90it/s]convert examples to features: 12741it [00:15, 844.74it/s]convert examples to features: 12829it [00:15, 854.69it/s]convert examples to features: 12927it [00:15, 890.58it/s]convert examples to features: 13017it [00:15, 886.01it/s]convert examples to features: 13110it [00:15, 895.92it/s]convert examples to features: 13200it [00:15, 896.65it/s]convert examples to features: 13293it [00:16, 903.55it/s]convert examples to features: 13384it [00:16, 888.52it/s]convert examples to features: 13473it [00:16, 888.16it/s]convert examples to features: 13563it [00:16, 891.60it/s]convert examples to features: 13653it [00:16, 882.39it/s]convert examples to features: 13742it [00:16, 883.65it/s]convert examples to features: 13831it [00:16, 877.12it/s]convert examples to features: 13919it [00:16, 842.55it/s]convert examples to features: 14008it [00:16, 854.13it/s]convert examples to features: 14102it [00:16, 878.23it/s]convert examples to features: 14191it [00:17, 873.87it/s]convert examples to features: 14279it [00:17, 872.37it/s]convert examples to features: 14368it [00:17, 874.31it/s]convert examples to features: 14459it [00:17, 882.82it/s]convert examples to features: 14548it [00:17, 874.22it/s]convert examples to features: 14641it [00:17, 888.07it/s]convert examples to features: 14730it [00:17, 887.64it/s]convert examples to features: 14819it [00:17, 886.29it/s]convert examples to features: 14908it [00:17, 867.63it/s]convert examples to features: 14995it [00:18, 861.10it/s]convert examples to features: 15084it [00:18, 867.69it/s]convert examples to features: 15174it [00:18, 875.82it/s]convert examples to features: 15270it [00:18, 898.31it/s]convert examples to features: 15360it [00:18, 891.59it/s]convert examples to features: 15452it [00:18, 897.76it/s]convert examples to features: 15542it [00:18, 887.83it/s]convert examples to features: 15631it [00:18, 886.76it/s]convert examples to features: 15720it [00:18, 830.63it/s]convert examples to features: 15810it [00:18, 849.85it/s]convert examples to features: 15901it [00:19, 866.79it/s]convert examples to features: 15989it [00:19, 866.30it/s]convert examples to features: 16084it [00:19, 888.06it/s]convert examples to features: 16174it [00:19, 872.49it/s]convert examples to features: 16262it [00:19, 862.10it/s]convert examples to features: 16354it [00:19, 876.49it/s]convert examples to features: 16442it [00:19, 872.88it/s]convert examples to features: 16538it [00:19, 897.83it/s]convert examples to features: 16631it [00:19, 907.05it/s]convert examples to features: 16722it [00:19, 884.94it/s]convert examples to features: 16811it [00:20, 877.78it/s]convert examples to features: 16902it [00:20, 887.02it/s]convert examples to features: 16991it [00:20, 864.36it/s]convert examples to features: 17078it [00:20, 864.65it/s]convert examples to features: 17165it [00:20, 838.97it/s]convert examples to features: 17251it [00:20, 843.77it/s]convert examples to features: 17347it [00:20, 877.23it/s]convert examples to features: 17435it [00:20, 860.27it/s]convert examples to features: 17523it [00:20, 863.06it/s]convert examples to features: 17610it [00:21, 837.08it/s]convert examples to features: 17694it [00:21, 826.91it/s]convert examples to features: 17780it [00:21, 836.32it/s]convert examples to features: 17866it [00:21, 840.82it/s]convert examples to features: 17951it [00:21, 829.06it/s]convert examples to features: 18035it [00:21, 827.47it/s]convert examples to features: 18123it [00:21, 841.11it/s]convert examples to features: 18208it [00:21, 839.18it/s]convert examples to features: 18303it [00:21, 869.13it/s]convert examples to features: 18390it [00:21, 846.20it/s]convert examples to features: 18481it [00:22, 863.19it/s]convert examples to features: 18570it [00:22, 870.51it/s]convert examples to features: 18658it [00:22, 859.28it/s]convert examples to features: 18745it [00:22, 834.06it/s]convert examples to features: 18829it [00:22, 832.04it/s]convert examples to features: 18915it [00:22, 839.99it/s]convert examples to features: 19007it [00:22, 863.33it/s]convert examples to features: 19100it [00:22, 881.74it/s]convert examples to features: 19189it [00:22, 873.17it/s]convert examples to features: 19277it [00:22, 859.83it/s]convert examples to features: 19375it [00:23, 894.99it/s]convert examples to features: 19465it [00:23, 881.37it/s]convert examples to features: 19554it [00:23, 881.52it/s]convert examples to features: 19643it [00:23, 882.21it/s]convert examples to features: 19737it [00:23, 898.66it/s]convert examples to features: 19830it [00:23, 905.85it/s]convert examples to features: 19927it [00:23, 923.88it/s]10/07/2021 16:53:50 - INFO - utils_ee -   Writing example 20000 of 25632
+convert examples to features: 20026it [00:23, 940.24it/s]convert examples to features: 20121it [00:23, 909.32it/s]convert examples to features: 20224it [00:23, 943.71it/s]convert examples to features: 20319it [00:24, 905.52it/s]convert examples to features: 20414it [00:24, 916.97it/s]convert examples to features: 20507it [00:24, 898.52it/s]convert examples to features: 20598it [00:24, 893.46it/s]convert examples to features: 20688it [00:24, 867.08it/s]convert examples to features: 20778it [00:24, 875.35it/s]convert examples to features: 20866it [00:24, 874.68it/s]convert examples to features: 20956it [00:24, 880.88it/s]convert examples to features: 21054it [00:24, 907.98it/s]convert examples to features: 21145it [00:25, 902.88it/s]convert examples to features: 21241it [00:25, 917.54it/s]convert examples to features: 21334it [00:25, 917.12it/s]convert examples to features: 21427it [00:25, 919.05it/s]convert examples to features: 21519it [00:25, 909.41it/s]convert examples to features: 21610it [00:25, 903.54it/s]convert examples to features: 21705it [00:25, 914.61it/s]convert examples to features: 21797it [00:25, 911.21it/s]convert examples to features: 21889it [00:25, 905.94it/s]convert examples to features: 21981it [00:25, 907.14it/s]convert examples to features: 22072it [00:26, 893.56it/s]convert examples to features: 22162it [00:26, 883.77it/s]convert examples to features: 22251it [00:26, 882.20it/s]convert examples to features: 22347it [00:26, 902.44it/s]convert examples to features: 22438it [00:26, 881.39it/s]convert examples to features: 22527it [00:26, 872.01it/s]convert examples to features: 22622it [00:26, 892.90it/s]convert examples to features: 22712it [00:26, 888.66it/s]convert examples to features: 22801it [00:26, 882.72it/s]convert examples to features: 22890it [00:26, 877.55it/s]convert examples to features: 22981it [00:27, 884.78it/s]convert examples to features: 23070it [00:27, 878.89it/s]convert examples to features: 23158it [00:27, 872.55it/s]convert examples to features: 23248it [00:27, 878.91it/s]convert examples to features: 23336it [00:27, 858.12it/s]convert examples to features: 23422it [00:27, 845.16it/s]convert examples to features: 23517it [00:27, 870.94it/s]convert examples to features: 23607it [00:27, 875.79it/s]convert examples to features: 23696it [00:27, 878.44it/s]convert examples to features: 23789it [00:28, 892.04it/s]convert examples to features: 23882it [00:28, 902.26it/s]convert examples to features: 23973it [00:28, 550.41it/s]convert examples to features: 24068it [00:28, 631.63it/s]convert examples to features: 24158it [00:28, 689.55it/s]convert examples to features: 24249it [00:28, 743.03it/s]convert examples to features: 24336it [00:28, 775.12it/s]convert examples to features: 24427it [00:28, 809.12it/s]convert examples to features: 24518it [00:29, 836.16it/s]convert examples to features: 24610it [00:29, 859.17it/s]convert examples to features: 24703it [00:29, 879.52it/s]convert examples to features: 24802it [00:29, 908.85it/s]convert examples to features: 24895it [00:29, 894.12it/s]convert examples to features: 24986it [00:29, 886.99it/s]convert examples to features: 25076it [00:29, 876.35it/s]convert examples to features: 25168it [00:29, 885.56it/s]convert examples to features: 25257it [00:29, 878.35it/s]convert examples to features: 25350it [00:29, 891.51it/s]convert examples to features: 25444it [00:30, 905.23it/s]convert examples to features: 25535it [00:30, 879.28it/s]convert examples to features: 25631it [00:30, 902.39it/s]convert examples to features: 25632it [00:30, 846.63it/s]
+10/07/2021 16:53:56 - INFO - __main__ -   Saving features into cached file ./ACE05/cached_train_bert-base-chinese_128_ace
+10/07/2021 16:54:05 - INFO - __main__ -   ***** Running training *****
+10/07/2021 16:54:05 - INFO - __main__ -     Num examples = 25632
+10/07/2021 16:54:05 - INFO - __main__ -     Num Epochs = 10
+10/07/2021 16:54:05 - INFO - __main__ -     Instantaneous batch size per GPU = 42
+10/07/2021 16:54:05 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 84
+10/07/2021 16:54:05 - INFO - __main__ -     Gradient Accumulation steps = 2
+10/07/2021 16:54:05 - INFO - __main__ -     Total optimization steps = 3050
+10/07/2021 16:57:59 - INFO - __main__ -   Creating features from dataset file at ./ACE05/
+10/07/2021 16:57:59 - INFO - utils_ee -   LOOKING AT ./ACE05/ dev
+10/07/2021 16:58:00 - INFO - __main__ -   Training number: 3204
+convert examples to features: 0it [00:00, ?it/s]10/07/2021 16:58:00 - INFO - utils_ee -   Writing example 0 of 3204
+10/07/2021 16:58:00 - INFO - utils_ee -   *** Example ***
+10/07/2021 16:58:00 - INFO - utils_ee -   example_id: dev-0
+10/07/2021 16:58:00 - INFO - utils_ee -   input_ids: 101 100 8271 2399 126 3299 125 3189 1 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:00 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:00 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:00 - INFO - utils_ee -   maskL: 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:00 - INFO - utils_ee -   maskR: 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:00 - INFO - utils_ee -   label: 3
+10/07/2021 16:58:00 - INFO - utils_ee -   *** Example ***
+10/07/2021 16:58:00 - INFO - utils_ee -   example_id: dev-1
+10/07/2021 16:58:00 - INFO - utils_ee -   input_ids: 101 1298 3175 704 7032 4384 1862 5500 819 3300 7361 1062 1385 8020 809 678 5042 4917 100 1062 1385 100 8021 6818 3189 2970 1168 5500 691 100 3736 5722 7032 2255 4384 924 2339 4923 7415 1730 3300 7361 1062 1385 8020 1 809 678 5042 4917 100 7032 2255 7415 1730 100 8021 4638 6858 4761 8024 5815 2634 7032 2255 7415 1730 2199 1071 2898 3300 4638 1062 1385 6956 1146 5500 819 6822 6121 749 6574 2852 8024 1072 860 752 7555 1963 678 8038 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:00 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:00 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:00 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:00 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:00 - INFO - utils_ee -   label: 2
+convert examples to features: 91it [00:00, 893.69it/s]convert examples to features: 181it [00:00, 779.91it/s]convert examples to features: 274it [00:00, 839.52it/s]convert examples to features: 361it [00:00, 850.74it/s]convert examples to features: 447it [00:00, 848.29it/s]convert examples to features: 533it [00:00, 835.44it/s]convert examples to features: 620it [00:00, 842.12it/s]convert examples to features: 708it [00:00, 853.07it/s]convert examples to features: 797it [00:00, 860.01it/s]convert examples to features: 884it [00:01, 856.71it/s]convert examples to features: 970it [00:01, 830.62it/s]convert examples to features: 1054it [00:01, 830.53it/s]convert examples to features: 1138it [00:01, 814.64it/s]convert examples to features: 1225it [00:01, 830.43it/s]convert examples to features: 1317it [00:01, 849.47it/s]convert examples to features: 1403it [00:01, 850.95it/s]convert examples to features: 1489it [00:01, 849.68it/s]convert examples to features: 1585it [00:01, 881.04it/s]convert examples to features: 1674it [00:01, 872.14it/s]convert examples to features: 1762it [00:02, 857.22it/s]convert examples to features: 1848it [00:02, 844.19it/s]convert examples to features: 1933it [00:02, 844.14it/s]convert examples to features: 2018it [00:02, 830.02it/s]convert examples to features: 2102it [00:02, 831.13it/s]convert examples to features: 2186it [00:02, 819.97it/s]convert examples to features: 2281it [00:02, 855.30it/s]convert examples to features: 2376it [00:02, 877.89it/s]convert examples to features: 2464it [00:02, 871.62it/s]convert examples to features: 2552it [00:03, 868.12it/s]convert examples to features: 2646it [00:03, 887.19it/s]convert examples to features: 2735it [00:03, 881.75it/s]convert examples to features: 2824it [00:03, 883.79it/s]convert examples to features: 2915it [00:03, 889.53it/s]convert examples to features: 3004it [00:03, 879.34it/s]convert examples to features: 3093it [00:03, 880.44it/s]convert examples to features: 3182it [00:03, 877.73it/s]convert examples to features: 3204it [00:03, 855.22it/s]
+10/07/2021 16:58:03 - INFO - __main__ -   Saving features into cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 16:58:04 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 16:58:04 - INFO - __main__ -     Num examples = 3204
+10/07/2021 16:58:04 - INFO - __main__ -     Batch size = 42
+10/07/2021 16:58:14 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 16:58:14 - INFO - __main__ -     eval_f1 = 0.976461655277145
+10/07/2021 16:58:14 - INFO - __main__ -     eval_loss = 0.09205926389300398
+10/07/2021 16:58:14 - INFO - __main__ -     eval_p = 0.9783187523773298
+10/07/2021 16:58:14 - INFO - __main__ -     eval_recall = 0.9746115953012505
+10/07/2021 16:58:14 - INFO - __main__ -   Creating features from dataset file at ./ACE05/
+10/07/2021 16:58:14 - INFO - utils_ee -   LOOKING AT ./ACE05/ test
+10/07/2021 16:58:14 - INFO - __main__ -   Training number: 3204
+convert examples to features: 0it [00:00, ?it/s]10/07/2021 16:58:14 - INFO - utils_ee -   Writing example 0 of 3204
+10/07/2021 16:58:14 - INFO - utils_ee -   *** Example ***
+10/07/2021 16:58:14 - INFO - utils_ee -   example_id: test-0
+10/07/2021 16:58:14 - INFO - utils_ee -   input_ids: 101 3315 3613 6574 2852 2130 2768 1400 8024 3330 1290 7471 1957 1894 5168 6369 6574 2852 4638 5500 819 3144 711 100 9952 108 108 8241 108 108 8136 5500 8024 1304 1062 1385 2600 5500 1 3315 4638 126 119 8121 110 8024 1304 1071 2898 3300 1062 1385 5500 819 2600 3144 4638 8188 119 8248 110 511 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:14 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:14 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:14 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:14 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:14 - INFO - utils_ee -   label: 3
+10/07/2021 16:58:14 - INFO - utils_ee -   *** Example ***
+10/07/2021 16:58:14 - INFO - utils_ee -   example_id: test-1
+10/07/2021 16:58:14 - INFO - utils_ee -   input_ids: 101 100 1921 7509 6858 928 2971 5500 5500 819 3300 7361 1062 1385 1068 1 754 5500 819 1726 6579 2130 2768 4638 1062 1440 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:14 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:14 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/07/2021 16:58:14 - INFO - utils_ee -   maskL: 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:14 - INFO - utils_ee -   maskR: 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/07/2021 16:58:14 - INFO - utils_ee -   label: 4
+convert examples to features: 89it [00:00, 882.19it/s]convert examples to features: 182it [00:00, 903.54it/s]convert examples to features: 273it [00:00, 892.42it/s]convert examples to features: 364it [00:00, 898.84it/s]convert examples to features: 454it [00:00, 894.83it/s]convert examples to features: 544it [00:00, 879.70it/s]convert examples to features: 641it [00:00, 906.68it/s]convert examples to features: 733it [00:00, 904.10it/s]convert examples to features: 830it [00:00, 924.02it/s]convert examples to features: 923it [00:01, 890.29it/s]convert examples to features: 1016it [00:01, 895.86it/s]convert examples to features: 1106it [00:01, 893.36it/s]convert examples to features: 1198it [00:01, 896.50it/s]convert examples to features: 1292it [00:01, 896.42it/s]convert examples to features: 1382it [00:01, 883.13it/s]convert examples to features: 1478it [00:01, 902.79it/s]convert examples to features: 1572it [00:01, 911.39it/s]convert examples to features: 1664it [00:01, 909.42it/s]convert examples to features: 1755it [00:01, 895.61it/s]convert examples to features: 1852it [00:02, 914.03it/s]convert examples to features: 1951it [00:02, 935.47it/s]convert examples to features: 2045it [00:02, 923.67it/s]convert examples to features: 2138it [00:02, 899.83it/s]convert examples to features: 2240it [00:02, 933.95it/s]convert examples to features: 2338it [00:02, 946.50it/s]convert examples to features: 2433it [00:02, 939.84it/s]convert examples to features: 2528it [00:02, 928.10it/s]convert examples to features: 2621it [00:02, 923.09it/s]convert examples to features: 2714it [00:02, 911.07it/s]convert examples to features: 2806it [00:03, 894.42it/s]convert examples to features: 2896it [00:03, 886.84it/s]convert examples to features: 2986it [00:03, 888.78it/s]convert examples to features: 3081it [00:03, 904.54it/s]convert examples to features: 3172it [00:03, 900.81it/s]convert examples to features: 3204it [00:03, 906.48it/s]
+10/07/2021 16:58:18 - INFO - __main__ -   Saving features into cached file ./ACE05/cached_test_bert-base-chinese_128_ace
+10/07/2021 16:58:19 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 16:58:19 - INFO - __main__ -     Num examples = 3204
+10/07/2021 16:58:19 - INFO - __main__ -     Batch size = 42
+10/07/2021 16:58:28 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/07/2021 16:58:28 - INFO - __main__ -     eval_f1 = 0.9851112278857944
+10/07/2021 16:58:28 - INFO - __main__ -     eval_loss = 0.06773917074617627
+10/07/2021 16:58:28 - INFO - __main__ -     eval_p = 0.9890960253253606
+10/07/2021 16:58:28 - INFO - __main__ -     eval_recall = 0.9811584089323099
+10/07/2021 16:58:28 - INFO - __main__ -   test f1: 0.9851112278857944, loss: 0.06773917074617627, global steps: 300
+10/07/2021 16:58:28 - INFO - __main__ -   Average loss: 0.12002585484626858 at global step: 300
+10/07/2021 17:02:29 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:02:29 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:02:29 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:02:29 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:02:39 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:02:39 - INFO - __main__ -     eval_f1 = 0.9823562891291974
+10/07/2021 17:02:39 - INFO - __main__ -     eval_loss = 0.09075154503353859
+10/07/2021 17:02:39 - INFO - __main__ -     eval_p = 0.9836626139817629
+10/07/2021 17:02:39 - INFO - __main__ -     eval_recall = 0.9810534293292914
+10/07/2021 17:02:39 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-chinese_128_ace
+10/07/2021 17:02:39 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:02:39 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:02:39 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:02:49 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/07/2021 17:02:49 - INFO - __main__ -     eval_f1 = 0.9859894921190893
+10/07/2021 17:02:49 - INFO - __main__ -     eval_loss = 0.0671726410207641
+10/07/2021 17:02:49 - INFO - __main__ -     eval_p = 0.989803094233474
+10/07/2021 17:02:49 - INFO - __main__ -     eval_recall = 0.9822051639916259
+10/07/2021 17:02:49 - INFO - __main__ -   test f1: 0.9859894921190893, loss: 0.0671726410207641, global steps: 600
+10/07/2021 17:02:49 - INFO - __main__ -   Average loss: 0.04771024545693459 at global step: 600
+10/07/2021 17:06:50 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:06:51 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:06:51 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:06:51 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:07:01 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:07:01 - INFO - __main__ -     eval_f1 = 0.9776260902540765
+10/07/2021 17:07:01 - INFO - __main__ -     eval_loss = 0.08967699213618678
+10/07/2021 17:07:01 - INFO - __main__ -     eval_p = 0.9783681214421253
+10/07/2021 17:07:01 - INFO - __main__ -     eval_recall = 0.9768851837817355
+10/07/2021 17:07:01 - INFO - __main__ -   Average loss: 0.03355587577059244 at global step: 900
+10/07/2021 17:08:21 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/checkpoint-1000/config.json
+10/07/2021 17:08:24 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/checkpoint-1000/pytorch_model.bin
+10/07/2021 17:08:24 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/checkpoint-1000/bert/config.json
+10/07/2021 17:08:28 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/checkpoint-1000/bert/pytorch_model.bin
+10/07/2021 17:08:28 - INFO - __main__ -   Saving model checkpoint to ./ACE_CN/checkpoint-1000
+10/07/2021 17:11:07 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:11:07 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:11:07 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:11:07 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:11:17 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:11:17 - INFO - __main__ -     eval_f1 = 0.9802431610942248
+10/07/2021 17:11:17 - INFO - __main__ -     eval_loss = 0.06975078264813774
+10/07/2021 17:11:17 - INFO - __main__ -     eval_p = 0.9828571428571429
+10/07/2021 17:11:17 - INFO - __main__ -     eval_recall = 0.9776430466085638
+10/07/2021 17:11:17 - INFO - __main__ -   Average loss: 0.02648158688922801 at global step: 1200
+10/07/2021 17:15:18 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:15:18 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:15:18 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:15:18 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:15:28 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:15:28 - INFO - __main__ -     eval_f1 = 0.9848082035700721
+10/07/2021 17:15:28 - INFO - __main__ -     eval_loss = 0.08225581539317046
+10/07/2021 17:15:28 - INFO - __main__ -     eval_p = 0.9870574800152265
+10/07/2021 17:15:28 - INFO - __main__ -     eval_recall = 0.9825691549829481
+10/07/2021 17:15:28 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-chinese_128_ace
+10/07/2021 17:15:28 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:15:28 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:15:28 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:15:38 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/07/2021 17:15:38 - INFO - __main__ -     eval_f1 = 0.9893375284041251
+10/07/2021 17:15:38 - INFO - __main__ -     eval_loss = 0.06002159438144367
+10/07/2021 17:15:38 - INFO - __main__ -     eval_p = 0.9912434325744308
+10/07/2021 17:15:38 - INFO - __main__ -     eval_recall = 0.9874389392882066
+10/07/2021 17:15:38 - INFO - __main__ -   test f1: 0.9893375284041251, loss: 0.06002159438144367, global steps: 1500
+10/07/2021 17:15:38 - INFO - __main__ -   Average loss: 0.019701730741314046 at global step: 1500
+10/07/2021 17:19:39 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:19:39 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:19:39 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:19:39 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:19:49 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:19:49 - INFO - __main__ -     eval_f1 = 0.9819631668881715
+10/07/2021 17:19:49 - INFO - __main__ -     eval_loss = 0.08942788876192463
+10/07/2021 17:19:49 - INFO - __main__ -     eval_p = 0.9840182648401826
+10/07/2021 17:19:49 - INFO - __main__ -     eval_recall = 0.9799166350890489
+10/07/2021 17:19:49 - INFO - __main__ -   Average loss: 0.013078208913502748 at global step: 1800
+10/07/2021 17:22:29 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/checkpoint-2000/config.json
+10/07/2021 17:22:31 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/checkpoint-2000/pytorch_model.bin
+10/07/2021 17:22:31 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/checkpoint-2000/bert/config.json
+10/07/2021 17:22:34 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/checkpoint-2000/bert/pytorch_model.bin
+10/07/2021 17:22:35 - INFO - __main__ -   Saving model checkpoint to ./ACE_CN/checkpoint-2000
+10/07/2021 17:23:54 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:23:54 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:23:54 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:23:54 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:24:04 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:24:04 - INFO - __main__ -     eval_f1 = 0.9793521500284146
+10/07/2021 17:24:04 - INFO - __main__ -     eval_loss = 0.10107072014830305
+10/07/2021 17:24:04 - INFO - __main__ -     eval_p = 0.9791666666666666
+10/07/2021 17:24:04 - INFO - __main__ -     eval_recall = 0.9795377036756348
+10/07/2021 17:24:04 - INFO - __main__ -   Average loss: 0.009106706235785774 at global step: 2100
+10/07/2021 17:28:04 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:28:04 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:28:04 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:28:04 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:28:14 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:28:14 - INFO - __main__ -     eval_f1 = 0.9802656546489564
+10/07/2021 17:28:14 - INFO - __main__ -     eval_loss = 0.10397531229843138
+10/07/2021 17:28:14 - INFO - __main__ -     eval_p = 0.9817559863169898
+10/07/2021 17:28:14 - INFO - __main__ -     eval_recall = 0.9787798408488063
+10/07/2021 17:28:14 - INFO - __main__ -   Average loss: 0.0056362141204832975 at global step: 2400
+10/07/2021 17:32:15 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:32:15 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:32:15 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:32:15 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:32:25 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:32:25 - INFO - __main__ -     eval_f1 = 0.9787476280834915
+10/07/2021 17:32:25 - INFO - __main__ -     eval_loss = 0.11104451229265896
+10/07/2021 17:32:25 - INFO - __main__ -     eval_p = 0.9802356518434056
+10/07/2021 17:32:25 - INFO - __main__ -     eval_recall = 0.9772641151951497
+10/07/2021 17:32:25 - INFO - __main__ -   Average loss: 0.0047001235518837345 at global step: 2700
+10/07/2021 17:36:25 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-chinese_128_ace
+10/07/2021 17:36:25 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:36:25 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:36:25 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:36:35 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/07/2021 17:36:35 - INFO - __main__ -     eval_f1 = 0.9800645528764003
+10/07/2021 17:36:35 - INFO - __main__ -     eval_loss = 0.11047941535628512
+10/07/2021 17:36:35 - INFO - __main__ -     eval_p = 0.9821156773211568
+10/07/2021 17:36:35 - INFO - __main__ -     eval_recall = 0.978021978021978
+10/07/2021 17:36:35 - INFO - __main__ -   Average loss: 0.0023843556650778434 at global step: 3000
+10/07/2021 17:36:35 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/checkpoint-3000/config.json
+10/07/2021 17:36:39 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/checkpoint-3000/pytorch_model.bin
+10/07/2021 17:36:39 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/checkpoint-3000/bert/config.json
+10/07/2021 17:36:42 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/checkpoint-3000/bert/pytorch_model.bin
+10/07/2021 17:36:42 - INFO - __main__ -   Saving model checkpoint to ./ACE_CN/checkpoint-3000
+10/07/2021 17:37:22 - INFO - __main__ -    global_step = 3050, average loss = 0.02781110184854488
+10/07/2021 17:37:22 - INFO - __main__ -   Saving model checkpoint to ./ACE_CN
+10/07/2021 17:37:22 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_CN/config.json
+10/07/2021 17:37:25 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_CN/pytorch_model.bin
+10/07/2021 17:37:25 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_CN/config.json
+10/07/2021 17:37:25 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 5,
+  "architectures": [
+    "DMBERT"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 21128
+}
+
+10/07/2021 17:37:25 - INFO - transformers.modeling_utils -   loading weights file ./ACE_CN/pytorch_model.bin
+10/07/2021 17:37:27 - INFO - transformers.tokenization_utils -   Model name './ACE_CN' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc, bert-base-german-dbmdz-cased, bert-base-german-dbmdz-uncased, bert-base-finnish-cased-v1, bert-base-finnish-uncased-v1, bert-base-dutch-cased). Assuming './ACE_CN' is a path, a model identifier, or url to a directory containing tokenizer files.
+10/07/2021 17:37:27 - INFO - transformers.tokenization_utils -   Didn't find file ./ACE_CN/added_tokens.json. We won't load it.
+10/07/2021 17:37:27 - INFO - transformers.tokenization_utils -   loading file ./ACE_CN/vocab.txt
+10/07/2021 17:37:27 - INFO - transformers.tokenization_utils -   loading file None
+10/07/2021 17:37:27 - INFO - transformers.tokenization_utils -   loading file ./ACE_CN/special_tokens_map.json
+10/07/2021 17:37:27 - INFO - transformers.tokenization_utils -   loading file ./ACE_CN/tokenizer_config.json
+10/07/2021 17:37:27 - INFO - __main__ -   Evaluate the following checkpoints: ['./ACE_CN']
+10/07/2021 17:37:27 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_CN/config.json
+10/07/2021 17:37:27 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 5,
+  "architectures": [
+    "DMBERT"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 21128
+}
+
+10/07/2021 17:37:27 - INFO - transformers.modeling_utils -   loading weights file ./ACE_CN/pytorch_model.bin
+10/07/2021 17:37:29 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-chinese_128_ace
+10/07/2021 17:37:29 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:37:29 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:37:29 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:37:39 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/07/2021 17:37:39 - INFO - __main__ -     eval_f1 = 0.9858416360776088
+10/07/2021 17:37:39 - INFO - __main__ -     eval_loss = 0.08239540948465243
+10/07/2021 17:37:39 - INFO - __main__ -     eval_p = 0.9877408056042032
+10/07/2021 17:37:39 - INFO - __main__ -     eval_recall = 0.9839497557571528
+10/07/2021 17:37:39 - INFO - __main__ -   Evaluate the following checkpoints: ['./ACE_CN']
+10/07/2021 17:37:39 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_CN/config.json
+10/07/2021 17:37:39 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 5,
+  "architectures": [
+    "DMBERT"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "directionality": "bidi",
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 21128
+}
+
+10/07/2021 17:37:39 - INFO - transformers.modeling_utils -   loading weights file ./ACE_CN/pytorch_model.bin
+10/07/2021 17:37:41 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-chinese_128_ace
+10/07/2021 17:37:41 - INFO - __main__ -   ***** Running evaluation  *****
+10/07/2021 17:37:41 - INFO - __main__ -     Num examples = 3204
+10/07/2021 17:37:41 - INFO - __main__ -     Batch size = 42
+10/07/2021 17:37:51 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/07/2021 17:37:51 - INFO - __main__ -     eval_f1 = 0.9858416360776088
+10/07/2021 17:37:51 - INFO - __main__ -     eval_loss = 0.08239540948465243
+10/07/2021 17:37:51 - INFO - __main__ -     eval_p = 0.9877408056042032
+10/07/2021 17:37:51 - INFO - __main__ -     eval_recall = 0.9839497557571528
+10/07/2021 17:37:51 - INFO - __main__ -   best steps of eval f1 is the following checkpoints: 1500
