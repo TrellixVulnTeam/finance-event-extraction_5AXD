@@ -16,7 +16,6 @@
 # limitations under the License.
 """ Finetuning the library models for multiple choice (Bert, Roberta, XLNet)."""
 
-
 import argparse
 import glob
 import logging
@@ -25,15 +24,14 @@ import random
 
 import numpy as np
 import torch
+from sklearn.metrics import f1_score, precision_score, recall_score
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
-
 from transformers import (
     WEIGHTS_NAME,
     AdamW,
     BertConfig,
-    BertForMultipleChoice,
     BertTokenizer,
     RobertaConfig,
     RobertaForMultipleChoice,
@@ -43,13 +41,13 @@ from transformers import (
     XLNetTokenizer,
     get_linear_schedule_with_warmup,
 )
-from utils_ee import convert_examples_to_features, processors
-from sklearn.metrics import f1_score,precision_score,recall_score
-from model import DMBERT
 
-#try:
+from model import DMBERT
+from utils_ee import convert_examples_to_features, processors
+
+# try:
 #    from torch.utils.tensorboard import SummaryWriter
-#except ImportError:
+# except ImportError:
 #    from tensorboardX import SummaryWriter
 
 
@@ -65,12 +63,14 @@ MODEL_CLASSES = {
     "roberta": (RobertaConfig, RobertaForMultipleChoice, RobertaTokenizer),
 }
 
+
 def calculate_scores(preds, labels, dimE):
-    positive_labels=list(range(1,dimE)) #assume 0 is NA
+    positive_labels = list(range(1, dimE))  # assume 0 is NA
     pre = precision_score(labels, preds, labels=positive_labels, average='micro')
     recall = recall_score(labels, preds, labels=positive_labels, average='micro')
     f1 = f1_score(labels, preds, labels=positive_labels, average='micro')
     return pre, recall, f1
+
 
 def set_seed(args):
     random.seed(args.seed)
@@ -82,8 +82,8 @@ def set_seed(args):
 
 def train(args, train_dataset, model, tokenizer):
     """ Train the model """
-    #if args.local_rank in [-1, 0]:
-        #tb_writer = SummaryWriter()
+    # if args.local_rank in [-1, 0]:
+    # tb_writer = SummaryWriter()
 
     args.train_batch_size = args.per_gpu_train_batch_size * max(1, args.n_gpu)
     train_sampler = RandomSampler(train_dataset) if args.local_rank == -1 else DistributedSampler(train_dataset)
@@ -188,26 +188,26 @@ def train(args, train_dataset, model, tokenizer):
                 if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
                     # Log metrics
                     if (
-                        args.local_rank == -1 and args.evaluate_during_training
+                            args.local_rank == -1 and args.evaluate_during_training
                     ):  # Only evaluate when single GPU otherwise metrics may not average well
                         results = evaluate(args, model, tokenizer)
-                        #for key, value in results.items():
-                            #tb_writer.add_scalar("eval_{}".format(key), value, global_step)
+                        # for key, value in results.items():
+                        # tb_writer.add_scalar("eval_{}".format(key), value, global_step)
                         if results["eval_f1"] > best_dev_f1:
                             best_dev_f1 = results["eval_f1"]
                             best_steps = global_step
                             if args.do_test:
                                 results_test = evaluate(args, model, tokenizer, test=True)
-                                #for key, value in results_test.items():
-                                    #tb_writer.add_scalar("test_{}".format(key), value, global_step)
+                                # for key, value in results_test.items():
+                                # tb_writer.add_scalar("test_{}".format(key), value, global_step)
                                 logger.info(
                                     "test f1: %s, loss: %s, global steps: %s",
                                     str(results_test["eval_f1"]),
                                     str(results_test["eval_loss"]),
                                     str(global_step),
                                 )
-                    #tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
-                    #tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
+                    # tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
+                    # tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
                     logger.info(
                         "Average loss: %s at global step: %s",
                         str((tr_loss - logging_loss) / args.logging_steps),
@@ -224,27 +224,27 @@ def train(args, train_dataset, model, tokenizer):
                         model.module if hasattr(model, "module") else model
                     )  # Take care of distributed/parallel training
                     model_to_save.save_pretrained(output_dir)
-                    #add
-                    basic=model.module if hasattr(model, "module") else model
+                    # add
+                    basic = model.module if hasattr(model, "module") else model
                     bert_to_save = (basic.bert.module if hasattr(basic.bert, "module") else basic.bert)
-                    tmp=os.path.join(output_dir,"bert")
+                    tmp = os.path.join(output_dir, "bert")
                     if not os.path.exists(tmp):
                         os.makedirs(tmp)
                     bert_to_save.save_pretrained(tmp)
-                    #add end
+                    # add end
                     tokenizer.save_vocabulary(output_dir)
                     torch.save(args, os.path.join(output_dir, "training_args.bin"))
                     logger.info("Saving model checkpoint to %s", output_dir)
 
-            if args.max_steps > 0 and global_step > args.max_steps:
+            if 0 < args.max_steps < global_step:
                 epoch_iterator.close()
                 break
-        if args.max_steps > 0 and global_step > args.max_steps:
+        if 0 < args.max_steps < global_step:
             train_iterator.close()
             break
 
-    #if args.local_rank in [-1, 0]:
-        #tb_writer.close()
+    # if args.local_rank in [-1, 0]:
+    # tb_writer.close()
 
     return global_step, tr_loss / global_step, best_steps
 
@@ -266,9 +266,9 @@ def evaluate(args, model, tokenizer, prefix="", test=False, infer=True):
         eval_dataloader = DataLoader(eval_dataset, sampler=eval_sampler, batch_size=args.eval_batch_size)
 
         # multi-gpu evaluate
-        #if args.n_gpu > 1:
-            #print("?????",args.n_gpu)
-            #model = torch.nn.DataParallel(model)
+        # if args.n_gpu > 1:
+        # print("?????",args.n_gpu)
+        # model = torch.nn.DataParallel(model)
 
         # Eval!
         logger.info("***** Running evaluation {} *****".format(prefix))
@@ -307,12 +307,12 @@ def evaluate(args, model, tokenizer, prefix="", test=False, infer=True):
 
         eval_loss = eval_loss / nb_eval_steps
         preds = np.argmax(preds, axis=1)
-        #print(eval_task)
-        #print(processors[eval_task])
+        # print(eval_task)
+        # print(processors[eval_task])
         precision, recall, f1 = calculate_scores(preds, out_label_ids, len(processors[eval_task]().get_labels()))
         if infer:
-            np.save(os.path.join(eval_output_dir, str(prefix)+"_preds.npy"),preds)
-            
+            np.save(os.path.join(eval_output_dir, str(prefix) + "_preds.npy"), preds)
+
         result = {"eval_p": precision, "eval_recall": recall, "eval_f1": f1, "eval_loss": eval_loss}
         results.update(result)
 
@@ -324,9 +324,9 @@ def evaluate(args, model, tokenizer, prefix="", test=False, infer=True):
             writer.write(
                 "total batch size=%d\n"
                 % (
-                    args.per_gpu_train_batch_size
-                    * args.gradient_accumulation_steps
-                    * (torch.distributed.get_world_size() if args.local_rank != -1 else 1)
+                        args.per_gpu_train_batch_size
+                        * args.gradient_accumulation_steps
+                        * (torch.distributed.get_world_size() if args.local_rank != -1 else 1)
                 )
             )
             writer.write("train num epochs=%d\n" % args.num_train_epochs)
@@ -340,7 +340,8 @@ def evaluate(args, model, tokenizer, prefix="", test=False, infer=True):
 
 def load_and_cache_examples(args, task, tokenizer, evaluate=False, test=False):
     if args.local_rank not in [-1, 0]:
-        torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset, and the others will use the cache
+        torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset,
+        # and the others will use the cache
 
     processor = processors[task]()
     # Load data features from cache or dataset file
@@ -386,7 +387,8 @@ def load_and_cache_examples(args, task, tokenizer, evaluate=False, test=False):
             torch.save(features, cached_features_file)
 
     if args.local_rank == 0:
-        torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset, and the others will use the cache
+        torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset,
+        # and the others will use the cache
 
     # Convert to Tensors and build dataset
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
@@ -461,7 +463,7 @@ def main():
         default=128,
         type=int,
         help="The maximum total input sequence length after tokenization. Sequences longer "
-        "than this will be truncated, sequences shorter will be padded.",
+             "than this will be truncated, sequences shorter will be padded.",
     )
     parser.add_argument("--do_train", action="store_true", help="Whether to run training.")
     parser.add_argument("--do_eval", action="store_true", help="Whether to run eval on the dev set.")
@@ -525,7 +527,7 @@ def main():
         type=str,
         default="O1",
         help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
-        "See details at https://nvidia.github.io/apex/amp.html",
+             "See details at https://nvidia.github.io/apex/amp.html",
     )
     parser.add_argument("--local_rank", type=int, default=-1, help="For distributed training: local_rank")
     parser.add_argument("--server_ip", type=str, default="", help="For distant debugging.")
@@ -533,10 +535,10 @@ def main():
     args = parser.parse_args()
 
     if (
-        os.path.exists(args.output_dir)
-        and os.listdir(args.output_dir)
-        and args.do_train
-        and not args.overwrite_output_dir
+            os.path.exists(args.output_dir)
+            and os.listdir(args.output_dir)
+            and args.do_train
+            and not args.overwrite_output_dir
     ):
         raise ValueError(
             "Output directory ({}) already exists and is not empty. Use --overwrite_output_dir to overcome.".format(
@@ -669,7 +671,7 @@ def main():
 
             model = model_class.from_pretrained(checkpoint)
             model.to(args.device)
-            result = evaluate(args, model, tokenizer, prefix=prefix, test=True) #ToDel
+            result = evaluate(args, model, tokenizer, prefix=prefix, test=True)  # ToDel
             result = dict((k + "_{}".format(global_step), v) for k, v in result.items())
             results.update(result)
 
@@ -701,8 +703,8 @@ def main():
             model = model_class.from_pretrained(checkpoint)
             model.to(args.device)
             result = evaluate(args, model, tokenizer, prefix=prefix, test=True, infer=True)
-            #result = dict((k + "_{}".format(global_step), v) for k, v in result.items())
-            #results.update(result)
+            # result = dict((k + "_{}".format(global_step), v) for k, v in result.items())
+            # results.update(result)
 
     if best_steps:
         logger.info("best steps of eval f1 is the following checkpoints: %s", best_steps)

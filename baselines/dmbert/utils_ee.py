@@ -16,18 +16,13 @@
 # limitations under the License.
 """ Multiple choice fine-tuning: utilities to work with multiple choice tasks of reading comprehension  """
 
-
-import csv
-import glob
 import json
 import logging
 import os
 from typing import List
 
 import tqdm
-
 from transformers import PreTrainedTokenizer
-
 
 logger = logging.getLogger(__name__)
 
@@ -90,21 +85,25 @@ class ACEProcessor(DataProcessor):
     def get_train_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} train".format(data_dir))
-        return self._create_examples(json.load(open(os.path.join(data_dir,'train.json'),"r")), "train")
+        return self._create_examples(json.load(open(os.path.join(data_dir, 'train.json'), "r")), "train")
 
     def get_dev_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} dev".format(data_dir))
-        return self._create_examples(json.load(open(os.path.join(data_dir,'dev.json'),"r")), "dev")
+        return self._create_examples(json.load(open(os.path.join(data_dir, 'dev.json'), "r")), "dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} test".format(data_dir))
-        return self._create_examples(json.load(open(os.path.join(data_dir,'test.json'),"r")), "test")
+        return self._create_examples(json.load(open(os.path.join(data_dir, 'test.json'), "r")), "test")
 
     def get_labels(self):
         """See base class."""
-        return ['None', 'End-Position', 'Charge-Indict', 'Convict', 'Transfer-Ownership', 'Demonstrate', 'Transport', 'Sentence', 'Appeal', 'Start-Org', 'Start-Position', 'End-Org', 'Phone-Write', 'Nominate', 'Marry', 'Pardon', 'Release-Parole', 'Meet', 'Trial-Hearing', 'Extradite', 'Execute', 'Transfer-Money', 'Elect', 'Injure', 'Acquit', 'Divorce', 'Die', 'Arrest-Jail', 'Declare-Bankruptcy', 'Be-Born', 'Merge-Org', 'Fine', 'Sue', 'Attack']
+        return ['None', 'End-Position', 'Charge-Indict', 'Convict', 'Transfer-Ownership', 'Demonstrate', 'Transport',
+                'Sentence', 'Appeal', 'Start-Org', 'Start-Position', 'End-Org', 'Phone-Write', 'Nominate', 'Marry',
+                'Pardon', 'Release-Parole', 'Meet', 'Trial-Hearing', 'Extradite', 'Execute', 'Transfer-Money', 'Elect',
+                'Injure', 'Acquit', 'Divorce', 'Die', 'Arrest-Jail', 'Declare-Bankruptcy', 'Be-Born', 'Merge-Org',
+                'Fine', 'Sue', 'Attack']
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
@@ -116,11 +115,12 @@ class ACEProcessor(DataProcessor):
                     example_id=e_id,
                     tokens=data_raw['tokens'],
                     triggerL=data_raw['trigger_start'],
-                    triggerR=data_raw['trigger_end']+1,
+                    triggerR=data_raw['trigger_end'] + 1,
                     label=data_raw['event_type'],
                 )
             )
         return examples
+
 
 class MAVENProcessor(DataProcessor):
     """Processor for the RACE data set."""
@@ -128,29 +128,55 @@ class MAVENProcessor(DataProcessor):
     def get_train_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} train".format(data_dir))
-        return self._create_examples(open(os.path.join(data_dir,'train.jsonl'),"r"), "train")
+        return self._create_examples(open(os.path.join(data_dir, 'train.jsonl'), "r"), "train")
 
     def get_dev_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} dev".format(data_dir))
-        return self._create_examples(open(os.path.join(data_dir,'valid.jsonl'),"r"), "dev")
+        return self._create_examples(open(os.path.join(data_dir, 'valid.jsonl'), "r"), "dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} test".format(data_dir))
-        return self._create_examples(open(os.path.join(data_dir,'test.jsonl'),"r"), "test")
+        return self._create_examples(open(os.path.join(data_dir, 'test.jsonl'), "r"), "test")
 
     def get_labels(self):
         """See base class."""
-        return ["None", "Know", "Warning", "Catastrophe", "Placing", "Causation", "Arriving", "Sending", "Protest", "Preventing_or_letting", "Motion", "Damaging", "Destroying", "Death", "Perception_active", "Presence", "Influence", "Receiving", "Check", "Hostile_encounter", "Killing", "Conquering", "Releasing", "Attack", "Earnings_and_losses", "Choosing", "Traveling", "Recovering", "Using", "Coming_to_be", "Cause_to_be_included", "Process_start", "Change_event_time", "Reporting", "Bodily_harm", "Suspicion", "Statement", "Cause_change_of_position_on_a_scale", "Coming_to_believe", "Expressing_publicly", "Request", "Control", "Supporting", "Defending", "Building", "Military_operation", "Self_motion", "GetReady", "Forming_relationships", "Becoming_a_member", "Action", "Removing", "Surrendering", "Agree_or_refuse_to_act", "Participation", "Deciding", "Education_teaching", "Emptying", "Getting", "Besieging", "Creating", "Process_end", "Body_movement", "Expansion", "Telling", "Change", "Legal_rulings", "Bearing_arms", "Giving", "Name_conferral", "Arranging", "Use_firearm", "Committing_crime", "Assistance", "Surrounding", "Quarreling", "Expend_resource", "Motion_directional", "Bringing", "Communication", "Containing", "Manufacturing", "Social_event", "Robbery", "Competition", "Writing", "Rescuing", "Judgment_communication", "Change_tool", "Hold", "Being_in_operation", "Recording", "Carry_goods", "Cost", "Departing", "GiveUp", "Change_of_leadership", "Escaping", "Aiming", "Hindering", "Preserving", "Create_artwork", "Openness", "Connect", "Reveal_secret", "Response", "Scrutiny", "Lighting", "Criminal_investigation", "Hiding_objects", "Confronting_problem", "Renting", "Breathing", "Patrolling", "Arrest", "Convincing", "Commerce_sell", "Cure", "Temporary_stay", "Dispersal", "Collaboration", "Extradition", "Change_sentiment", "Commitment", "Commerce_pay", "Filling", "Becoming", "Achieve", "Practice", "Cause_change_of_strength", "Supply", "Cause_to_amalgamate", "Scouring", "Violence", "Reforming_a_system", "Come_together", "Wearing", "Cause_to_make_progress", "Legality", "Employment", "Rite", "Publishing", "Adducing", "Exchange", "Ratification", "Sign_agreement", "Commerce_buy", "Imposing_obligation", "Rewards_and_punishments", "Institutionalization", "Testing", "Ingestion", "Labeling", "Kidnapping", "Submitting_documents", "Prison", "Justifying", "Emergency", "Terrorism", "Vocalizations", "Risk", "Resolve_problem", "Revenge", "Limiting", "Research", "Having_or_lacking_access", "Theft", "Incident", "Award"]
+        return ["None", "Know", "Warning", "Catastrophe", "Placing", "Causation", "Arriving", "Sending", "Protest",
+                "Preventing_or_letting", "Motion", "Damaging", "Destroying", "Death", "Perception_active", "Presence",
+                "Influence", "Receiving", "Check", "Hostile_encounter", "Killing", "Conquering", "Releasing", "Attack",
+                "Earnings_and_losses", "Choosing", "Traveling", "Recovering", "Using", "Coming_to_be",
+                "Cause_to_be_included", "Process_start", "Change_event_time", "Reporting", "Bodily_harm", "Suspicion",
+                "Statement", "Cause_change_of_position_on_a_scale", "Coming_to_believe", "Expressing_publicly",
+                "Request", "Control", "Supporting", "Defending", "Building", "Military_operation", "Self_motion",
+                "GetReady", "Forming_relationships", "Becoming_a_member", "Action", "Removing", "Surrendering",
+                "Agree_or_refuse_to_act", "Participation", "Deciding", "Education_teaching", "Emptying", "Getting",
+                "Besieging", "Creating", "Process_end", "Body_movement", "Expansion", "Telling", "Change",
+                "Legal_rulings", "Bearing_arms", "Giving", "Name_conferral", "Arranging", "Use_firearm",
+                "Committing_crime", "Assistance", "Surrounding", "Quarreling", "Expend_resource", "Motion_directional",
+                "Bringing", "Communication", "Containing", "Manufacturing", "Social_event", "Robbery", "Competition",
+                "Writing", "Rescuing", "Judgment_communication", "Change_tool", "Hold", "Being_in_operation",
+                "Recording", "Carry_goods", "Cost", "Departing", "GiveUp", "Change_of_leadership", "Escaping", "Aiming",
+                "Hindering", "Preserving", "Create_artwork", "Openness", "Connect", "Reveal_secret", "Response",
+                "Scrutiny", "Lighting", "Criminal_investigation", "Hiding_objects", "Confronting_problem", "Renting",
+                "Breathing", "Patrolling", "Arrest", "Convincing", "Commerce_sell", "Cure", "Temporary_stay",
+                "Dispersal", "Collaboration", "Extradition", "Change_sentiment", "Commitment", "Commerce_pay",
+                "Filling", "Becoming", "Achieve", "Practice", "Cause_change_of_strength", "Supply",
+                "Cause_to_amalgamate", "Scouring", "Violence", "Reforming_a_system", "Come_together", "Wearing",
+                "Cause_to_make_progress", "Legality", "Employment", "Rite", "Publishing", "Adducing", "Exchange",
+                "Ratification", "Sign_agreement", "Commerce_buy", "Imposing_obligation", "Rewards_and_punishments",
+                "Institutionalization", "Testing", "Ingestion", "Labeling", "Kidnapping", "Submitting_documents",
+                "Prison", "Justifying", "Emergency", "Terrorism", "Vocalizations", "Risk", "Resolve_problem", "Revenge",
+                "Limiting", "Research", "Having_or_lacking_access", "Theft", "Incident", "Award"]
+
     def _create_examples(self, fin, set_type):
         """Creates examples for the training and dev sets."""
         examples = []
-        lines=fin.readlines()
+        lines = fin.readlines()
         for (_, data_raw) in enumerate(lines):
-            data=json.loads(data_raw)
+            data = json.loads(data_raw)
             for event in data['events']:
-                if event['type']=='None of the above':
+                if event['type'] == 'None of the above':
                     print("?????????")
                 for mention in event['mention']:
                     e_id = "%s-%s" % (set_type, mention['id'])
@@ -184,17 +210,43 @@ class MAVENInferProcessor(DataProcessor):
     def get_test_examples(self, data_dir):
         """See base class."""
         logger.info("LOOKING AT {} test".format(data_dir))
-        return self._create_examples(open(os.path.join(data_dir,'test.jsonl'),"r"), "test")
+        return self._create_examples(open(os.path.join(data_dir, 'test.jsonl'), "r"), "test")
 
     def get_labels(self):
         """See base class."""
-        return ["None", "Know", "Warning", "Catastrophe", "Placing", "Causation", "Arriving", "Sending", "Protest", "Preventing_or_letting", "Motion", "Damaging", "Destroying", "Death", "Perception_active", "Presence", "Influence", "Receiving", "Check", "Hostile_encounter", "Killing", "Conquering", "Releasing", "Attack", "Earnings_and_losses", "Choosing", "Traveling", "Recovering", "Using", "Coming_to_be", "Cause_to_be_included", "Process_start", "Change_event_time", "Reporting", "Bodily_harm", "Suspicion", "Statement", "Cause_change_of_position_on_a_scale", "Coming_to_believe", "Expressing_publicly", "Request", "Control", "Supporting", "Defending", "Building", "Military_operation", "Self_motion", "GetReady", "Forming_relationships", "Becoming_a_member", "Action", "Removing", "Surrendering", "Agree_or_refuse_to_act", "Participation", "Deciding", "Education_teaching", "Emptying", "Getting", "Besieging", "Creating", "Process_end", "Body_movement", "Expansion", "Telling", "Change", "Legal_rulings", "Bearing_arms", "Giving", "Name_conferral", "Arranging", "Use_firearm", "Committing_crime", "Assistance", "Surrounding", "Quarreling", "Expend_resource", "Motion_directional", "Bringing", "Communication", "Containing", "Manufacturing", "Social_event", "Robbery", "Competition", "Writing", "Rescuing", "Judgment_communication", "Change_tool", "Hold", "Being_in_operation", "Recording", "Carry_goods", "Cost", "Departing", "GiveUp", "Change_of_leadership", "Escaping", "Aiming", "Hindering", "Preserving", "Create_artwork", "Openness", "Connect", "Reveal_secret", "Response", "Scrutiny", "Lighting", "Criminal_investigation", "Hiding_objects", "Confronting_problem", "Renting", "Breathing", "Patrolling", "Arrest", "Convincing", "Commerce_sell", "Cure", "Temporary_stay", "Dispersal", "Collaboration", "Extradition", "Change_sentiment", "Commitment", "Commerce_pay", "Filling", "Becoming", "Achieve", "Practice", "Cause_change_of_strength", "Supply", "Cause_to_amalgamate", "Scouring", "Violence", "Reforming_a_system", "Come_together", "Wearing", "Cause_to_make_progress", "Legality", "Employment", "Rite", "Publishing", "Adducing", "Exchange", "Ratification", "Sign_agreement", "Commerce_buy", "Imposing_obligation", "Rewards_and_punishments", "Institutionalization", "Testing", "Ingestion", "Labeling", "Kidnapping", "Submitting_documents", "Prison", "Justifying", "Emergency", "Terrorism", "Vocalizations", "Risk", "Resolve_problem", "Revenge", "Limiting", "Research", "Having_or_lacking_access", "Theft", "Incident", "Award"]
+        return ["None", "Know", "Warning", "Catastrophe", "Placing", "Causation", "Arriving", "Sending", "Protest",
+                "Preventing_or_letting", "Motion", "Damaging", "Destroying", "Death", "Perception_active", "Presence",
+                "Influence", "Receiving", "Check", "Hostile_encounter", "Killing", "Conquering", "Releasing", "Attack",
+                "Earnings_and_losses", "Choosing", "Traveling", "Recovering", "Using", "Coming_to_be",
+                "Cause_to_be_included", "Process_start", "Change_event_time", "Reporting", "Bodily_harm", "Suspicion",
+                "Statement", "Cause_change_of_position_on_a_scale", "Coming_to_believe", "Expressing_publicly",
+                "Request", "Control", "Supporting", "Defending", "Building", "Military_operation", "Self_motion",
+                "GetReady", "Forming_relationships", "Becoming_a_member", "Action", "Removing", "Surrendering",
+                "Agree_or_refuse_to_act", "Participation", "Deciding", "Education_teaching", "Emptying", "Getting",
+                "Besieging", "Creating", "Process_end", "Body_movement", "Expansion", "Telling", "Change",
+                "Legal_rulings", "Bearing_arms", "Giving", "Name_conferral", "Arranging", "Use_firearm",
+                "Committing_crime", "Assistance", "Surrounding", "Quarreling", "Expend_resource", "Motion_directional",
+                "Bringing", "Communication", "Containing", "Manufacturing", "Social_event", "Robbery", "Competition",
+                "Writing", "Rescuing", "Judgment_communication", "Change_tool", "Hold", "Being_in_operation",
+                "Recording", "Carry_goods", "Cost", "Departing", "GiveUp", "Change_of_leadership", "Escaping", "Aiming",
+                "Hindering", "Preserving", "Create_artwork", "Openness", "Connect", "Reveal_secret", "Response",
+                "Scrutiny", "Lighting", "Criminal_investigation", "Hiding_objects", "Confronting_problem", "Renting",
+                "Breathing", "Patrolling", "Arrest", "Convincing", "Commerce_sell", "Cure", "Temporary_stay",
+                "Dispersal", "Collaboration", "Extradition", "Change_sentiment", "Commitment", "Commerce_pay",
+                "Filling", "Becoming", "Achieve", "Practice", "Cause_change_of_strength", "Supply",
+                "Cause_to_amalgamate", "Scouring", "Violence", "Reforming_a_system", "Come_together", "Wearing",
+                "Cause_to_make_progress", "Legality", "Employment", "Rite", "Publishing", "Adducing", "Exchange",
+                "Ratification", "Sign_agreement", "Commerce_buy", "Imposing_obligation", "Rewards_and_punishments",
+                "Institutionalization", "Testing", "Ingestion", "Labeling", "Kidnapping", "Submitting_documents",
+                "Prison", "Justifying", "Emergency", "Terrorism", "Vocalizations", "Risk", "Resolve_problem", "Revenge",
+                "Limiting", "Research", "Having_or_lacking_access", "Theft", "Incident", "Award"]
+
     def _create_examples(self, fin, set_type):
         """Creates examples for the training and dev sets."""
         examples = []
-        lines=fin.readlines()
+        lines = fin.readlines()
         for (_, data_raw) in enumerate(lines):
-            data=json.loads(data_raw)
+            data = json.loads(data_raw)
             for mention in data['candidates']:
                 e_id = "%s-%s" % (set_type, mention['id'])
                 examples.append(
@@ -208,15 +260,16 @@ class MAVENInferProcessor(DataProcessor):
                 )
         return examples
 
+
 def convert_examples_to_features(
-    examples: List[InputExample],
-    label_list: List[str],
-    max_length: int,
-    tokenizer: PreTrainedTokenizer,
-    pad_token_segment_id=0,
-    pad_on_left=False,
-    pad_token=0,
-    mask_padding_with_zero=True,
+        examples: List[InputExample],
+        label_list: List[str],
+        max_length: int,
+        tokenizer: PreTrainedTokenizer,
+        pad_token_segment_id=0,
+        pad_on_left=False,
+        pad_token=0,
+        mask_padding_with_zero=True,
 ) -> List[InputFeatures]:
     """
     Loads a data file into a list of `InputFeatures`
@@ -229,12 +282,13 @@ def convert_examples_to_features(
         if ex_index % 10000 == 0:
             logger.info("Writing example %d of %d" % (ex_index, len(examples)))
         textL = tokenizer.tokenize(" ".join(example.tokens[:example.triggerL]))
-        textR = tokenizer.tokenize(" ".join(example.tokens[example.triggerL:example.triggerR]))+['[unused1]']+tokenizer.tokenize(" ".join(example.tokens[example.triggerR:]))
-        maskL = [1.0 for i in range(0,len(textL)+1)] + [0.0 for i in range(0,len(textR)+2)]
-        maskR = [0.0 for i in range(0,len(textL)+1)] + [1.0 for i in range(0,len(textR)+2)]
-        if len(maskL)>max_length:
+        textR = tokenizer.tokenize(" ".join(example.tokens[example.triggerL:example.triggerR])) + [
+            '[unused1]'] + tokenizer.tokenize(" ".join(example.tokens[example.triggerR:]))
+        maskL = [1.0 for i in range(0, len(textL) + 1)] + [0.0 for i in range(0, len(textR) + 2)]
+        maskR = [0.0 for i in range(0, len(textL) + 1)] + [1.0 for i in range(0, len(textR) + 2)]
+        if len(maskL) > max_length:
             maskL = maskL[:max_length]
-        if len(maskR)>max_length:
+        if len(maskR) > max_length:
             maskR = maskR[:max_length]
         inputs = tokenizer.encode_plus(
             textL + ['[unused0]'] + textR, add_special_tokens=True, max_length=max_length, return_token_type_ids=True
@@ -245,8 +299,8 @@ def convert_examples_to_features(
             )
 
         input_ids, token_type_ids = inputs["input_ids"], inputs["token_type_ids"]
-        assert len(input_ids)==len(maskL)
-        assert len(input_ids)==len(maskR)
+        assert len(input_ids) == len(maskL)
+        assert len(input_ids) == len(maskR)
         # The mask has 1 for real tokens and 0 for padding tokens. Only real
         # tokens are attended to.
         attention_mask = [1 if mask_padding_with_zero else 0] * len(input_ids)
@@ -281,12 +335,12 @@ def convert_examples_to_features(
             logger.info("maskR: {}".format(" ".join(map(str, maskR))))
             logger.info("label: {}".format(label))
 
-        features.append(InputFeatures(example_id=example.example_id, input_ids=input_ids, input_mask=attention_mask, segment_ids=token_type_ids, maskL=maskL, maskR=maskR, label=label))
+        features.append(InputFeatures(example_id=example.example_id, input_ids=input_ids, input_mask=attention_mask,
+                                      segment_ids=token_type_ids, maskL=maskL, maskR=maskR, label=label))
 
     return features
 
 
 processors = {"ace": ACEProcessor, "maven": MAVENProcessor, "maven_infer": MAVENInferProcessor}
-
 
 MULTIPLE_CHOICE_TASKS_NUM_LABELS = {"ace", 34, "maven", 169}
