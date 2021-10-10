@@ -1,0 +1,425 @@
+10/10/2021 08:18:51 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+10/10/2021 08:18:52 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /home/MSAI/s200048/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+10/10/2021 08:18:52 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 19,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/10/2021 08:18:53 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /home/MSAI/s200048/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/10/2021 08:18:54 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin from cache at /home/MSAI/s200048/.cache/torch/transformers/aa1ef1aede4482d0dbcd4d52baad8ae300e60902e88fcb0bebdec09afd232066.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+10/10/2021 08:18:58 - INFO - transformers.modeling_utils -   Weights of DMBERT not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+10/10/2021 08:18:58 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in DMBERT: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+10/10/2021 08:19:03 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='./ACE05_shuffles2/', device=device(type='cuda', index=0), do_eval=True, do_infer=False, do_lower_case=True, do_test=True, do_train=True, eval_all_checkpoints=False, evaluate_during_training=True, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=2, learning_rate=5e-05, local_rank=-1, logging_steps=300, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-uncased', model_type='bert', n_gpu=1, no_cuda=False, num_train_epochs=10.0, output_dir='./ACE_shuffles2', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=42, per_gpu_train_batch_size=42, save_steps=1000, seed=3, server_ip='', server_port='', task_name='ace', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+10/10/2021 08:19:03 - INFO - __main__ -   Creating features from dataset file at ./ACE05_shuffles2/
+10/10/2021 08:19:03 - INFO - utils_ee -   LOOKING AT ./ACE05_shuffles2/ train
+10/10/2021 08:19:05 - INFO - __main__ -   Training number: 99714
+10/10/2021 08:19:05 - INFO - utils_ee -   Writing example 0 of 99714
+10/10/2021 08:19:05 - INFO - utils_ee -   *** Example ***
+10/10/2021 08:19:05 - INFO - utils_ee -   example_id: train-0
+10/10/2021 08:19:05 - INFO - utils_ee -   input_ids: 101 6373 1 16565 2 2507 1037 2298 2012 2129 10978 2003 5307 1996 2925 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:19:05 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:19:05 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:19:05 - INFO - utils_ee -   maskL: 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:19:05 - INFO - utils_ee -   maskR: 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:19:05 - INFO - utils_ee -   label: 4
+10/10/2021 08:19:05 - INFO - utils_ee -   *** Example ***
+10/10/2021 08:19:05 - INFO - utils_ee -   example_id: train-1
+10/10/2021 08:19:05 - INFO - utils_ee -   input_ids: 101 1 6373 2 16565 2507 1037 2298 2012 2129 10978 2003 5307 1996 2925 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:19:05 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:19:05 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:19:05 - INFO - utils_ee -   maskL: 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:19:05 - INFO - utils_ee -   maskR: 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:19:05 - INFO - utils_ee -   label: 0
+10/10/2021 08:19:13 - INFO - utils_ee -   Writing example 10000 of 99714
+10/10/2021 08:19:21 - INFO - utils_ee -   Writing example 20000 of 99714
+10/10/2021 08:19:29 - INFO - utils_ee -   Writing example 30000 of 99714
+10/10/2021 08:19:36 - INFO - utils_ee -   Writing example 40000 of 99714
+10/10/2021 08:19:45 - INFO - utils_ee -   Writing example 50000 of 99714
+10/10/2021 08:19:53 - INFO - utils_ee -   Writing example 60000 of 99714
+10/10/2021 08:20:00 - INFO - utils_ee -   Writing example 70000 of 99714
+10/10/2021 08:20:09 - INFO - utils_ee -   Writing example 80000 of 99714
+10/10/2021 08:20:17 - INFO - utils_ee -   Writing example 90000 of 99714
+10/10/2021 08:20:23 - INFO - __main__ -   Saving features into cached file ./ACE05_shuffles2/cached_train_bert-base-uncased_128_ace
+10/10/2021 08:20:56 - INFO - __main__ -   ***** Running training *****
+10/10/2021 08:20:56 - INFO - __main__ -     Num examples = 99714
+10/10/2021 08:20:56 - INFO - __main__ -     Num Epochs = 10
+10/10/2021 08:20:56 - INFO - __main__ -     Instantaneous batch size per GPU = 42
+10/10/2021 08:20:56 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 84
+10/10/2021 08:20:56 - INFO - __main__ -     Gradient Accumulation steps = 2
+10/10/2021 08:20:56 - INFO - __main__ -     Total optimization steps = 11870
+10/10/2021 08:24:46 - INFO - __main__ -   Creating features from dataset file at ./ACE05_shuffles2/
+10/10/2021 08:24:46 - INFO - utils_ee -   LOOKING AT ./ACE05_shuffles2/ dev
+10/10/2021 08:24:46 - INFO - __main__ -   Training number: 4367
+10/10/2021 08:24:46 - INFO - utils_ee -   Writing example 0 of 4367
+10/10/2021 08:24:46 - INFO - utils_ee -   *** Example ***
+10/10/2021 08:24:46 - INFO - utils_ee -   example_id: dev-0
+10/10/2021 08:24:46 - INFO - utils_ee -   input_ids: 101 3779 1004 3779 1005 1055 2828 1016 14671 4319 2003 1 17227 2 1999 22935 7012 1010 2021 3310 2007 1037 4608 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:24:46 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:24:46 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:24:46 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:24:46 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:24:46 - INFO - utils_ee -   label: 18
+10/10/2021 08:24:46 - INFO - utils_ee -   *** Example ***
+10/10/2021 08:24:46 - INFO - utils_ee -   example_id: dev-1
+10/10/2021 08:24:46 - INFO - utils_ee -   input_ids: 101 3779 1004 3779 1005 1055 2828 1016 14671 4319 2003 17227 1999 22935 1 7012 2 1010 2021 3310 2007 1037 4608 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:24:46 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:24:46 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 08:24:46 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:24:46 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 08:24:46 - INFO - utils_ee -   label: 18
+10/10/2021 08:24:50 - INFO - __main__ -   Saving features into cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:24:51 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:24:51 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:24:51 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:25:04 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:25:04 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:25:04 - INFO - __main__ -     eval_loss = 0.1238644550769375
+10/10/2021 08:25:04 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:25:04 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:25:04 - INFO - __main__ -   Average loss: 0.175934604544503 at global step: 300
+10/10/2021 08:28:59 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:29:00 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:29:00 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:29:00 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:29:13 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:29:13 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:29:13 - INFO - __main__ -     eval_loss = 0.10830135227521308
+10/10/2021 08:29:13 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:29:13 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:29:13 - INFO - __main__ -   Average loss: 0.1430652269705509 at global step: 600
+10/10/2021 08:33:09 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:33:09 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:33:09 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:33:09 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:33:22 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:33:22 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:33:22 - INFO - __main__ -     eval_loss = 0.09886693448061123
+10/10/2021 08:33:22 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:33:22 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:33:22 - INFO - __main__ -   Average loss: 0.13184508259641006 at global step: 900
+10/10/2021 08:34:41 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-1000/config.json
+10/10/2021 08:34:45 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-1000/pytorch_model.bin
+10/10/2021 08:34:45 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-1000/bert/config.json
+10/10/2021 08:34:48 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-1000/bert/pytorch_model.bin
+10/10/2021 08:34:48 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles2/checkpoint-1000
+10/10/2021 08:37:24 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:37:25 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:37:25 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:37:25 - INFO - __main__ -     Batch size = 42
+10/10/2021 08:37:38 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:37:38 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:37:38 - INFO - __main__ -     eval_loss = 0.09685815649125008
+10/10/2021 08:37:38 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:37:38 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:37:38 - INFO - __main__ -   Average loss: 0.1184185486799106 at global step: 1200
+10/10/2021 08:41:34 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:41:35 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:41:35 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:41:35 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:41:48 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:41:48 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:41:48 - INFO - __main__ -     eval_loss = 0.08514282237536883
+10/10/2021 08:41:48 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:41:48 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:41:48 - INFO - __main__ -   Average loss: 0.09851601323423287 at global step: 1500
+10/10/2021 08:45:44 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:45:44 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:45:44 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:45:44 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:45:58 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:45:58 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:45:58 - INFO - __main__ -     eval_loss = 0.09362091256536167
+10/10/2021 08:45:58 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:45:58 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:45:58 - INFO - __main__ -   Average loss: 0.09782134735568737 at global step: 1800
+10/10/2021 08:48:35 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-2000/config.json
+10/10/2021 08:48:39 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-2000/pytorch_model.bin
+10/10/2021 08:48:39 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-2000/bert/config.json
+10/10/2021 08:48:42 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-2000/bert/pytorch_model.bin
+10/10/2021 08:48:42 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles2/checkpoint-2000
+10/10/2021 08:50:00 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:50:00 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:50:00 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:50:00 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:50:13 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:50:13 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:50:13 - INFO - __main__ -     eval_loss = 0.09343772369119016
+10/10/2021 08:50:13 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:50:13 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:50:13 - INFO - __main__ -   Average loss: 0.09935294096940198 at global step: 2100
+10/10/2021 08:54:09 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:54:10 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:54:10 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:54:10 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 08:54:23 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:54:23 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:54:23 - INFO - __main__ -     eval_loss = 0.08875094281281165
+10/10/2021 08:54:23 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:54:23 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:54:23 - INFO - __main__ -   Average loss: 0.09073955009380977 at global step: 2400
+10/10/2021 08:58:19 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 08:58:19 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 08:58:19 - INFO - __main__ -     Num examples = 4367
+10/10/2021 08:58:19 - INFO - __main__ -     Batch size = 42
+10/10/2021 08:58:33 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 08:58:33 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 08:58:33 - INFO - __main__ -     eval_loss = 0.09518937683494116
+10/10/2021 08:58:33 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 08:58:33 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 08:58:33 - INFO - __main__ -   Average loss: 0.0679366194557709 at global step: 2700
+10/10/2021 09:02:29 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:02:29 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:02:29 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:02:29 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:02:43 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:02:43 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 09:02:43 - INFO - __main__ -     eval_loss = 0.09613384673698769
+10/10/2021 09:02:43 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 09:02:43 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 09:02:43 - INFO - __main__ -   Average loss: 0.06832603478299765 at global step: 3000
+10/10/2021 09:02:43 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-3000/config.json
+10/10/2021 09:02:46 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-3000/pytorch_model.bin
+10/10/2021 09:02:46 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-3000/bert/config.json
+10/10/2021 09:02:49 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-3000/bert/pytorch_model.bin
+10/10/2021 09:02:49 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles2/checkpoint-3000
+10/10/2021 09:06:45 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:06:45 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:06:45 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:06:45 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 09:06:58 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:06:58 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 09:06:58 - INFO - __main__ -     eval_loss = 0.09438596614311862
+10/10/2021 09:06:58 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 09:06:58 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 09:06:58 - INFO - __main__ -   Average loss: 0.07186916008009575 at global step: 3300
+10/10/2021 09:10:55 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:10:55 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:10:55 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:10:55 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:11:08 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:11:08 - INFO - __main__ -     eval_f1 = 0.02857142857142857
+10/10/2021 09:11:08 - INFO - __main__ -     eval_loss = 0.09738638220397451
+10/10/2021 09:11:08 - INFO - __main__ -     eval_p = 0.16666666666666666
+10/10/2021 09:11:08 - INFO - __main__ -     eval_recall = 0.015625
+10/10/2021 09:11:08 - INFO - __main__ -   Creating features from dataset file at ./ACE05_shuffles2/
+10/10/2021 09:11:08 - INFO - utils_ee -   LOOKING AT ./ACE05_shuffles2/ test
+10/10/2021 09:11:08 - INFO - __main__ -   Training number: 5040
+10/10/2021 09:11:08 - INFO - utils_ee -   Writing example 0 of 5040
+10/10/2021 09:11:08 - INFO - utils_ee -   *** Example ***
+10/10/2021 09:11:08 - INFO - utils_ee -   example_id: test-0
+10/10/2021 09:11:08 - INFO - utils_ee -   input_ids: 101 1 8224 2 6112 4132 8480 1999 3994 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 09:11:08 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 09:11:08 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 09:11:08 - INFO - utils_ee -   maskL: 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 09:11:08 - INFO - utils_ee -   maskR: 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 09:11:08 - INFO - utils_ee -   label: 0
+10/10/2021 09:11:08 - INFO - utils_ee -   *** Example ***
+10/10/2021 09:11:08 - INFO - utils_ee -   example_id: test-1
+10/10/2021 09:11:08 - INFO - utils_ee -   input_ids: 101 8224 1 6112 2 4132 8480 1999 3994 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 09:11:08 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 09:11:08 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/10/2021 09:11:08 - INFO - utils_ee -   maskL: 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 09:11:08 - INFO - utils_ee -   maskR: 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/10/2021 09:11:08 - INFO - utils_ee -   label: 0
+10/10/2021 09:11:11 - INFO - __main__ -   Saving features into cached file ./ACE05_shuffles2/cached_test_bert-base-uncased_128_ace
+10/10/2021 09:11:13 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:11:13 - INFO - __main__ -     Num examples = 5040
+10/10/2021 09:11:13 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:11:28 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/10/2021 09:11:28 - INFO - __main__ -     eval_f1 = 0.1923076923076923
+10/10/2021 09:11:28 - INFO - __main__ -     eval_loss = 0.08959277603862574
+10/10/2021 09:11:28 - INFO - __main__ -     eval_p = 0.35714285714285715
+10/10/2021 09:11:28 - INFO - __main__ -     eval_recall = 0.13157894736842105
+10/10/2021 09:11:28 - INFO - __main__ -   test f1: 0.1923076923076923, loss: 0.08959277603862574, global steps: 3600
+10/10/2021 09:11:28 - INFO - __main__ -   Average loss: 0.06674400949889484 at global step: 3600
+10/10/2021 09:15:23 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:15:24 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:15:24 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:15:24 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:15:37 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:15:37 - INFO - __main__ -     eval_f1 = 0.0970873786407767
+10/10/2021 09:15:37 - INFO - __main__ -     eval_loss = 0.10250893375968399
+10/10/2021 09:15:37 - INFO - __main__ -     eval_p = 0.1282051282051282
+10/10/2021 09:15:37 - INFO - __main__ -     eval_recall = 0.078125
+10/10/2021 09:15:37 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_test_bert-base-uncased_128_ace
+10/10/2021 09:15:37 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:15:37 - INFO - __main__ -     Num examples = 5040
+10/10/2021 09:15:37 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:15:53 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/10/2021 09:15:53 - INFO - __main__ -     eval_f1 = 0.2647058823529412
+10/10/2021 09:15:53 - INFO - __main__ -     eval_loss = 0.08900370071060024
+10/10/2021 09:15:53 - INFO - __main__ -     eval_p = 0.3
+10/10/2021 09:15:53 - INFO - __main__ -     eval_recall = 0.23684210526315788
+10/10/2021 09:15:53 - INFO - __main__ -   test f1: 0.2647058823529412, loss: 0.08900370071060024, global steps: 3900
+10/10/2021 09:15:53 - INFO - __main__ -   Average loss: 0.04834172315672428 at global step: 3900
+10/10/2021 09:17:11 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-4000/config.json
+10/10/2021 09:17:15 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-4000/pytorch_model.bin
+10/10/2021 09:17:15 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-4000/bert/config.json
+10/10/2021 09:17:18 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-4000/bert/pytorch_model.bin
+10/10/2021 09:17:18 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles2/checkpoint-4000
+10/10/2021 09:19:54 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:19:55 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:19:55 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:19:55 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:20:08 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:20:08 - INFO - __main__ -     eval_f1 = 0.047619047619047616
+10/10/2021 09:20:08 - INFO - __main__ -     eval_loss = 0.10304332001172813
+10/10/2021 09:20:08 - INFO - __main__ -     eval_p = 0.1
+10/10/2021 09:20:08 - INFO - __main__ -     eval_recall = 0.03125
+10/10/2021 09:20:08 - INFO - __main__ -   Average loss: 0.047134473383969935 at global step: 4200
+10/10/2021 09:24:04 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:24:04 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:24:04 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:24:04 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:24:17 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:24:17 - INFO - __main__ -     eval_f1 = 0.0
+10/10/2021 09:24:17 - INFO - __main__ -     eval_loss = 0.10221351466875953
+10/10/2021 09:24:17 - INFO - __main__ -     eval_p = 0.0
+10/10/2021 09:24:17 - INFO - __main__ -     eval_recall = 0.0
+10/10/2021 09:24:17 - INFO - __main__ -   Average loss: 0.05073068125076437 at global step: 4500
+10/10/2021 09:28:13 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:28:13 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:28:13 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:28:13 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:28:27 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:28:27 - INFO - __main__ -     eval_f1 = 0.05128205128205128
+10/10/2021 09:28:27 - INFO - __main__ -     eval_loss = 0.10495149909100011
+10/10/2021 09:28:27 - INFO - __main__ -     eval_p = 0.14285714285714285
+10/10/2021 09:28:27 - INFO - __main__ -     eval_recall = 0.03125
+10/10/2021 09:28:27 - INFO - __main__ -   Average loss: 0.04685330039045463 at global step: 4800
+10/10/2021 09:31:04 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-5000/config.json
+10/10/2021 09:31:07 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-5000/pytorch_model.bin
+10/10/2021 09:31:07 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles2/checkpoint-5000/bert/config.json
+10/10/2021 09:31:10 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles2/checkpoint-5000/bert/pytorch_model.bin
+10/10/2021 09:31:10 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles2/checkpoint-5000
+10/10/2021 09:32:28 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:32:29 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:32:29 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:32:29 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:32:42 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:32:42 - INFO - __main__ -     eval_f1 = 0.02564102564102564
+10/10/2021 09:32:42 - INFO - __main__ -     eval_loss = 0.11046465510914388
+10/10/2021 09:32:42 - INFO - __main__ -     eval_p = 0.07142857142857142
+10/10/2021 09:32:42 - INFO - __main__ -     eval_recall = 0.015625
+10/10/2021 09:32:42 - INFO - __main__ -   Average loss: 0.03296849128465207 at global step: 5100
+10/10/2021 09:36:37 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:36:37 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:36:37 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:36:37 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:36:51 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:36:51 - INFO - __main__ -     eval_f1 = 0.0625
+10/10/2021 09:36:51 - INFO - __main__ -     eval_loss = 0.11441301922576923
+10/10/2021 09:36:51 - INFO - __main__ -     eval_p = 0.09375
+10/10/2021 09:36:51 - INFO - __main__ -     eval_recall = 0.046875
+10/10/2021 09:36:51 - INFO - __main__ -   Average loss: 0.029751423657871784 at global step: 5400
+10/10/2021 09:40:47 - INFO - __main__ -   Loading features from cached file ./ACE05_shuffles2/cached_dev_bert-base-uncased_128_ace
+10/10/2021 09:40:47 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 09:40:47 - INFO - __main__ -     Num examples = 4367
+10/10/2021 09:40:47 - INFO - __main__ -     Batch size = 42
+10/10/2021 09:41:00 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/10/2021 09:41:00 - INFO - __main__ -     eval_f1 = 0.06593406593406594
+10/10/2021 09:41:00 - INFO - __main__ -     eval_loss = 0.11793183815293909
+10/10/2021 09:41:00 - INFO - __main__ -     eval_p = 0.1111111111111111
+10/10/2021 09:41:00 - INFO - __main__ -     eval_recall = 0.046875
+10/10/2021 09:41:00 - INFO - __main__ -   Average loss: 0.037479478487124046 at global step: 5700
