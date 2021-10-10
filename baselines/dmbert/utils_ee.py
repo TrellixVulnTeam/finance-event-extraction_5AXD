@@ -21,7 +21,6 @@ import logging
 import os
 from typing import List
 
-import tqdm
 from transformers import PreTrainedTokenizer
 
 logger = logging.getLogger(__name__)
@@ -99,11 +98,15 @@ class ACEProcessor(DataProcessor):
 
     def get_labels(self):
         """See base class."""
-        return ['None', 'End-Position', 'Charge-Indict', 'Convict', 'Transfer-Ownership', 'Demonstrate', 'Transport',
-                'Sentence', 'Appeal', 'Start-Org', 'Start-Position', 'End-Org', 'Phone-Write', 'Nominate', 'Marry',
-                'Pardon', 'Release-Parole', 'Meet', 'Trial-Hearing', 'Extradite', 'Execute', 'Transfer-Money', 'Elect',
-                'Injure', 'Acquit', 'Divorce', 'Die', 'Arrest-Jail', 'Declare-Bankruptcy', 'Be-Born', 'Merge-Org',
-                'Fine', 'Sue', 'Attack']
+        return ['None', 'Expense', 'Dividend', 'Rating', 'Profit-Loss', 'Financing', 'CSR-Brand', 'Product-Service',
+                'Employment', 'Deal', 'Revenue', 'Merger-Acquisition', 'Legal', 'Investment', 'FinancialReport',
+                'SalesVolume', 'SecurityValue', 'Facility', 'Macroeconomics']
+
+        # return ['None', 'End-Position', 'Charge-Indict', 'Convict', 'Transfer-Ownership', 'Demonstrate',
+        # 'Transport', 'Sentence', 'Appeal', 'Start-Org', 'Start-Position', 'End-Org', 'Phone-Write', 'Nominate',
+        # 'Marry', 'Pardon', 'Release-Parole', 'Meet', 'Trial-Hearing', 'Extradite', 'Execute', 'Transfer-Money',
+        # 'Elect', 'Injure', 'Acquit', 'Divorce', 'Die', 'Arrest-Jail', 'Declare-Bankruptcy', 'Be-Born', 'Merge-Org',
+        # 'Fine', 'Sue', 'Attack']
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
@@ -278,7 +281,7 @@ def convert_examples_to_features(
     label_map = {label: i for i, label in enumerate(label_list)}
 
     features = []
-    for (ex_index, example) in tqdm.tqdm(enumerate(examples), desc="convert examples to features"):
+    for (ex_index, example) in enumerate(examples):
         if ex_index % 10000 == 0:
             logger.info("Writing example %d of %d" % (ex_index, len(examples)))
         textL = tokenizer.tokenize(" ".join(example.tokens[:example.triggerL]))
