@@ -1,0 +1,1221 @@
+10/11/2021 10:49:41 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+10/11/2021 10:49:42 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /home/MSAI/s200048/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+10/11/2021 10:49:42 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 19,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/11/2021 10:49:43 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /home/MSAI/s200048/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/11/2021 10:49:44 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin from cache at /home/MSAI/s200048/.cache/torch/transformers/aa1ef1aede4482d0dbcd4d52baad8ae300e60902e88fcb0bebdec09afd232066.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+10/11/2021 10:49:46 - INFO - transformers.modeling_utils -   Weights of DMBERT not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+10/11/2021 10:49:46 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in DMBERT: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+10/11/2021 10:49:50 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='./ACE05_FULL/', device=device(type='cuda', index=0), do_eval=True, do_infer=False, do_lower_case=True, do_test=True, do_train=True, eval_all_checkpoints=False, evaluate_during_training=True, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=2, learning_rate=1e-05, local_rank=-1, logging_steps=300, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-uncased', model_type='bert', n_gpu=1, no_cuda=False, num_train_epochs=10.0, output_dir='./ACE_shuffles_FULL2_e5', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=42, per_gpu_train_batch_size=42, save_steps=2000, seed=2, server_ip='', server_port='', task_name='ace', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+10/11/2021 10:49:50 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_train_bert-base-uncased_128_ace
+10/11/2021 10:50:01 - INFO - __main__ -   ***** Running training *****
+10/11/2021 10:50:01 - INFO - __main__ -     Num examples = 151182
+10/11/2021 10:50:01 - INFO - __main__ -     Num Epochs = 10
+10/11/2021 10:50:01 - INFO - __main__ -     Instantaneous batch size per GPU = 42
+10/11/2021 10:50:01 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 84
+10/11/2021 10:50:01 - INFO - __main__ -     Gradient Accumulation steps = 2
+10/11/2021 10:50:01 - INFO - __main__ -     Total optimization steps = 18000
+10/11/2021 10:53:52 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 10:53:53 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 10:53:53 - INFO - __main__ -     Num examples = 9540
+10/11/2021 10:53:53 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/11/2021 10:54:22 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 10:54:22 - INFO - __main__ -     eval_f1 = 0.0
+10/11/2021 10:54:22 - INFO - __main__ -     eval_loss = 0.20920605142600834
+10/11/2021 10:54:22 - INFO - __main__ -     eval_p = 0.0
+10/11/2021 10:54:22 - INFO - __main__ -     eval_recall = 0.0
+10/11/2021 10:54:22 - INFO - __main__ -   Average loss: 0.3583501613419503 at global step: 300
+10/11/2021 10:58:21 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 10:58:22 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 10:58:22 - INFO - __main__ -     Num examples = 9540
+10/11/2021 10:58:22 - INFO - __main__ -     Batch size = 42
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/11/2021 10:58:51 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 10:58:51 - INFO - __main__ -     eval_f1 = 0.0
+10/11/2021 10:58:51 - INFO - __main__ -     eval_loss = 0.17096492445929662
+10/11/2021 10:58:51 - INFO - __main__ -     eval_p = 0.0
+10/11/2021 10:58:51 - INFO - __main__ -     eval_recall = 0.0
+10/11/2021 10:58:51 - INFO - __main__ -   Average loss: 0.21004435817788666 at global step: 600
+10/11/2021 11:02:55 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:02:56 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:02:56 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:02:56 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:03:25 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:03:25 - INFO - __main__ -     eval_f1 = 0.014084507042253521
+10/11/2021 11:03:25 - INFO - __main__ -     eval_loss = 0.15654053264440512
+10/11/2021 11:03:25 - INFO - __main__ -     eval_p = 0.6666666666666666
+10/11/2021 11:03:25 - INFO - __main__ -     eval_recall = 0.0071174377224199285
+10/11/2021 11:03:25 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:03:26 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:03:26 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:03:26 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:03:56 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:03:56 - INFO - __main__ -     eval_f1 = 0.0
+10/11/2021 11:03:56 - INFO - __main__ -     eval_loss = 0.14684262283920468
+10/11/2021 11:03:56 - INFO - __main__ -     eval_p = 0.0
+10/11/2021 11:03:56 - INFO - __main__ -     eval_recall = 0.0
+10/11/2021 11:03:56 - INFO - __main__ -   test f1: 0.0, loss: 0.14684262283920468, global steps: 900
+10/11/2021 11:03:56 - INFO - __main__ -   Average loss: 0.1871333918402282 at global step: 900
+10/11/2021 11:08:01 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:08:02 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:08:02 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:08:02 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:08:31 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:08:31 - INFO - __main__ -     eval_f1 = 0.026490066225165563
+10/11/2021 11:08:31 - INFO - __main__ -     eval_loss = 0.14289103952959473
+10/11/2021 11:08:31 - INFO - __main__ -     eval_p = 0.19047619047619047
+10/11/2021 11:08:31 - INFO - __main__ -     eval_recall = 0.014234875444839857
+10/11/2021 11:08:31 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:08:32 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:08:32 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:08:32 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:09:03 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:09:03 - INFO - __main__ -     eval_f1 = 0.03296703296703297
+10/11/2021 11:09:03 - INFO - __main__ -     eval_loss = 0.13882454973947886
+10/11/2021 11:09:03 - INFO - __main__ -     eval_p = 0.1
+10/11/2021 11:09:03 - INFO - __main__ -     eval_recall = 0.019736842105263157
+10/11/2021 11:09:03 - INFO - __main__ -   test f1: 0.03296703296703297, loss: 0.13882454973947886, global steps: 1200
+10/11/2021 11:09:03 - INFO - __main__ -   Average loss: 0.17659937928275515 at global step: 1200
+10/11/2021 11:13:08 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:13:08 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:13:08 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:13:08 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:13:38 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:13:38 - INFO - __main__ -     eval_f1 = 0.09667673716012085
+10/11/2021 11:13:38 - INFO - __main__ -     eval_loss = 0.1367563192366026
+10/11/2021 11:13:38 - INFO - __main__ -     eval_p = 0.32
+10/11/2021 11:13:38 - INFO - __main__ -     eval_recall = 0.05693950177935943
+10/11/2021 11:13:38 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:13:38 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:13:38 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:13:38 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:14:09 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:14:09 - INFO - __main__ -     eval_f1 = 0.18858560794044663
+10/11/2021 11:14:09 - INFO - __main__ -     eval_loss = 0.12932509225510963
+10/11/2021 11:14:09 - INFO - __main__ -     eval_p = 0.3838383838383838
+10/11/2021 11:14:09 - INFO - __main__ -     eval_recall = 0.125
+10/11/2021 11:14:09 - INFO - __main__ -   test f1: 0.18858560794044663, loss: 0.12932509225510963, global steps: 1500
+10/11/2021 11:14:09 - INFO - __main__ -   Average loss: 0.16747679598629475 at global step: 1500
+10/11/2021 11:18:14 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:18:14 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:18:14 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:18:14 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:18:44 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:18:44 - INFO - __main__ -     eval_f1 = 0.1751412429378531
+10/11/2021 11:18:44 - INFO - __main__ -     eval_loss = 0.13152805035076054
+10/11/2021 11:18:44 - INFO - __main__ -     eval_p = 0.4246575342465753
+10/11/2021 11:18:44 - INFO - __main__ -     eval_recall = 0.1103202846975089
+10/11/2021 11:18:44 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:18:44 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:18:44 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:18:44 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:19:15 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:19:15 - INFO - __main__ -     eval_f1 = 0.2692307692307692
+10/11/2021 11:19:15 - INFO - __main__ -     eval_loss = 0.12887906891322046
+10/11/2021 11:19:15 - INFO - __main__ -     eval_p = 0.5
+10/11/2021 11:19:15 - INFO - __main__ -     eval_recall = 0.18421052631578946
+10/11/2021 11:19:15 - INFO - __main__ -   test f1: 0.2692307692307692, loss: 0.12887906891322046, global steps: 1800
+10/11/2021 11:19:15 - INFO - __main__ -   Average loss: 0.15593056314469625 at global step: 1800
+10/11/2021 11:21:58 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-2000/config.json
+10/11/2021 11:22:03 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-2000/pytorch_model.bin
+10/11/2021 11:22:03 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-2000/bert/config.json
+10/11/2021 11:22:07 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-2000/bert/pytorch_model.bin
+10/11/2021 11:22:07 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-2000
+10/11/2021 11:23:27 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:23:28 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:23:28 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:23:28 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:23:58 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:23:58 - INFO - __main__ -     eval_f1 = 0.1971830985915493
+10/11/2021 11:23:58 - INFO - __main__ -     eval_loss = 0.12411152563270247
+10/11/2021 11:23:58 - INFO - __main__ -     eval_p = 0.47297297297297297
+10/11/2021 11:23:58 - INFO - __main__ -     eval_recall = 0.12455516014234876
+10/11/2021 11:23:58 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:23:58 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:23:58 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:23:58 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:24:29 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:24:29 - INFO - __main__ -     eval_f1 = 0.25761124121779855
+10/11/2021 11:24:29 - INFO - __main__ -     eval_loss = 0.11751795311264887
+10/11/2021 11:24:29 - INFO - __main__ -     eval_p = 0.44715447154471544
+10/11/2021 11:24:29 - INFO - __main__ -     eval_recall = 0.18092105263157895
+10/11/2021 11:24:29 - INFO - __main__ -   test f1: 0.25761124121779855, loss: 0.11751795311264887, global steps: 2100
+10/11/2021 11:24:29 - INFO - __main__ -   Average loss: 0.13853827309057426 at global step: 2100
+10/11/2021 11:28:34 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:28:34 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:28:34 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:28:34 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:29:04 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:29:04 - INFO - __main__ -     eval_f1 = 0.21727019498607242
+10/11/2021 11:29:04 - INFO - __main__ -     eval_loss = 0.12053985729315236
+10/11/2021 11:29:04 - INFO - __main__ -     eval_p = 0.5
+10/11/2021 11:29:04 - INFO - __main__ -     eval_recall = 0.1387900355871886
+10/11/2021 11:29:04 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:29:04 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:29:04 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:29:04 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:29:35 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:29:35 - INFO - __main__ -     eval_f1 = 0.2787286063569682
+10/11/2021 11:29:35 - INFO - __main__ -     eval_loss = 0.11317135646255905
+10/11/2021 11:29:35 - INFO - __main__ -     eval_p = 0.5428571428571428
+10/11/2021 11:29:35 - INFO - __main__ -     eval_recall = 0.1875
+10/11/2021 11:29:35 - INFO - __main__ -   test f1: 0.2787286063569682, loss: 0.11317135646255905, global steps: 2400
+10/11/2021 11:29:35 - INFO - __main__ -   Average loss: 0.1354953388128585 at global step: 2400
+10/11/2021 11:33:40 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:33:40 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:33:40 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:33:40 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:34:10 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:34:10 - INFO - __main__ -     eval_f1 = 0.2307692307692308
+10/11/2021 11:34:10 - INFO - __main__ -     eval_loss = 0.12516713935857346
+10/11/2021 11:34:10 - INFO - __main__ -     eval_p = 0.35555555555555557
+10/11/2021 11:34:10 - INFO - __main__ -     eval_recall = 0.1708185053380783
+10/11/2021 11:34:10 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:34:11 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:34:11 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:34:11 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:34:41 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:34:41 - INFO - __main__ -     eval_f1 = 0.347107438016529
+10/11/2021 11:34:41 - INFO - __main__ -     eval_loss = 0.11666291804875356
+10/11/2021 11:34:41 - INFO - __main__ -     eval_p = 0.4666666666666667
+10/11/2021 11:34:41 - INFO - __main__ -     eval_recall = 0.27631578947368424
+10/11/2021 11:34:41 - INFO - __main__ -   test f1: 0.347107438016529, loss: 0.11666291804875356, global steps: 2700
+10/11/2021 11:34:41 - INFO - __main__ -   Average loss: 0.1258412425937907 at global step: 2700
+10/11/2021 11:38:46 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:38:46 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:38:46 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:38:46 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:39:16 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:39:16 - INFO - __main__ -     eval_f1 = 0.29629629629629634
+10/11/2021 11:39:16 - INFO - __main__ -     eval_loss = 0.12217836091223401
+10/11/2021 11:39:16 - INFO - __main__ -     eval_p = 0.38202247191011235
+10/11/2021 11:39:16 - INFO - __main__ -     eval_recall = 0.24199288256227758
+10/11/2021 11:39:16 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:39:17 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:39:17 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:39:17 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:39:47 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:39:47 - INFO - __main__ -     eval_f1 = 0.38664323374340953
+10/11/2021 11:39:47 - INFO - __main__ -     eval_loss = 0.11015642639622496
+10/11/2021 11:39:47 - INFO - __main__ -     eval_p = 0.41509433962264153
+10/11/2021 11:39:47 - INFO - __main__ -     eval_recall = 0.3618421052631579
+10/11/2021 11:39:47 - INFO - __main__ -   test f1: 0.38664323374340953, loss: 0.11015642639622496, global steps: 3000
+10/11/2021 11:39:47 - INFO - __main__ -   Average loss: 0.12053612858289853 at global step: 3000
+10/11/2021 11:43:52 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:43:53 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:43:53 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:43:53 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:44:22 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:44:22 - INFO - __main__ -     eval_f1 = 0.31263383297644537
+10/11/2021 11:44:22 - INFO - __main__ -     eval_loss = 0.1186815352156644
+10/11/2021 11:44:22 - INFO - __main__ -     eval_p = 0.3924731182795699
+10/11/2021 11:44:22 - INFO - __main__ -     eval_recall = 0.2597864768683274
+10/11/2021 11:44:22 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:44:23 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:44:23 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:44:23 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:44:53 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:44:53 - INFO - __main__ -     eval_f1 = 0.40636042402826855
+10/11/2021 11:44:53 - INFO - __main__ -     eval_loss = 0.11345648360831735
+10/11/2021 11:44:53 - INFO - __main__ -     eval_p = 0.4389312977099237
+10/11/2021 11:44:53 - INFO - __main__ -     eval_recall = 0.3782894736842105
+10/11/2021 11:44:53 - INFO - __main__ -   test f1: 0.40636042402826855, loss: 0.11345648360831735, global steps: 3300
+10/11/2021 11:44:53 - INFO - __main__ -   Average loss: 0.12104594615967168 at global step: 3300
+10/11/2021 11:48:58 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:48:58 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:48:58 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:48:58 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:49:28 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:49:28 - INFO - __main__ -     eval_f1 = 0.30660377358490565
+10/11/2021 11:49:28 - INFO - __main__ -     eval_loss = 0.1127540432680051
+10/11/2021 11:49:28 - INFO - __main__ -     eval_p = 0.45454545454545453
+10/11/2021 11:49:28 - INFO - __main__ -     eval_recall = 0.2313167259786477
+10/11/2021 11:49:28 - INFO - __main__ -   Average loss: 0.10835715613735374 at global step: 3600
+10/11/2021 11:53:33 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:53:33 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:53:33 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:53:33 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:54:03 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:54:03 - INFO - __main__ -     eval_f1 = 0.341991341991342
+10/11/2021 11:54:03 - INFO - __main__ -     eval_loss = 0.10932100353781143
+10/11/2021 11:54:03 - INFO - __main__ -     eval_p = 0.43646408839779005
+10/11/2021 11:54:03 - INFO - __main__ -     eval_recall = 0.28113879003558717
+10/11/2021 11:54:03 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:54:04 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:54:04 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:54:04 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:54:34 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:54:34 - INFO - __main__ -     eval_f1 = 0.3846153846153846
+10/11/2021 11:54:34 - INFO - __main__ -     eval_loss = 0.10539836843510146
+10/11/2021 11:54:34 - INFO - __main__ -     eval_p = 0.43388429752066116
+10/11/2021 11:54:34 - INFO - __main__ -     eval_recall = 0.34539473684210525
+10/11/2021 11:54:34 - INFO - __main__ -   test f1: 0.3846153846153846, loss: 0.10539836843510146, global steps: 3900
+10/11/2021 11:54:34 - INFO - __main__ -   Average loss: 0.09590367465755359 at global step: 3900
+10/11/2021 11:55:56 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-4000/config.json
+10/11/2021 11:55:59 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-4000/pytorch_model.bin
+10/11/2021 11:55:59 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-4000/bert/config.json
+10/11/2021 11:56:02 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-4000/bert/pytorch_model.bin
+10/11/2021 11:56:02 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-4000
+10/11/2021 11:58:45 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 11:58:45 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:58:45 - INFO - __main__ -     Num examples = 9540
+10/11/2021 11:58:45 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:59:15 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 11:59:15 - INFO - __main__ -     eval_f1 = 0.3426294820717131
+10/11/2021 11:59:15 - INFO - __main__ -     eval_loss = 0.11308600615659982
+10/11/2021 11:59:15 - INFO - __main__ -     eval_p = 0.3891402714932127
+10/11/2021 11:59:15 - INFO - __main__ -     eval_recall = 0.30604982206405695
+10/11/2021 11:59:15 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 11:59:15 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 11:59:15 - INFO - __main__ -     Num examples = 9676
+10/11/2021 11:59:15 - INFO - __main__ -     Batch size = 42
+10/11/2021 11:59:46 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 11:59:46 - INFO - __main__ -     eval_f1 = 0.39652173913043476
+10/11/2021 11:59:46 - INFO - __main__ -     eval_loss = 0.10840004190824748
+10/11/2021 11:59:46 - INFO - __main__ -     eval_p = 0.42066420664206644
+10/11/2021 11:59:46 - INFO - __main__ -     eval_recall = 0.375
+10/11/2021 11:59:46 - INFO - __main__ -   test f1: 0.39652173913043476, loss: 0.10840004190824748, global steps: 4200
+10/11/2021 11:59:46 - INFO - __main__ -   Average loss: 0.09507974135534217 at global step: 4200
+10/11/2021 12:03:49 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:03:50 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:03:50 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:03:50 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:04:19 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:04:19 - INFO - __main__ -     eval_f1 = 0.3453815261044177
+10/11/2021 12:04:19 - INFO - __main__ -     eval_loss = 0.11260530738754344
+10/11/2021 12:04:19 - INFO - __main__ -     eval_p = 0.39631336405529954
+10/11/2021 12:04:19 - INFO - __main__ -     eval_recall = 0.30604982206405695
+10/11/2021 12:04:19 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 12:04:20 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:04:20 - INFO - __main__ -     Num examples = 9676
+10/11/2021 12:04:20 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:04:50 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 12:04:50 - INFO - __main__ -     eval_f1 = 0.4235294117647059
+10/11/2021 12:04:50 - INFO - __main__ -     eval_loss = 0.10377789807689349
+10/11/2021 12:04:50 - INFO - __main__ -     eval_p = 0.4329896907216495
+10/11/2021 12:04:50 - INFO - __main__ -     eval_recall = 0.4144736842105263
+10/11/2021 12:04:50 - INFO - __main__ -   test f1: 0.4235294117647059, loss: 0.10377789807689349, global steps: 4500
+10/11/2021 12:04:50 - INFO - __main__ -   Average loss: 0.0928611235707649 at global step: 4500
+10/11/2021 12:08:53 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:08:53 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:08:53 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:08:53 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:09:23 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:09:23 - INFO - __main__ -     eval_f1 = 0.3399209486166008
+10/11/2021 12:09:23 - INFO - __main__ -     eval_loss = 0.11329967474356588
+10/11/2021 12:09:23 - INFO - __main__ -     eval_p = 0.38222222222222224
+10/11/2021 12:09:23 - INFO - __main__ -     eval_recall = 0.30604982206405695
+10/11/2021 12:09:23 - INFO - __main__ -   Average loss: 0.09749998844539126 at global step: 4800
+10/11/2021 12:13:27 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:13:27 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:13:27 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:13:27 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:13:57 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:13:57 - INFO - __main__ -     eval_f1 = 0.32586558044806524
+10/11/2021 12:13:57 - INFO - __main__ -     eval_loss = 0.11348658434578458
+10/11/2021 12:13:57 - INFO - __main__ -     eval_p = 0.38095238095238093
+10/11/2021 12:13:57 - INFO - __main__ -     eval_recall = 0.2846975088967972
+10/11/2021 12:13:57 - INFO - __main__ -   Average loss: 0.09586666604562197 at global step: 5100
+10/11/2021 12:18:01 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:18:01 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:18:01 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:18:01 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:18:31 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:18:31 - INFO - __main__ -     eval_f1 = 0.34230769230769226
+10/11/2021 12:18:31 - INFO - __main__ -     eval_loss = 0.11091354264103677
+10/11/2021 12:18:31 - INFO - __main__ -     eval_p = 0.3723849372384937
+10/11/2021 12:18:31 - INFO - __main__ -     eval_recall = 0.3167259786476868
+10/11/2021 12:18:31 - INFO - __main__ -   Average loss: 0.09272144551059076 at global step: 5400
+10/11/2021 12:22:35 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:22:36 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:22:36 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:22:36 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:23:05 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:23:05 - INFO - __main__ -     eval_f1 = 0.32179226069246436
+10/11/2021 12:23:05 - INFO - __main__ -     eval_loss = 0.11762985023967319
+10/11/2021 12:23:05 - INFO - __main__ -     eval_p = 0.3761904761904762
+10/11/2021 12:23:05 - INFO - __main__ -     eval_recall = 0.28113879003558717
+10/11/2021 12:23:05 - INFO - __main__ -   Average loss: 0.07631625280031586 at global step: 5700
+10/11/2021 12:27:10 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:27:10 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:27:10 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:27:10 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:27:40 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:27:40 - INFO - __main__ -     eval_f1 = 0.3448275862068966
+10/11/2021 12:27:40 - INFO - __main__ -     eval_loss = 0.1140979272555948
+10/11/2021 12:27:40 - INFO - __main__ -     eval_p = 0.37344398340248963
+10/11/2021 12:27:40 - INFO - __main__ -     eval_recall = 0.3202846975088968
+10/11/2021 12:27:40 - INFO - __main__ -   Average loss: 0.07604944714393544 at global step: 6000
+10/11/2021 12:27:40 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-6000/config.json
+10/11/2021 12:27:43 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-6000/pytorch_model.bin
+10/11/2021 12:27:43 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-6000/bert/config.json
+10/11/2021 12:27:46 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-6000/bert/pytorch_model.bin
+10/11/2021 12:27:46 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-6000
+10/11/2021 12:31:49 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:31:50 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:31:50 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:31:50 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:32:20 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:32:20 - INFO - __main__ -     eval_f1 = 0.3292181069958848
+10/11/2021 12:32:20 - INFO - __main__ -     eval_loss = 0.11951261240717845
+10/11/2021 12:32:20 - INFO - __main__ -     eval_p = 0.3902439024390244
+10/11/2021 12:32:20 - INFO - __main__ -     eval_recall = 0.2846975088967972
+10/11/2021 12:32:20 - INFO - __main__ -   Average loss: 0.07039728106882345 at global step: 6300
+10/11/2021 12:36:24 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:36:24 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:36:24 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:36:24 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:36:54 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:36:54 - INFO - __main__ -     eval_f1 = 0.33472803347280333
+10/11/2021 12:36:54 - INFO - __main__ -     eval_loss = 0.11411891640767735
+10/11/2021 12:36:54 - INFO - __main__ -     eval_p = 0.40609137055837563
+10/11/2021 12:36:54 - INFO - __main__ -     eval_recall = 0.2846975088967972
+10/11/2021 12:36:54 - INFO - __main__ -   Average loss: 0.07539705280141788 at global step: 6600
+10/11/2021 12:40:58 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:40:58 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:40:58 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:40:58 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:41:28 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:41:28 - INFO - __main__ -     eval_f1 = 0.3468950749464668
+10/11/2021 12:41:28 - INFO - __main__ -     eval_loss = 0.11643020741381374
+10/11/2021 12:41:28 - INFO - __main__ -     eval_p = 0.43548387096774194
+10/11/2021 12:41:28 - INFO - __main__ -     eval_recall = 0.28825622775800713
+10/11/2021 12:41:28 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 12:41:28 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:41:28 - INFO - __main__ -     Num examples = 9676
+10/11/2021 12:41:28 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:41:59 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 12:41:59 - INFO - __main__ -     eval_f1 = 0.402135231316726
+10/11/2021 12:41:59 - INFO - __main__ -     eval_loss = 0.106073341319021
+10/11/2021 12:41:59 - INFO - __main__ -     eval_p = 0.437984496124031
+10/11/2021 12:41:59 - INFO - __main__ -     eval_recall = 0.3717105263157895
+10/11/2021 12:41:59 - INFO - __main__ -   test f1: 0.402135231316726, loss: 0.106073341319021, global steps: 6900
+10/11/2021 12:41:59 - INFO - __main__ -   Average loss: 0.07129424405720783 at global step: 6900
+10/11/2021 12:46:03 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:46:03 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:46:03 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:46:03 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:46:33 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:46:33 - INFO - __main__ -     eval_f1 = 0.3406113537117904
+10/11/2021 12:46:33 - INFO - __main__ -     eval_loss = 0.11451340517663068
+10/11/2021 12:46:33 - INFO - __main__ -     eval_p = 0.4406779661016949
+10/11/2021 12:46:33 - INFO - __main__ -     eval_recall = 0.2775800711743772
+10/11/2021 12:46:33 - INFO - __main__ -   Average loss: 0.07505704581824829 at global step: 7200
+10/11/2021 12:50:37 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:50:38 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:50:38 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:50:38 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:51:07 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:51:07 - INFO - __main__ -     eval_f1 = 0.3473282442748092
+10/11/2021 12:51:07 - INFO - __main__ -     eval_loss = 0.12579941493924962
+10/11/2021 12:51:07 - INFO - __main__ -     eval_p = 0.37448559670781895
+10/11/2021 12:51:07 - INFO - __main__ -     eval_recall = 0.3238434163701068
+10/11/2021 12:51:07 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 12:51:08 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:51:08 - INFO - __main__ -     Num examples = 9676
+10/11/2021 12:51:08 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:51:38 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 12:51:38 - INFO - __main__ -     eval_f1 = 0.4150326797385621
+10/11/2021 12:51:38 - INFO - __main__ -     eval_loss = 0.11571492447613062
+10/11/2021 12:51:38 - INFO - __main__ -     eval_p = 0.41233766233766234
+10/11/2021 12:51:38 - INFO - __main__ -     eval_recall = 0.41776315789473684
+10/11/2021 12:51:38 - INFO - __main__ -   test f1: 0.4150326797385621, loss: 0.11571492447613062, global steps: 7500
+10/11/2021 12:51:38 - INFO - __main__ -   Average loss: 0.056619738663721365 at global step: 7500
+10/11/2021 12:55:42 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 12:55:43 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 12:55:43 - INFO - __main__ -     Num examples = 9540
+10/11/2021 12:55:43 - INFO - __main__ -     Batch size = 42
+10/11/2021 12:56:13 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 12:56:13 - INFO - __main__ -     eval_f1 = 0.3409090909090909
+10/11/2021 12:56:13 - INFO - __main__ -     eval_loss = 0.12857828744413463
+10/11/2021 12:56:13 - INFO - __main__ -     eval_p = 0.4716981132075472
+10/11/2021 12:56:13 - INFO - __main__ -     eval_recall = 0.2669039145907473
+10/11/2021 12:56:13 - INFO - __main__ -   Average loss: 0.06110121333918263 at global step: 7800
+10/11/2021 12:58:55 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-8000/config.json
+10/11/2021 12:58:58 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-8000/pytorch_model.bin
+10/11/2021 12:58:58 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-8000/bert/config.json
+10/11/2021 12:59:00 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-8000/bert/pytorch_model.bin
+10/11/2021 12:59:00 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-8000
+10/11/2021 13:00:21 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:00:22 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:00:22 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:00:22 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:00:51 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:00:51 - INFO - __main__ -     eval_f1 = 0.3313609467455621
+10/11/2021 13:00:51 - INFO - __main__ -     eval_loss = 0.12638582817826796
+10/11/2021 13:00:51 - INFO - __main__ -     eval_p = 0.37168141592920356
+10/11/2021 13:00:51 - INFO - __main__ -     eval_recall = 0.298932384341637
+10/11/2021 13:00:51 - INFO - __main__ -   Average loss: 0.05763236787344795 at global step: 8100
+10/11/2021 13:04:55 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:04:56 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:04:56 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:04:56 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:05:26 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:05:26 - INFO - __main__ -     eval_f1 = 0.3538767395626243
+10/11/2021 13:05:26 - INFO - __main__ -     eval_loss = 0.12007444727973243
+10/11/2021 13:05:26 - INFO - __main__ -     eval_p = 0.4009009009009009
+10/11/2021 13:05:26 - INFO - __main__ -     eval_recall = 0.3167259786476868
+10/11/2021 13:05:26 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 13:05:26 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:05:26 - INFO - __main__ -     Num examples = 9676
+10/11/2021 13:05:26 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:05:57 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 13:05:57 - INFO - __main__ -     eval_f1 = 0.400679117147708
+10/11/2021 13:05:57 - INFO - __main__ -     eval_loss = 0.10970532997409023
+10/11/2021 13:05:57 - INFO - __main__ -     eval_p = 0.41403508771929826
+10/11/2021 13:05:57 - INFO - __main__ -     eval_recall = 0.3881578947368421
+10/11/2021 13:05:57 - INFO - __main__ -   test f1: 0.400679117147708, loss: 0.10970532997409023, global steps: 8400
+10/11/2021 13:05:57 - INFO - __main__ -   Average loss: 0.06095063102586816 at global step: 8400
+10/11/2021 13:10:01 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:10:01 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:10:01 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:10:01 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:10:31 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:10:31 - INFO - __main__ -     eval_f1 = 0.31800766283524906
+10/11/2021 13:10:31 - INFO - __main__ -     eval_loss = 0.12900023974202268
+10/11/2021 13:10:31 - INFO - __main__ -     eval_p = 0.34439834024896265
+10/11/2021 13:10:31 - INFO - __main__ -     eval_recall = 0.29537366548042704
+10/11/2021 13:10:31 - INFO - __main__ -   Average loss: 0.058679824041537355 at global step: 8700
+10/11/2021 13:14:35 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:14:35 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:14:35 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:14:35 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:15:05 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:15:05 - INFO - __main__ -     eval_f1 = 0.3086172344689379
+10/11/2021 13:15:05 - INFO - __main__ -     eval_loss = 0.12381048010945706
+10/11/2021 13:15:05 - INFO - __main__ -     eval_p = 0.3532110091743119
+10/11/2021 13:15:05 - INFO - __main__ -     eval_recall = 0.27402135231316727
+10/11/2021 13:15:05 - INFO - __main__ -   Average loss: 0.05724365224280822 at global step: 9000
+10/11/2021 13:19:09 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:19:10 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:19:10 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:19:10 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:19:40 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:19:40 - INFO - __main__ -     eval_f1 = 0.33648393194706994
+10/11/2021 13:19:40 - INFO - __main__ -     eval_loss = 0.13635250895072604
+10/11/2021 13:19:40 - INFO - __main__ -     eval_p = 0.3588709677419355
+10/11/2021 13:19:40 - INFO - __main__ -     eval_recall = 0.3167259786476868
+10/11/2021 13:19:40 - INFO - __main__ -   Average loss: 0.04515322511904136 at global step: 9300
+10/11/2021 13:23:44 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:23:44 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:23:44 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:23:44 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:24:14 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:24:14 - INFO - __main__ -     eval_f1 = 0.35408560311284043
+10/11/2021 13:24:14 - INFO - __main__ -     eval_loss = 0.13352350925562637
+10/11/2021 13:24:14 - INFO - __main__ -     eval_p = 0.3905579399141631
+10/11/2021 13:24:14 - INFO - __main__ -     eval_recall = 0.3238434163701068
+10/11/2021 13:24:14 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 13:24:14 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:24:14 - INFO - __main__ -     Num examples = 9676
+10/11/2021 13:24:14 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:24:45 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 13:24:45 - INFO - __main__ -     eval_f1 = 0.4090909090909091
+10/11/2021 13:24:45 - INFO - __main__ -     eval_loss = 0.11650381457802408
+10/11/2021 13:24:45 - INFO - __main__ -     eval_p = 0.40384615384615385
+10/11/2021 13:24:45 - INFO - __main__ -     eval_recall = 0.4144736842105263
+10/11/2021 13:24:45 - INFO - __main__ -   test f1: 0.4090909090909091, loss: 0.11650381457802408, global steps: 9600
+10/11/2021 13:24:45 - INFO - __main__ -   Average loss: 0.045933483846505016 at global step: 9600
+10/11/2021 13:28:49 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:28:50 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:28:50 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:28:50 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:29:20 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:29:20 - INFO - __main__ -     eval_f1 = 0.3435582822085889
+10/11/2021 13:29:20 - INFO - __main__ -     eval_loss = 0.13963646753102676
+10/11/2021 13:29:20 - INFO - __main__ -     eval_p = 0.40384615384615385
+10/11/2021 13:29:20 - INFO - __main__ -     eval_recall = 0.298932384341637
+10/11/2021 13:29:20 - INFO - __main__ -   Average loss: 0.04275640853064639 at global step: 9900
+10/11/2021 13:30:41 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-10000/config.json
+10/11/2021 13:30:44 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-10000/pytorch_model.bin
+10/11/2021 13:30:44 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-10000/bert/config.json
+10/11/2021 13:30:48 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-10000/bert/pytorch_model.bin
+10/11/2021 13:30:48 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-10000
+10/11/2021 13:33:30 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:33:30 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:33:30 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:33:30 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:34:00 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:34:00 - INFO - __main__ -     eval_f1 = 0.3263598326359832
+10/11/2021 13:34:00 - INFO - __main__ -     eval_loss = 0.14229428500938843
+10/11/2021 13:34:00 - INFO - __main__ -     eval_p = 0.39593908629441626
+10/11/2021 13:34:00 - INFO - __main__ -     eval_recall = 0.2775800711743772
+10/11/2021 13:34:00 - INFO - __main__ -   Average loss: 0.048073698535445145 at global step: 10200
+10/11/2021 13:38:03 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:38:03 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:38:03 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:38:03 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:38:33 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:38:33 - INFO - __main__ -     eval_f1 = 0.30837004405286345
+10/11/2021 13:38:33 - INFO - __main__ -     eval_loss = 0.140660442641539
+10/11/2021 13:38:33 - INFO - __main__ -     eval_p = 0.4046242774566474
+10/11/2021 13:38:33 - INFO - __main__ -     eval_recall = 0.2491103202846975
+10/11/2021 13:38:33 - INFO - __main__ -   Average loss: 0.05075168328155996 at global step: 10500
+10/11/2021 13:42:28 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:42:28 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:42:28 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:42:28 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:42:57 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:42:57 - INFO - __main__ -     eval_f1 = 0.33955223880597013
+10/11/2021 13:42:57 - INFO - __main__ -     eval_loss = 0.14203644059224435
+10/11/2021 13:42:57 - INFO - __main__ -     eval_p = 0.3568627450980392
+10/11/2021 13:42:57 - INFO - __main__ -     eval_recall = 0.3238434163701068
+10/11/2021 13:42:57 - INFO - __main__ -   Average loss: 0.046587549112203606 at global step: 10800
+10/11/2021 13:46:47 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:46:47 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:46:47 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:46:47 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:47:16 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:47:16 - INFO - __main__ -     eval_f1 = 0.3346456692913386
+10/11/2021 13:47:16 - INFO - __main__ -     eval_loss = 0.1458080017991163
+10/11/2021 13:47:16 - INFO - __main__ -     eval_p = 0.3744493392070485
+10/11/2021 13:47:16 - INFO - __main__ -     eval_recall = 0.302491103202847
+10/11/2021 13:47:16 - INFO - __main__ -   Average loss: 0.03828774669134873 at global step: 11100
+10/11/2021 13:51:06 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:51:06 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:51:06 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:51:06 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:51:35 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:51:35 - INFO - __main__ -     eval_f1 = 0.35135135135135137
+10/11/2021 13:51:35 - INFO - __main__ -     eval_loss = 0.14760479625389658
+10/11/2021 13:51:35 - INFO - __main__ -     eval_p = 0.38396624472573837
+10/11/2021 13:51:35 - INFO - __main__ -     eval_recall = 0.3238434163701068
+10/11/2021 13:51:35 - INFO - __main__ -   Average loss: 0.03861211231650183 at global step: 11400
+10/11/2021 13:55:25 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:55:25 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:55:25 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:55:25 - INFO - __main__ -     Batch size = 42
+10/11/2021 13:55:54 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 13:55:54 - INFO - __main__ -     eval_f1 = 0.3319327731092437
+10/11/2021 13:55:54 - INFO - __main__ -     eval_loss = 0.15388845917649424
+10/11/2021 13:55:54 - INFO - __main__ -     eval_p = 0.40512820512820513
+10/11/2021 13:55:54 - INFO - __main__ -     eval_recall = 0.28113879003558717
+10/11/2021 13:55:54 - INFO - __main__ -   Average loss: 0.03339636796057069 at global step: 11700
+10/11/2021 13:59:44 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 13:59:44 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 13:59:44 - INFO - __main__ -     Num examples = 9540
+10/11/2021 13:59:44 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:00:13 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:00:13 - INFO - __main__ -     eval_f1 = 0.3448275862068966
+10/11/2021 14:00:13 - INFO - __main__ -     eval_loss = 0.14843504718908407
+10/11/2021 14:00:13 - INFO - __main__ -     eval_p = 0.37344398340248963
+10/11/2021 14:00:13 - INFO - __main__ -     eval_recall = 0.3202846975088968
+10/11/2021 14:00:13 - INFO - __main__ -   Average loss: 0.04077308319899506 at global step: 12000
+10/11/2021 14:00:13 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-12000/config.json
+10/11/2021 14:00:17 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-12000/pytorch_model.bin
+10/11/2021 14:00:17 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-12000/bert/config.json
+10/11/2021 14:00:19 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-12000/bert/pytorch_model.bin
+10/11/2021 14:00:20 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-12000
+10/11/2021 14:04:09 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:04:10 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:04:10 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:04:10 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:04:38 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:04:38 - INFO - __main__ -     eval_f1 = 0.3442622950819672
+10/11/2021 14:04:38 - INFO - __main__ -     eval_loss = 0.15665835949840312
+10/11/2021 14:04:38 - INFO - __main__ -     eval_p = 0.4057971014492754
+10/11/2021 14:04:38 - INFO - __main__ -     eval_recall = 0.298932384341637
+10/11/2021 14:04:38 - INFO - __main__ -   Average loss: 0.03703794456547863 at global step: 12300
+10/11/2021 14:08:28 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:08:29 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:08:29 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:08:29 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:08:57 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:08:57 - INFO - __main__ -     eval_f1 = 0.34071550255536626
+10/11/2021 14:08:57 - INFO - __main__ -     eval_loss = 0.15063958587214935
+10/11/2021 14:08:57 - INFO - __main__ -     eval_p = 0.32679738562091504
+10/11/2021 14:08:57 - INFO - __main__ -     eval_recall = 0.35587188612099646
+10/11/2021 14:08:57 - INFO - __main__ -   Average loss: 0.036902508843753214 at global step: 12600
+10/11/2021 14:12:47 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:12:48 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:12:48 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:12:48 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:13:16 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:13:16 - INFO - __main__ -     eval_f1 = 0.33739837398373984
+10/11/2021 14:13:16 - INFO - __main__ -     eval_loss = 0.15749674297014854
+10/11/2021 14:13:16 - INFO - __main__ -     eval_p = 0.3933649289099526
+10/11/2021 14:13:16 - INFO - __main__ -     eval_recall = 0.29537366548042704
+10/11/2021 14:13:16 - INFO - __main__ -   Average loss: 0.030106205739599923 at global step: 12900
+10/11/2021 14:17:06 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:17:07 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:17:07 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:17:07 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:17:35 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:17:35 - INFO - __main__ -     eval_f1 = 0.3333333333333333
+10/11/2021 14:17:35 - INFO - __main__ -     eval_loss = 0.1511093486316991
+10/11/2021 14:17:35 - INFO - __main__ -     eval_p = 0.37117903930131
+10/11/2021 14:17:35 - INFO - __main__ -     eval_recall = 0.302491103202847
+10/11/2021 14:17:35 - INFO - __main__ -   Average loss: 0.03291676478019023 at global step: 13200
+10/11/2021 14:21:25 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:21:26 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:21:26 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:21:26 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:21:54 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:21:54 - INFO - __main__ -     eval_f1 = 0.3286573146292585
+10/11/2021 14:21:54 - INFO - __main__ -     eval_loss = 0.16000431514480865
+10/11/2021 14:21:54 - INFO - __main__ -     eval_p = 0.3761467889908257
+10/11/2021 14:21:54 - INFO - __main__ -     eval_recall = 0.2918149466192171
+10/11/2021 14:21:54 - INFO - __main__ -   Average loss: 0.031582664199983505 at global step: 13500
+10/11/2021 14:25:44 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:25:45 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:25:45 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:25:45 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:26:13 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:26:13 - INFO - __main__ -     eval_f1 = 0.3421588594704684
+10/11/2021 14:26:13 - INFO - __main__ -     eval_loss = 0.15921652475035125
+10/11/2021 14:26:13 - INFO - __main__ -     eval_p = 0.4
+10/11/2021 14:26:13 - INFO - __main__ -     eval_recall = 0.298932384341637
+10/11/2021 14:26:13 - INFO - __main__ -   Average loss: 0.03108644063337124 at global step: 13800
+10/11/2021 14:28:46 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-14000/config.json
+10/11/2021 14:28:48 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-14000/pytorch_model.bin
+10/11/2021 14:28:48 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-14000/bert/config.json
+10/11/2021 14:28:50 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-14000/bert/pytorch_model.bin
+10/11/2021 14:28:50 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-14000
+10/11/2021 14:30:07 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:30:07 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:30:07 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:30:07 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:30:36 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:30:36 - INFO - __main__ -     eval_f1 = 0.32677165354330706
+10/11/2021 14:30:36 - INFO - __main__ -     eval_loss = 0.1612424165845879
+10/11/2021 14:30:36 - INFO - __main__ -     eval_p = 0.3656387665198238
+10/11/2021 14:30:36 - INFO - __main__ -     eval_recall = 0.29537366548042704
+10/11/2021 14:30:36 - INFO - __main__ -   Average loss: 0.02877451013579654 at global step: 14100
+10/11/2021 14:34:25 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:34:26 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:34:26 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:34:26 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:34:54 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:34:54 - INFO - __main__ -     eval_f1 = 0.33797216699801197
+10/11/2021 14:34:54 - INFO - __main__ -     eval_loss = 0.1572853939139206
+10/11/2021 14:34:54 - INFO - __main__ -     eval_p = 0.38288288288288286
+10/11/2021 14:34:54 - INFO - __main__ -     eval_recall = 0.302491103202847
+10/11/2021 14:34:54 - INFO - __main__ -   Average loss: 0.03241003941713037 at global step: 14400
+10/11/2021 14:38:44 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:38:45 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:38:45 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:38:45 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:39:13 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:39:13 - INFO - __main__ -     eval_f1 = 0.33984375
+10/11/2021 14:39:13 - INFO - __main__ -     eval_loss = 0.16247603853430279
+10/11/2021 14:39:13 - INFO - __main__ -     eval_p = 0.37662337662337664
+10/11/2021 14:39:13 - INFO - __main__ -     eval_recall = 0.3096085409252669
+10/11/2021 14:39:13 - INFO - __main__ -   Average loss: 0.024598894208296165 at global step: 14700
+10/11/2021 14:43:04 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:43:05 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:43:05 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:43:05 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:43:33 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:43:33 - INFO - __main__ -     eval_f1 = 0.33671399594320484
+10/11/2021 14:43:33 - INFO - __main__ -     eval_loss = 0.16742052007975872
+10/11/2021 14:43:33 - INFO - __main__ -     eval_p = 0.3915094339622642
+10/11/2021 14:43:33 - INFO - __main__ -     eval_recall = 0.29537366548042704
+10/11/2021 14:43:33 - INFO - __main__ -   Average loss: 0.027766740394520942 at global step: 15000
+10/11/2021 14:47:26 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:47:26 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:47:26 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:47:26 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:47:55 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:47:55 - INFO - __main__ -     eval_f1 = 0.3283582089552239
+10/11/2021 14:47:55 - INFO - __main__ -     eval_loss = 0.16056419437605304
+10/11/2021 14:47:55 - INFO - __main__ -     eval_p = 0.34509803921568627
+10/11/2021 14:47:55 - INFO - __main__ -     eval_recall = 0.31316725978647686
+10/11/2021 14:47:55 - INFO - __main__ -   Average loss: 0.029136224794795756 at global step: 15300
+10/11/2021 14:51:47 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:51:47 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:51:47 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:51:47 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:52:16 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:52:16 - INFO - __main__ -     eval_f1 = 0.34108527131782945
+10/11/2021 14:52:16 - INFO - __main__ -     eval_loss = 0.16615812920610806
+10/11/2021 14:52:16 - INFO - __main__ -     eval_p = 0.37446808510638296
+10/11/2021 14:52:16 - INFO - __main__ -     eval_recall = 0.31316725978647686
+10/11/2021 14:52:16 - INFO - __main__ -   Average loss: 0.02315622551262398 at global step: 15600
+10/11/2021 14:56:08 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 14:56:08 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 14:56:08 - INFO - __main__ -     Num examples = 9540
+10/11/2021 14:56:08 - INFO - __main__ -     Batch size = 42
+10/11/2021 14:56:37 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 14:56:37 - INFO - __main__ -     eval_f1 = 0.324
+10/11/2021 14:56:37 - INFO - __main__ -     eval_loss = 0.16754615373512233
+10/11/2021 14:56:37 - INFO - __main__ -     eval_p = 0.3698630136986301
+10/11/2021 14:56:37 - INFO - __main__ -     eval_recall = 0.28825622775800713
+10/11/2021 14:56:37 - INFO - __main__ -   Average loss: 0.025086754514995847 at global step: 15900
+10/11/2021 14:57:54 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-16000/config.json
+10/11/2021 14:57:56 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-16000/pytorch_model.bin
+10/11/2021 14:57:56 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-16000/bert/config.json
+10/11/2021 14:57:59 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-16000/bert/pytorch_model.bin
+10/11/2021 14:57:59 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-16000
+10/11/2021 15:00:33 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:00:33 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:00:33 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:00:33 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:01:02 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:01:02 - INFO - __main__ -     eval_f1 = 0.3339882121807466
+10/11/2021 15:01:02 - INFO - __main__ -     eval_loss = 0.16559153538926757
+10/11/2021 15:01:02 - INFO - __main__ -     eval_p = 0.37280701754385964
+10/11/2021 15:01:02 - INFO - __main__ -     eval_recall = 0.302491103202847
+10/11/2021 15:01:02 - INFO - __main__ -   Average loss: 0.02406332544527686 at global step: 16200
+10/11/2021 15:04:54 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:04:54 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:04:54 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:04:54 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:05:23 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:05:23 - INFO - __main__ -     eval_f1 = 0.33587786259541985
+10/11/2021 15:05:23 - INFO - __main__ -     eval_loss = 0.16752180030767194
+10/11/2021 15:05:23 - INFO - __main__ -     eval_p = 0.36213991769547327
+10/11/2021 15:05:23 - INFO - __main__ -     eval_recall = 0.31316725978647686
+10/11/2021 15:05:23 - INFO - __main__ -   Average loss: 0.01970231227597348 at global step: 16500
+10/11/2021 15:09:15 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:09:15 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:09:15 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:09:15 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:09:44 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:09:44 - INFO - __main__ -     eval_f1 = 0.32941176470588235
+10/11/2021 15:09:44 - INFO - __main__ -     eval_loss = 0.16899359985410756
+10/11/2021 15:09:44 - INFO - __main__ -     eval_p = 0.36681222707423583
+10/11/2021 15:09:44 - INFO - __main__ -     eval_recall = 0.298932384341637
+10/11/2021 15:09:44 - INFO - __main__ -   Average loss: 0.022345311493069554 at global step: 16800
+10/11/2021 15:13:36 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:13:36 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:13:36 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:13:36 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:14:05 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:14:05 - INFO - __main__ -     eval_f1 = 0.3287128712871288
+10/11/2021 15:14:05 - INFO - __main__ -     eval_loss = 0.16989512163693513
+10/11/2021 15:14:05 - INFO - __main__ -     eval_p = 0.3705357142857143
+10/11/2021 15:14:05 - INFO - __main__ -     eval_recall = 0.29537366548042704
+10/11/2021 15:14:05 - INFO - __main__ -   Average loss: 0.023069429334985517 at global step: 17100
+10/11/2021 15:17:57 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:17:57 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:17:57 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:17:57 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:18:26 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:18:26 - INFO - __main__ -     eval_f1 = 0.33460076045627374
+10/11/2021 15:18:26 - INFO - __main__ -     eval_loss = 0.17092949642216826
+10/11/2021 15:18:26 - INFO - __main__ -     eval_p = 0.35918367346938773
+10/11/2021 15:18:26 - INFO - __main__ -     eval_recall = 0.31316725978647686
+10/11/2021 15:18:26 - INFO - __main__ -   Average loss: 0.022552788099067887 at global step: 17400
+10/11/2021 15:22:18 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:22:18 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:22:18 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:22:18 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:22:47 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:22:47 - INFO - __main__ -     eval_f1 = 0.33399602385685884
+10/11/2021 15:22:47 - INFO - __main__ -     eval_loss = 0.1716011233974505
+10/11/2021 15:22:47 - INFO - __main__ -     eval_p = 0.3783783783783784
+10/11/2021 15:22:47 - INFO - __main__ -     eval_recall = 0.298932384341637
+10/11/2021 15:22:47 - INFO - __main__ -   Average loss: 0.021920532515129404 at global step: 17700
+10/11/2021 15:26:38 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128_ace
+10/11/2021 15:26:39 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:26:39 - INFO - __main__ -     Num examples = 9540
+10/11/2021 15:26:39 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:27:08 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/11/2021 15:27:08 - INFO - __main__ -     eval_f1 = 0.33725490196078434
+10/11/2021 15:27:08 - INFO - __main__ -     eval_loss = 0.17139401796467818
+10/11/2021 15:27:08 - INFO - __main__ -     eval_p = 0.37554585152838427
+10/11/2021 15:27:08 - INFO - __main__ -     eval_recall = 0.30604982206405695
+10/11/2021 15:27:08 - INFO - __main__ -   Average loss: 0.022167152103926734 at global step: 18000
+10/11/2021 15:27:08 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-18000/config.json
+10/11/2021 15:27:12 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-18000/pytorch_model.bin
+10/11/2021 15:27:12 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/checkpoint-18000/bert/config.json
+10/11/2021 15:27:16 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/checkpoint-18000/bert/pytorch_model.bin
+10/11/2021 15:27:16 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5/checkpoint-18000
+10/11/2021 15:27:16 - INFO - __main__ -    global_step = 18000, average loss = 0.07247880422022536
+10/11/2021 15:27:16 - INFO - __main__ -   Saving model checkpoint to ./ACE_shuffles_FULL2_e5
+10/11/2021 15:27:16 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_shuffles_FULL2_e5/config.json
+10/11/2021 15:27:21 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_shuffles_FULL2_e5/pytorch_model.bin
+10/11/2021 15:27:21 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_shuffles_FULL2_e5/config.json
+10/11/2021 15:27:21 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 19,
+  "architectures": [
+    "DMBERT"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/11/2021 15:27:21 - INFO - transformers.modeling_utils -   loading weights file ./ACE_shuffles_FULL2_e5/pytorch_model.bin
+10/11/2021 15:27:23 - INFO - transformers.tokenization_utils -   Model name './ACE_shuffles_FULL2_e5' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc, bert-base-german-dbmdz-cased, bert-base-german-dbmdz-uncased, bert-base-finnish-cased-v1, bert-base-finnish-uncased-v1, bert-base-dutch-cased). Assuming './ACE_shuffles_FULL2_e5' is a path, a model identifier, or url to a directory containing tokenizer files.
+10/11/2021 15:27:23 - INFO - transformers.tokenization_utils -   Didn't find file ./ACE_shuffles_FULL2_e5/added_tokens.json. We won't load it.
+10/11/2021 15:27:23 - INFO - transformers.tokenization_utils -   loading file ./ACE_shuffles_FULL2_e5/vocab.txt
+10/11/2021 15:27:23 - INFO - transformers.tokenization_utils -   loading file None
+10/11/2021 15:27:23 - INFO - transformers.tokenization_utils -   loading file ./ACE_shuffles_FULL2_e5/special_tokens_map.json
+10/11/2021 15:27:23 - INFO - transformers.tokenization_utils -   loading file ./ACE_shuffles_FULL2_e5/tokenizer_config.json
+10/11/2021 15:27:23 - INFO - __main__ -   Evaluate the following checkpoints: ['./ACE_shuffles_FULL2_e5']
+10/11/2021 15:27:23 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_shuffles_FULL2_e5/config.json
+10/11/2021 15:27:23 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 19,
+  "architectures": [
+    "DMBERT"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/11/2021 15:27:23 - INFO - transformers.modeling_utils -   loading weights file ./ACE_shuffles_FULL2_e5/pytorch_model.bin
+10/11/2021 15:27:25 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 15:27:25 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:27:25 - INFO - __main__ -     Num examples = 9676
+10/11/2021 15:27:25 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:27:54 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 15:27:54 - INFO - __main__ -     eval_f1 = 0.4065573770491804
+10/11/2021 15:27:54 - INFO - __main__ -     eval_loss = 0.14478567591581712
+10/11/2021 15:27:54 - INFO - __main__ -     eval_p = 0.40522875816993464
+10/11/2021 15:27:54 - INFO - __main__ -     eval_recall = 0.40789473684210525
+10/11/2021 15:27:54 - INFO - __main__ -   Evaluate the following checkpoints: ['./ACE_shuffles_FULL2_e5']
+10/11/2021 15:27:54 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_shuffles_FULL2_e5/config.json
+10/11/2021 15:27:54 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 19,
+  "architectures": [
+    "DMBERT"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/11/2021 15:27:54 - INFO - transformers.modeling_utils -   loading weights file ./ACE_shuffles_FULL2_e5/pytorch_model.bin
+10/11/2021 15:27:56 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128_ace
+10/11/2021 15:27:56 - INFO - __main__ -   ***** Running evaluation  *****
+10/11/2021 15:27:56 - INFO - __main__ -     Num examples = 9676
+10/11/2021 15:27:56 - INFO - __main__ -     Batch size = 42
+10/11/2021 15:28:25 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/11/2021 15:28:25 - INFO - __main__ -     eval_f1 = 0.4065573770491804
+10/11/2021 15:28:25 - INFO - __main__ -     eval_loss = 0.14478567591581712
+10/11/2021 15:28:25 - INFO - __main__ -     eval_p = 0.40522875816993464
+10/11/2021 15:28:25 - INFO - __main__ -     eval_recall = 0.40789473684210525
+10/11/2021 15:28:25 - INFO - __main__ -   best steps of eval f1 is the following checkpoints: 9600

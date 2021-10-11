@@ -1,0 +1,313 @@
+10/09/2021 14:53:46 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+10/09/2021 14:53:47 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /home/MSAI/s200048/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+10/09/2021 14:53:47 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 34,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": "ace",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18",
+    "19": "LABEL_19",
+    "20": "LABEL_20",
+    "21": "LABEL_21",
+    "22": "LABEL_22",
+    "23": "LABEL_23",
+    "24": "LABEL_24",
+    "25": "LABEL_25",
+    "26": "LABEL_26",
+    "27": "LABEL_27",
+    "28": "LABEL_28",
+    "29": "LABEL_29",
+    "30": "LABEL_30",
+    "31": "LABEL_31",
+    "32": "LABEL_32",
+    "33": "LABEL_33"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_19": 19,
+    "LABEL_2": 2,
+    "LABEL_20": 20,
+    "LABEL_21": 21,
+    "LABEL_22": 22,
+    "LABEL_23": 23,
+    "LABEL_24": 24,
+    "LABEL_25": 25,
+    "LABEL_26": 26,
+    "LABEL_27": 27,
+    "LABEL_28": 28,
+    "LABEL_29": 29,
+    "LABEL_3": 3,
+    "LABEL_30": 30,
+    "LABEL_31": 31,
+    "LABEL_32": 32,
+    "LABEL_33": 33,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/09/2021 14:53:48 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /home/MSAI/s200048/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/09/2021 14:53:49 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin from cache at /home/MSAI/s200048/.cache/torch/transformers/aa1ef1aede4482d0dbcd4d52baad8ae300e60902e88fcb0bebdec09afd232066.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+10/09/2021 14:53:52 - INFO - transformers.modeling_utils -   Weights of DMBERT not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+10/09/2021 14:53:52 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in DMBERT: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+10/09/2021 14:53:57 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='./ACE05_old/', device=device(type='cuda', index=0), do_eval=True, do_infer=False, do_lower_case=True, do_test=True, do_train=True, eval_all_checkpoints=False, evaluate_during_training=True, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=2, learning_rate=5e-05, local_rank=-1, logging_steps=300, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-uncased', model_type='bert', n_gpu=1, no_cuda=False, num_train_epochs=10.0, output_dir='./ACE_ace', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=42, per_gpu_train_batch_size=42, save_steps=1000, seed=2, server_ip='', server_port='', task_name='ace', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+10/09/2021 14:53:57 - INFO - __main__ -   Creating features from dataset file at ./ACE05_old/
+10/09/2021 14:53:57 - INFO - utils_ee -   LOOKING AT ./ACE05_old/ train
+10/09/2021 14:54:27 - INFO - __main__ -   Training number: 259660
+10/09/2021 14:54:27 - INFO - utils_ee -   Writing example 0 of 259660
+10/09/2021 14:54:27 - INFO - utils_ee -   *** Example ***
+10/09/2021 14:54:27 - INFO - utils_ee -   example_id: train-0
+10/09/2021 14:54:27 - INFO - utils_ee -   input_ids: 101 2130 2004 1996 3187 1997 10759 3036 2001 5128 2010 2111 2006 2152 9499 2197 3204 1010 1037 2382 1011 3329 9642 6477 4049 2007 2176 4600 4273 2273 1 5565 2 2006 2137 13312 1010 12580 6151 12870 10985 2011 1996 3023 3457 3187 5526 2085 5260 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 14:54:27 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 14:54:27 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 14:54:27 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 14:54:27 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 14:54:27 - INFO - utils_ee -   label: 6
+10/09/2021 14:54:27 - INFO - utils_ee -   *** Example ***
+10/09/2021 14:54:27 - INFO - utils_ee -   example_id: train-1
+10/09/2021 14:54:27 - INFO - utils_ee -   input_ids: 101 1 2130 2 2004 1996 3187 1997 10759 3036 2001 5128 2010 2111 2006 2152 9499 2197 3204 1010 1037 2382 1011 3329 9642 6477 4049 2007 2176 4600 4273 2273 5565 2006 2137 13312 1010 12580 6151 12870 10985 2011 1996 3023 3457 3187 5526 2085 5260 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 14:54:27 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 14:54:27 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 14:54:27 - INFO - utils_ee -   maskL: 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 14:54:27 - INFO - utils_ee -   maskR: 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 14:54:27 - INFO - utils_ee -   label: 0
+10/09/2021 14:54:34 - INFO - utils_ee -   Writing example 10000 of 259660
+10/09/2021 14:54:41 - INFO - utils_ee -   Writing example 20000 of 259660
+10/09/2021 14:54:48 - INFO - utils_ee -   Writing example 30000 of 259660
+10/09/2021 14:54:57 - INFO - utils_ee -   Writing example 40000 of 259660
+10/09/2021 14:55:05 - INFO - utils_ee -   Writing example 50000 of 259660
+10/09/2021 14:55:13 - INFO - utils_ee -   Writing example 60000 of 259660
+10/09/2021 14:55:21 - INFO - utils_ee -   Writing example 70000 of 259660
+10/09/2021 14:55:29 - INFO - utils_ee -   Writing example 80000 of 259660
+10/09/2021 14:55:35 - INFO - utils_ee -   Writing example 90000 of 259660
+10/09/2021 14:55:41 - INFO - utils_ee -   Writing example 100000 of 259660
+10/09/2021 14:55:46 - INFO - utils_ee -   Writing example 110000 of 259660
+10/09/2021 14:55:51 - INFO - utils_ee -   Writing example 120000 of 259660
+10/09/2021 14:55:57 - INFO - utils_ee -   Writing example 130000 of 259660
+10/09/2021 14:56:02 - INFO - utils_ee -   Writing example 140000 of 259660
+10/09/2021 14:56:08 - INFO - utils_ee -   Writing example 150000 of 259660
+10/09/2021 14:56:13 - INFO - utils_ee -   Writing example 160000 of 259660
+10/09/2021 14:56:19 - INFO - utils_ee -   Writing example 170000 of 259660
+10/09/2021 14:56:25 - INFO - utils_ee -   Writing example 180000 of 259660
+10/09/2021 14:56:31 - INFO - utils_ee -   Writing example 190000 of 259660
+10/09/2021 14:56:39 - INFO - utils_ee -   Writing example 200000 of 259660
+10/09/2021 14:56:46 - INFO - utils_ee -   Writing example 210000 of 259660
+10/09/2021 14:56:53 - INFO - utils_ee -   Writing example 220000 of 259660
+10/09/2021 14:57:00 - INFO - utils_ee -   Writing example 230000 of 259660
+10/09/2021 14:57:07 - INFO - utils_ee -   Writing example 240000 of 259660
+10/09/2021 14:57:14 - INFO - utils_ee -   Writing example 250000 of 259660
+10/09/2021 14:57:21 - INFO - __main__ -   Saving features into cached file ./ACE05_old/cached_train_bert-base-uncased_128_ace
+10/09/2021 14:58:45 - INFO - __main__ -   ***** Running training *****
+10/09/2021 14:58:45 - INFO - __main__ -     Num examples = 259660
+10/09/2021 14:58:45 - INFO - __main__ -     Num Epochs = 10
+10/09/2021 14:58:45 - INFO - __main__ -     Instantaneous batch size per GPU = 42
+10/09/2021 14:58:45 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 84
+10/09/2021 14:58:45 - INFO - __main__ -     Gradient Accumulation steps = 2
+10/09/2021 14:58:45 - INFO - __main__ -     Total optimization steps = 30910
+10/09/2021 15:02:32 - INFO - __main__ -   Creating features from dataset file at ./ACE05_old/
+10/09/2021 15:02:32 - INFO - utils_ee -   LOOKING AT ./ACE05_old/ dev
+10/09/2021 15:02:34 - INFO - __main__ -   Training number: 16807
+10/09/2021 15:02:34 - INFO - utils_ee -   Writing example 0 of 16807
+10/09/2021 15:02:34 - INFO - utils_ee -   *** Example ***
+10/09/2021 15:02:34 - INFO - utils_ee -   example_id: dev-0
+10/09/2021 15:02:34 - INFO - utils_ee -   input_ids: 101 2065 1 25596 2 2011 1037 9986 1010 2027 11276 2000 2022 2583 2000 8980 2037 3171 5366 1010 3171 6409 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:02:34 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:02:34 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:02:34 - INFO - utils_ee -   maskL: 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:02:34 - INFO - utils_ee -   maskR: 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:02:34 - INFO - utils_ee -   label: 21
+10/09/2021 15:02:34 - INFO - utils_ee -   *** Example ***
+10/09/2021 15:02:34 - INFO - utils_ee -   example_id: dev-1
+10/09/2021 15:02:34 - INFO - utils_ee -   input_ids: 101 2065 25596 2011 1037 9986 1010 2027 11276 2000 2022 2583 2000 1 8980 2 2037 3171 5366 1010 3171 6409 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:02:34 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:02:34 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:02:34 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:02:34 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:02:34 - INFO - utils_ee -   label: 21
+10/09/2021 15:02:40 - INFO - utils_ee -   Writing example 10000 of 16807
+10/09/2021 15:02:45 - INFO - __main__ -   Saving features into cached file ./ACE05_old/cached_dev_bert-base-uncased_128_ace
+10/09/2021 15:02:50 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:02:50 - INFO - __main__ -     Num examples = 16807
+10/09/2021 15:02:50 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:03:40 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/09/2021 15:03:40 - INFO - __main__ -     eval_f1 = 0.1952662721893491
+10/09/2021 15:03:40 - INFO - __main__ -     eval_loss = 0.07877359549373276
+10/09/2021 15:03:40 - INFO - __main__ -     eval_p = 0.559322033898305
+10/09/2021 15:03:40 - INFO - __main__ -     eval_recall = 0.11827956989247312
+10/09/2021 15:03:40 - INFO - __main__ -   Creating features from dataset file at ./ACE05_old/
+10/09/2021 15:03:40 - INFO - utils_ee -   LOOKING AT ./ACE05_old/ test
+10/09/2021 15:03:42 - INFO - __main__ -   Training number: 20783
+10/09/2021 15:03:42 - INFO - utils_ee -   Writing example 0 of 20783
+10/09/2021 15:03:42 - INFO - utils_ee -   *** Example ***
+10/09/2021 15:03:42 - INFO - utils_ee -   example_id: test-0
+10/09/2021 15:03:42 - INFO - utils_ee -   input_ids: 101 2012 2560 2539 2111 2020 1 2730 2 1998 12457 2111 2020 5303 1999 9857 1005 1055 2670 5137 3199 8479 1010 4584 2056 1010 2021 4311 2056 1996 2331 9565 2071 7105 2000 2382 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:03:42 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:03:42 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:03:42 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:03:42 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:03:42 - INFO - utils_ee -   label: 26
+10/09/2021 15:03:42 - INFO - utils_ee -   *** Example ***
+10/09/2021 15:03:42 - INFO - utils_ee -   example_id: test-1
+10/09/2021 15:03:42 - INFO - utils_ee -   input_ids: 101 2012 2560 2539 2111 2020 2730 1998 12457 2111 2020 1 5303 2 1999 9857 1005 1055 2670 5137 3199 8479 1010 4584 2056 1010 2021 4311 2056 1996 2331 9565 2071 7105 2000 2382 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:03:42 - INFO - utils_ee -   attention_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:03:42 - INFO - utils_ee -   token_type_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/09/2021 15:03:42 - INFO - utils_ee -   maskL: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:03:42 - INFO - utils_ee -   maskR: 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+10/09/2021 15:03:42 - INFO - utils_ee -   label: 23
+10/09/2021 15:03:50 - INFO - utils_ee -   Writing example 10000 of 20783
+10/09/2021 15:03:58 - INFO - utils_ee -   Writing example 20000 of 20783
+10/09/2021 15:03:59 - INFO - __main__ -   Saving features into cached file ./ACE05_old/cached_test_bert-base-uncased_128_ace
+10/09/2021 15:04:05 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:04:05 - INFO - __main__ -     Num examples = 20783
+10/09/2021 15:04:05 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:05:07 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/09/2021 15:05:07 - INFO - __main__ -     eval_f1 = 0.26460071513706795
+10/09/2021 15:05:07 - INFO - __main__ -     eval_loss = 0.1258045845500998
+10/09/2021 15:05:07 - INFO - __main__ -     eval_p = 0.4188679245283019
+10/09/2021 15:05:07 - INFO - __main__ -     eval_recall = 0.19337979094076654
+10/09/2021 15:05:07 - INFO - __main__ -   test f1: 0.26460071513706795, loss: 0.1258045845500998, global steps: 300
+10/09/2021 15:05:07 - INFO - __main__ -   Average loss: 0.15738935944177987 at global step: 300
+10/09/2021 15:08:57 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_dev_bert-base-uncased_128_ace
+10/09/2021 15:08:58 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:08:58 - INFO - __main__ -     Num examples = 16807
+10/09/2021 15:08:58 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:09:48 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/09/2021 15:09:48 - INFO - __main__ -     eval_f1 = 0.30724637681159417
+10/09/2021 15:09:48 - INFO - __main__ -     eval_loss = 0.062203502694671474
+10/09/2021 15:09:48 - INFO - __main__ -     eval_p = 0.803030303030303
+10/09/2021 15:09:48 - INFO - __main__ -     eval_recall = 0.18996415770609318
+10/09/2021 15:09:48 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_test_bert-base-uncased_128_ace
+10/09/2021 15:09:50 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:09:50 - INFO - __main__ -     Num examples = 20783
+10/09/2021 15:09:50 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:10:52 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/09/2021 15:10:52 - INFO - __main__ -     eval_f1 = 0.345646437994723
+10/09/2021 15:10:52 - INFO - __main__ -     eval_loss = 0.10014231822283226
+10/09/2021 15:10:52 - INFO - __main__ -     eval_p = 0.7119565217391305
+10/09/2021 15:10:52 - INFO - __main__ -     eval_recall = 0.22822299651567945
+10/09/2021 15:10:52 - INFO - __main__ -   test f1: 0.345646437994723, loss: 0.10014231822283226, global steps: 600
+10/09/2021 15:10:52 - INFO - __main__ -   Average loss: 0.07910151476899045 at global step: 600
+10/09/2021 15:14:42 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_dev_bert-base-uncased_128_ace
+10/09/2021 15:14:43 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:14:43 - INFO - __main__ -     Num examples = 16807
+10/09/2021 15:14:43 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:15:34 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/09/2021 15:15:34 - INFO - __main__ -     eval_f1 = 0.5672268907563025
+10/09/2021 15:15:34 - INFO - __main__ -     eval_loss = 0.05137232552976032
+10/09/2021 15:15:34 - INFO - __main__ -     eval_p = 0.6852791878172588
+10/09/2021 15:15:34 - INFO - __main__ -     eval_recall = 0.4838709677419355
+10/09/2021 15:15:34 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_test_bert-base-uncased_128_ace
+10/09/2021 15:15:35 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:15:35 - INFO - __main__ -     Num examples = 20783
+10/09/2021 15:15:35 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:16:37 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/09/2021 15:16:37 - INFO - __main__ -     eval_f1 = 0.614218009478673
+10/09/2021 15:16:37 - INFO - __main__ -     eval_loss = 0.07836265635548507
+10/09/2021 15:16:37 - INFO - __main__ -     eval_p = 0.6735966735966736
+10/09/2021 15:16:37 - INFO - __main__ -     eval_recall = 0.5644599303135889
+10/09/2021 15:16:37 - INFO - __main__ -   test f1: 0.614218009478673, loss: 0.07836265635548507, global steps: 900
+10/09/2021 15:16:37 - INFO - __main__ -   Average loss: 0.06184024523604118 at global step: 900
+10/09/2021 15:17:54 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_ace/checkpoint-1000/config.json
+10/09/2021 15:17:59 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_ace/checkpoint-1000/pytorch_model.bin
+10/09/2021 15:17:59 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_ace/checkpoint-1000/bert/config.json
+10/09/2021 15:18:03 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_ace/checkpoint-1000/bert/pytorch_model.bin
+10/09/2021 15:18:03 - INFO - __main__ -   Saving model checkpoint to ./ACE_ace/checkpoint-1000
+10/09/2021 15:20:36 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_dev_bert-base-uncased_128_ace
+10/09/2021 15:20:37 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:20:37 - INFO - __main__ -     Num examples = 16807
+10/09/2021 15:20:37 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:21:27 - INFO - __main__ -   ***** Eval results  is test:False *****
+10/09/2021 15:21:27 - INFO - __main__ -     eval_f1 = 0.5732758620689655
+10/09/2021 15:21:27 - INFO - __main__ -     eval_loss = 0.04346522369013839
+10/09/2021 15:21:27 - INFO - __main__ -     eval_p = 0.7189189189189189
+10/09/2021 15:21:27 - INFO - __main__ -     eval_recall = 0.4767025089605735
+10/09/2021 15:21:27 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_test_bert-base-uncased_128_ace
+10/09/2021 15:21:28 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:21:28 - INFO - __main__ -     Num examples = 20783
+10/09/2021 15:21:28 - INFO - __main__ -     Batch size = 42
+10/09/2021 15:22:31 - INFO - __main__ -   ***** Eval results  is test:True *****
+10/09/2021 15:22:31 - INFO - __main__ -     eval_f1 = 0.6363636363636364
+10/09/2021 15:22:31 - INFO - __main__ -     eval_loss = 0.07037956712400303
+10/09/2021 15:22:31 - INFO - __main__ -     eval_p = 0.6970954356846473
+10/09/2021 15:22:31 - INFO - __main__ -     eval_recall = 0.5853658536585366
+10/09/2021 15:22:31 - INFO - __main__ -   test f1: 0.6363636363636364, loss: 0.07037956712400303, global steps: 1200
+10/09/2021 15:22:31 - INFO - __main__ -   Average loss: 0.05105629616242368 at global step: 1200
+10/09/2021 15:26:21 - INFO - __main__ -   Loading features from cached file ./ACE05_old/cached_dev_bert-base-uncased_128_ace
+10/09/2021 15:26:22 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 15:26:22 - INFO - __main__ -     Num examples = 16807
+10/09/2021 15:26:22 - INFO - __main__ -     Batch size = 42
+slurmstepd: error: *** JOB 28422 ON SCSEGPU-TC1-11 CANCELLED AT 2021-10-09T15:26:47 ***

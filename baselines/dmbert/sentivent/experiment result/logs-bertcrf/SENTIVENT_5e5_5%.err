@@ -1,0 +1,431 @@
+10/10/2021 15:42:22 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+10/10/2021 15:42:23 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /home/MSAI/s200048/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+10/10/2021 15:42:23 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 37,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18",
+    "19": "LABEL_19",
+    "20": "LABEL_20",
+    "21": "LABEL_21",
+    "22": "LABEL_22",
+    "23": "LABEL_23",
+    "24": "LABEL_24",
+    "25": "LABEL_25",
+    "26": "LABEL_26",
+    "27": "LABEL_27",
+    "28": "LABEL_28",
+    "29": "LABEL_29",
+    "30": "LABEL_30",
+    "31": "LABEL_31",
+    "32": "LABEL_32",
+    "33": "LABEL_33",
+    "34": "LABEL_34",
+    "35": "LABEL_35",
+    "36": "LABEL_36"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_19": 19,
+    "LABEL_2": 2,
+    "LABEL_20": 20,
+    "LABEL_21": 21,
+    "LABEL_22": 22,
+    "LABEL_23": 23,
+    "LABEL_24": 24,
+    "LABEL_25": 25,
+    "LABEL_26": 26,
+    "LABEL_27": 27,
+    "LABEL_28": 28,
+    "LABEL_29": 29,
+    "LABEL_3": 3,
+    "LABEL_30": 30,
+    "LABEL_31": 31,
+    "LABEL_32": 32,
+    "LABEL_33": 33,
+    "LABEL_34": 34,
+    "LABEL_35": 35,
+    "LABEL_36": 36,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/10/2021 15:42:24 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /home/MSAI/s200048/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/10/2021 15:42:25 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin from cache at /home/MSAI/s200048/.cache/torch/transformers/aa1ef1aede4482d0dbcd4d52baad8ae300e60902e88fcb0bebdec09afd232066.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+10/10/2021 15:42:33 - INFO - transformers.modeling_utils -   Weights of BertCRFForTokenClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias', 'crf.transitions']
+10/10/2021 15:42:33 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in BertCRFForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+10/10/2021 15:42:33 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='./ACE05_FULL/', device=device(type='cuda', index=0), do_eval=True, do_lower_case=True, do_predict=False, do_train=True, eval_all_checkpoints=False, evaluate_during_training=True, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=8, labels='', learning_rate=5e-05, local_rank=-1, logging_steps=36, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-uncased', model_type='bertcrf', n_gpu=1, no_cuda=False, num_train_epochs=10.0, output_dir='./ACE_FULL', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=32, per_gpu_train_batch_size=32, save_steps=36, seed=24, server_ip='', server_port='', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+10/10/2021 15:42:33 - INFO - __main__ -   Creating features from dataset file at ./ACE05_FULL/
+10/10/2021 15:42:36 - INFO - utils_ACE -   Writing example 0 of 6148
+10/10/2021 15:42:44 - INFO - __main__ -   Saving features into cached file ./ACE05_FULL/cached_train_bert-base-uncased_128
+10/10/2021 15:42:46 - INFO - __main__ -   ***** Running training *****
+10/10/2021 15:42:46 - INFO - __main__ -     Num examples = 6148
+10/10/2021 15:42:46 - INFO - __main__ -     Num Epochs = 10
+10/10/2021 15:42:46 - INFO - __main__ -     Instantaneous batch size per GPU = 32
+10/10/2021 15:42:46 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 256
+10/10/2021 15:42:46 - INFO - __main__ -     Gradient Accumulation steps = 8
+10/10/2021 15:42:46 - INFO - __main__ -     Total optimization steps = 240
+10/10/2021 15:44:26 - INFO - __main__ -   Creating features from dataset file at ./ACE05_FULL/
+10/10/2021 15:44:27 - INFO - utils_ACE -   Writing example 0 of 355
+10/10/2021 15:44:27 - INFO - __main__ -   Saving features into cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:44:27 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:44:27 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:44:27 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:44:27 - INFO - __main__ -     Mode = dev
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/seqeval/metrics/v1.py:57: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/10/2021 15:44:29 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:44:29 - INFO - __main__ -     f1 = 0.0
+10/10/2021 15:44:29 - INFO - __main__ -     loss = 129.60669453938803
+10/10/2021 15:44:29 - INFO - __main__ -     precision = 0.0
+10/10/2021 15:44:29 - INFO - __main__ -     recall = 0.0
+10/10/2021 15:44:29 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-36
+10/10/2021 15:44:33 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-36
+10/10/2021 15:44:41 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE_FULL/checkpoint-36
+10/10/2021 15:46:23 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:46:23 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:46:23 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:46:23 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:46:23 - INFO - __main__ -     Mode = dev
+10/10/2021 15:46:24 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:46:24 - INFO - __main__ -     f1 = 0.16071428571428573
+10/10/2021 15:46:24 - INFO - __main__ -     loss = 105.0876973470052
+10/10/2021 15:46:24 - INFO - __main__ -     precision = 0.4909090909090909
+10/10/2021 15:46:24 - INFO - __main__ -     recall = 0.09608540925266904
+10/10/2021 15:46:24 - INFO - __main__ -   Creating features from dataset file at ./ACE05_FULL/
+10/10/2021 15:46:25 - INFO - utils_ACE -   Writing example 0 of 380
+10/10/2021 15:46:25 - INFO - __main__ -   Saving features into cached file ./ACE05_FULL/cached_test_bert-base-uncased_128
+10/10/2021 15:46:25 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:46:25 - INFO - __main__ -     Num examples = 380
+10/10/2021 15:46:25 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:46:25 - INFO - __main__ -     Mode = test
+10/10/2021 15:46:27 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:46:27 - INFO - __main__ -     f1 = 0.2938388625592417
+10/10/2021 15:46:27 - INFO - __main__ -     loss = 102.034912109375
+10/10/2021 15:46:27 - INFO - __main__ -     precision = 0.5254237288135594
+10/10/2021 15:46:27 - INFO - __main__ -     recall = 0.20394736842105263
+10/10/2021 15:46:27 - INFO - __main__ -   test f1: 0.2938388625592417, loss: 102.034912109375
+10/10/2021 15:46:27 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-72
+10/10/2021 15:46:31 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-72
+10/10/2021 15:46:39 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE_FULL/checkpoint-72
+10/10/2021 15:48:21 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:48:21 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:48:21 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:48:21 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:48:21 - INFO - __main__ -     Mode = dev
+10/10/2021 15:48:23 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:48:23 - INFO - __main__ -     f1 = 0.2775330396475771
+10/10/2021 15:48:23 - INFO - __main__ -     loss = 101.6853739420573
+10/10/2021 15:48:23 - INFO - __main__ -     precision = 0.36416184971098264
+10/10/2021 15:48:23 - INFO - __main__ -     recall = 0.22419928825622776
+10/10/2021 15:48:23 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128
+10/10/2021 15:48:23 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:48:23 - INFO - __main__ -     Num examples = 380
+10/10/2021 15:48:23 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:48:23 - INFO - __main__ -     Mode = test
+10/10/2021 15:48:24 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:48:24 - INFO - __main__ -     f1 = 0.3697183098591549
+10/10/2021 15:48:24 - INFO - __main__ -     loss = 97.92740885416667
+10/10/2021 15:48:24 - INFO - __main__ -     precision = 0.3977272727272727
+10/10/2021 15:48:24 - INFO - __main__ -     recall = 0.34539473684210525
+10/10/2021 15:48:24 - INFO - __main__ -   test f1: 0.3697183098591549, loss: 97.92740885416667
+10/10/2021 15:48:24 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-108
+10/10/2021 15:48:28 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-108
+10/10/2021 15:48:37 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE_FULL/checkpoint-108
+10/10/2021 15:50:19 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:50:19 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:50:19 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:50:19 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:50:19 - INFO - __main__ -     Mode = dev
+10/10/2021 15:50:20 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:50:20 - INFO - __main__ -     f1 = 0.32741617357001973
+10/10/2021 15:50:20 - INFO - __main__ -     loss = 99.17059326171875
+10/10/2021 15:50:20 - INFO - __main__ -     precision = 0.3672566371681416
+10/10/2021 15:50:20 - INFO - __main__ -     recall = 0.29537366548042704
+10/10/2021 15:50:20 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128
+10/10/2021 15:50:20 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:50:20 - INFO - __main__ -     Num examples = 380
+10/10/2021 15:50:20 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:50:20 - INFO - __main__ -     Mode = test
+10/10/2021 15:50:22 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:50:22 - INFO - __main__ -     f1 = 0.38636363636363635
+10/10/2021 15:50:22 - INFO - __main__ -     loss = 99.24540201822917
+10/10/2021 15:50:22 - INFO - __main__ -     precision = 0.3814102564102564
+10/10/2021 15:50:22 - INFO - __main__ -     recall = 0.39144736842105265
+10/10/2021 15:50:22 - INFO - __main__ -   test f1: 0.38636363636363635, loss: 99.24540201822917
+10/10/2021 15:50:22 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-144
+10/10/2021 15:50:26 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-144
+10/10/2021 15:50:34 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE_FULL/checkpoint-144
+10/10/2021 15:52:16 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:52:16 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:52:16 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:52:16 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:52:16 - INFO - __main__ -     Mode = dev
+10/10/2021 15:52:18 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:52:18 - INFO - __main__ -     f1 = 0.3440453686200379
+10/10/2021 15:52:18 - INFO - __main__ -     loss = 107.6435038248698
+10/10/2021 15:52:18 - INFO - __main__ -     precision = 0.36693548387096775
+10/10/2021 15:52:18 - INFO - __main__ -     recall = 0.3238434163701068
+10/10/2021 15:52:18 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128
+10/10/2021 15:52:18 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:52:18 - INFO - __main__ -     Num examples = 380
+10/10/2021 15:52:18 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:52:18 - INFO - __main__ -     Mode = test
+10/10/2021 15:52:20 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:52:20 - INFO - __main__ -     f1 = 0.39938080495356043
+10/10/2021 15:52:20 - INFO - __main__ -     loss = 104.3780517578125
+10/10/2021 15:52:20 - INFO - __main__ -     precision = 0.37719298245614036
+10/10/2021 15:52:20 - INFO - __main__ -     recall = 0.4243421052631579
+10/10/2021 15:52:20 - INFO - __main__ -   test f1: 0.39938080495356043, loss: 104.3780517578125
+10/10/2021 15:52:20 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-180
+10/10/2021 15:52:23 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-180
+10/10/2021 15:52:32 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE_FULL/checkpoint-180
+10/10/2021 15:54:14 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:54:14 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:54:14 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:54:14 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:54:14 - INFO - __main__ -     Mode = dev
+10/10/2021 15:54:15 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:54:15 - INFO - __main__ -     f1 = 0.3540489642184558
+10/10/2021 15:54:15 - INFO - __main__ -     loss = 106.21657816569011
+10/10/2021 15:54:15 - INFO - __main__ -     precision = 0.376
+10/10/2021 15:54:15 - INFO - __main__ -     recall = 0.33451957295373663
+10/10/2021 15:54:15 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_test_bert-base-uncased_128
+10/10/2021 15:54:15 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:54:15 - INFO - __main__ -     Num examples = 380
+10/10/2021 15:54:15 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:54:15 - INFO - __main__ -     Mode = test
+10/10/2021 15:54:17 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:54:17 - INFO - __main__ -     f1 = 0.39055118110236214
+10/10/2021 15:54:17 - INFO - __main__ -     loss = 104.62109375
+10/10/2021 15:54:17 - INFO - __main__ -     precision = 0.37462235649546827
+10/10/2021 15:54:17 - INFO - __main__ -     recall = 0.40789473684210525
+10/10/2021 15:54:17 - INFO - __main__ -   test f1: 0.39055118110236214, loss: 104.62109375
+10/10/2021 15:54:17 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-216
+10/10/2021 15:54:21 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL/checkpoint-216
+10/10/2021 15:54:27 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE_FULL/checkpoint-216
+10/10/2021 15:55:35 - INFO - __main__ -    global_step = 240, average loss = 133.10289735794066
+10/10/2021 15:55:35 - INFO - __main__ -   Saving model checkpoint to ./ACE_FULL
+10/10/2021 15:55:35 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE_FULL/config.json
+10/10/2021 15:55:39 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE_FULL/pytorch_model.bin
+10/10/2021 15:55:39 - INFO - transformers.tokenization_utils -   Model name './ACE_FULL' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc, bert-base-german-dbmdz-cased, bert-base-german-dbmdz-uncased, bert-base-finnish-cased-v1, bert-base-finnish-uncased-v1, bert-base-dutch-cased). Assuming './ACE_FULL' is a path, a model identifier, or url to a directory containing tokenizer files.
+10/10/2021 15:55:39 - INFO - transformers.tokenization_utils -   Didn't find file ./ACE_FULL/added_tokens.json. We won't load it.
+10/10/2021 15:55:39 - INFO - transformers.tokenization_utils -   loading file ./ACE_FULL/vocab.txt
+10/10/2021 15:55:39 - INFO - transformers.tokenization_utils -   loading file None
+10/10/2021 15:55:39 - INFO - transformers.tokenization_utils -   loading file ./ACE_FULL/special_tokens_map.json
+10/10/2021 15:55:39 - INFO - transformers.tokenization_utils -   loading file ./ACE_FULL/tokenizer_config.json
+10/10/2021 15:55:39 - INFO - __main__ -   Evaluate the following checkpoints: ['./ACE_FULL']
+10/10/2021 15:55:39 - INFO - transformers.configuration_utils -   loading configuration file ./ACE_FULL/config.json
+10/10/2021 15:55:39 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 37,
+  "architectures": [
+    "BertCRFForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18",
+    "19": "LABEL_19",
+    "20": "LABEL_20",
+    "21": "LABEL_21",
+    "22": "LABEL_22",
+    "23": "LABEL_23",
+    "24": "LABEL_24",
+    "25": "LABEL_25",
+    "26": "LABEL_26",
+    "27": "LABEL_27",
+    "28": "LABEL_28",
+    "29": "LABEL_29",
+    "30": "LABEL_30",
+    "31": "LABEL_31",
+    "32": "LABEL_32",
+    "33": "LABEL_33",
+    "34": "LABEL_34",
+    "35": "LABEL_35",
+    "36": "LABEL_36"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_19": 19,
+    "LABEL_2": 2,
+    "LABEL_20": 20,
+    "LABEL_21": 21,
+    "LABEL_22": 22,
+    "LABEL_23": 23,
+    "LABEL_24": 24,
+    "LABEL_25": 25,
+    "LABEL_26": 26,
+    "LABEL_27": 27,
+    "LABEL_28": 28,
+    "LABEL_29": 29,
+    "LABEL_3": 3,
+    "LABEL_30": 30,
+    "LABEL_31": 31,
+    "LABEL_32": 32,
+    "LABEL_33": 33,
+    "LABEL_34": 34,
+    "LABEL_35": 35,
+    "LABEL_36": 36,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/10/2021 15:55:39 - INFO - transformers.modeling_utils -   loading weights file ./ACE_FULL/pytorch_model.bin
+10/10/2021 15:55:42 - INFO - __main__ -   Loading features from cached file ./ACE05_FULL/cached_dev_bert-base-uncased_128
+10/10/2021 15:55:42 - INFO - __main__ -   ***** Running evaluation  *****
+10/10/2021 15:55:42 - INFO - __main__ -     Num examples = 355
+10/10/2021 15:55:42 - INFO - __main__ -     Batch size = 32
+10/10/2021 15:55:42 - INFO - __main__ -     Mode = dev
+10/10/2021 15:55:44 - INFO - __main__ -   ***** Eval results  *****
+10/10/2021 15:55:44 - INFO - __main__ -     f1 = 0.35294117647058826
+10/10/2021 15:55:44 - INFO - __main__ -     loss = 108.47334289550781
+10/10/2021 15:55:44 - INFO - __main__ -     precision = 0.3780487804878049
+10/10/2021 15:55:44 - INFO - __main__ -     recall = 0.3309608540925267

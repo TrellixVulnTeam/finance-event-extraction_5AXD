@@ -1,0 +1,697 @@
+10/09/2021 18:25:32 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+10/09/2021 18:25:33 - INFO - transformers.configuration_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /home/MSAI/s200048/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+10/09/2021 18:25:33 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 67,
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18",
+    "19": "LABEL_19",
+    "20": "LABEL_20",
+    "21": "LABEL_21",
+    "22": "LABEL_22",
+    "23": "LABEL_23",
+    "24": "LABEL_24",
+    "25": "LABEL_25",
+    "26": "LABEL_26",
+    "27": "LABEL_27",
+    "28": "LABEL_28",
+    "29": "LABEL_29",
+    "30": "LABEL_30",
+    "31": "LABEL_31",
+    "32": "LABEL_32",
+    "33": "LABEL_33",
+    "34": "LABEL_34",
+    "35": "LABEL_35",
+    "36": "LABEL_36",
+    "37": "LABEL_37",
+    "38": "LABEL_38",
+    "39": "LABEL_39",
+    "40": "LABEL_40",
+    "41": "LABEL_41",
+    "42": "LABEL_42",
+    "43": "LABEL_43",
+    "44": "LABEL_44",
+    "45": "LABEL_45",
+    "46": "LABEL_46",
+    "47": "LABEL_47",
+    "48": "LABEL_48",
+    "49": "LABEL_49",
+    "50": "LABEL_50",
+    "51": "LABEL_51",
+    "52": "LABEL_52",
+    "53": "LABEL_53",
+    "54": "LABEL_54",
+    "55": "LABEL_55",
+    "56": "LABEL_56",
+    "57": "LABEL_57",
+    "58": "LABEL_58",
+    "59": "LABEL_59",
+    "60": "LABEL_60",
+    "61": "LABEL_61",
+    "62": "LABEL_62",
+    "63": "LABEL_63",
+    "64": "LABEL_64",
+    "65": "LABEL_65",
+    "66": "LABEL_66"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_19": 19,
+    "LABEL_2": 2,
+    "LABEL_20": 20,
+    "LABEL_21": 21,
+    "LABEL_22": 22,
+    "LABEL_23": 23,
+    "LABEL_24": 24,
+    "LABEL_25": 25,
+    "LABEL_26": 26,
+    "LABEL_27": 27,
+    "LABEL_28": 28,
+    "LABEL_29": 29,
+    "LABEL_3": 3,
+    "LABEL_30": 30,
+    "LABEL_31": 31,
+    "LABEL_32": 32,
+    "LABEL_33": 33,
+    "LABEL_34": 34,
+    "LABEL_35": 35,
+    "LABEL_36": 36,
+    "LABEL_37": 37,
+    "LABEL_38": 38,
+    "LABEL_39": 39,
+    "LABEL_4": 4,
+    "LABEL_40": 40,
+    "LABEL_41": 41,
+    "LABEL_42": 42,
+    "LABEL_43": 43,
+    "LABEL_44": 44,
+    "LABEL_45": 45,
+    "LABEL_46": 46,
+    "LABEL_47": 47,
+    "LABEL_48": 48,
+    "LABEL_49": 49,
+    "LABEL_5": 5,
+    "LABEL_50": 50,
+    "LABEL_51": 51,
+    "LABEL_52": 52,
+    "LABEL_53": 53,
+    "LABEL_54": 54,
+    "LABEL_55": 55,
+    "LABEL_56": 56,
+    "LABEL_57": 57,
+    "LABEL_58": 58,
+    "LABEL_59": 59,
+    "LABEL_6": 6,
+    "LABEL_60": 60,
+    "LABEL_61": 61,
+    "LABEL_62": 62,
+    "LABEL_63": 63,
+    "LABEL_64": 64,
+    "LABEL_65": 65,
+    "LABEL_66": 66,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/09/2021 18:25:34 - INFO - transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /home/MSAI/s200048/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/09/2021 18:25:35 - INFO - transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin from cache at /home/MSAI/s200048/.cache/torch/transformers/aa1ef1aede4482d0dbcd4d52baad8ae300e60902e88fcb0bebdec09afd232066.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+10/09/2021 18:25:42 - INFO - transformers.modeling_utils -   Weights of BertCRFForTokenClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias', 'crf.transitions']
+10/09/2021 18:25:42 - INFO - transformers.modeling_utils -   Weights from pretrained model not used in BertCRFForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+10/09/2021 18:25:42 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', data_dir='./ACE05/', device=device(type='cuda', index=0), do_eval=True, do_lower_case=True, do_predict=False, do_train=True, eval_all_checkpoints=False, evaluate_during_training=True, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=8, labels='', learning_rate=5e-05, local_rank=-1, logging_steps=36, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='bert-base-uncased', model_type='bertcrf', n_gpu=1, no_cuda=False, num_train_epochs=10.0, output_dir='./ACE', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=32, per_gpu_train_batch_size=32, save_steps=36, seed=24, server_ip='', server_port='', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+10/09/2021 18:25:42 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_train_bert-base-uncased_128
+10/09/2021 18:25:42 - INFO - __main__ -   ***** Running training *****
+10/09/2021 18:25:42 - INFO - __main__ -     Num examples = 15309
+10/09/2021 18:25:42 - INFO - __main__ -     Num Epochs = 10
+10/09/2021 18:25:42 - INFO - __main__ -     Instantaneous batch size per GPU = 32
+10/09/2021 18:25:42 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 256
+10/09/2021 18:25:42 - INFO - __main__ -     Gradient Accumulation steps = 8
+10/09/2021 18:25:42 - INFO - __main__ -     Total optimization steps = 590
+10/09/2021 18:27:24 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:27:24 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:27:24 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:27:24 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:27:24 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.32it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.46it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.35it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:02,  8.36it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:02,  8.05it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.99it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.98it/s]Evaluating:  28%|██▊       | 8/29 [00:00<00:02,  8.09it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.19it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.25it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.44it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.39it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.40it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.41it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.43it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.50it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.25it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.30it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.18it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  8.04it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:00,  8.17it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  8.19it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.22it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.32it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  8.07it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.18it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  8.16it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  8.00it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.39it/s]
+/home/MSAI/s200048/.conda/envs/dmbert/lib/python3.6/site-packages/seqeval/metrics/v1.py:57: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+10/09/2021 18:27:28 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:27:28 - INFO - __main__ -     f1 = 0.0
+10/09/2021 18:27:28 - INFO - __main__ -     loss = 55.80840853987069
+10/09/2021 18:27:28 - INFO - __main__ -     precision = 0.0
+10/09/2021 18:27:28 - INFO - __main__ -     recall = 0.0
+10/09/2021 18:27:28 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-36
+10/09/2021 18:27:30 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-36
+10/09/2021 18:27:35 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-36
+10/09/2021 18:29:21 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:29:21 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:29:21 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:29:21 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:29:21 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.26it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.39it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.28it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.29it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.98it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.92it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.92it/s]Evaluating:  28%|██▊       | 8/29 [00:00<00:02,  8.05it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.15it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.20it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.38it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.33it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.33it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.36it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.38it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.47it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.21it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.27it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.15it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  8.00it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:00,  8.12it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  8.14it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.24it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.33it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  8.07it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.15it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  8.12it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.96it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.35it/s]
+10/09/2021 18:29:24 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:29:24 - INFO - __main__ -     f1 = 0.27293064876957496
+10/09/2021 18:29:24 - INFO - __main__ -     loss = 35.73227454876078
+10/09/2021 18:29:24 - INFO - __main__ -     precision = 0.3465909090909091
+10/09/2021 18:29:24 - INFO - __main__ -     recall = 0.22509225092250923
+10/09/2021 18:29:24 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-uncased_128
+10/09/2021 18:29:24 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:29:24 - INFO - __main__ -     Num examples = 810
+10/09/2021 18:29:24 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:29:24 - INFO - __main__ -     Mode = test
+Evaluating:   0%|          | 0/26 [00:00<?, ?it/s]Evaluating:   4%|▍         | 1/26 [00:00<00:02,  8.34it/s]Evaluating:   8%|▊         | 2/26 [00:00<00:02,  8.45it/s]Evaluating:  12%|█▏        | 3/26 [00:00<00:02,  8.17it/s]Evaluating:  15%|█▌        | 4/26 [00:00<00:02,  8.11it/s]Evaluating:  19%|█▉        | 5/26 [00:00<00:02,  8.13it/s]Evaluating:  23%|██▎       | 6/26 [00:00<00:02,  8.15it/s]Evaluating:  27%|██▋       | 7/26 [00:00<00:02,  8.11it/s]Evaluating:  31%|███       | 8/26 [00:00<00:02,  8.08it/s]Evaluating:  35%|███▍      | 9/26 [00:01<00:02,  8.10it/s]Evaluating:  38%|███▊      | 10/26 [00:01<00:01,  8.11it/s]Evaluating:  42%|████▏     | 11/26 [00:01<00:01,  8.09it/s]Evaluating:  46%|████▌     | 12/26 [00:01<00:01,  8.12it/s]Evaluating:  50%|█████     | 13/26 [00:01<00:01,  8.09it/s]Evaluating:  54%|█████▍    | 14/26 [00:01<00:01,  8.06it/s]Evaluating:  58%|█████▊    | 15/26 [00:01<00:01,  8.10it/s]Evaluating:  62%|██████▏   | 16/26 [00:01<00:01,  8.04it/s]Evaluating:  65%|██████▌   | 17/26 [00:02<00:01,  7.97it/s]Evaluating:  69%|██████▉   | 18/26 [00:02<00:00,  8.05it/s]Evaluating:  73%|███████▎  | 19/26 [00:02<00:00,  7.91it/s]Evaluating:  77%|███████▋  | 20/26 [00:02<00:00,  8.02it/s]Evaluating:  81%|████████  | 21/26 [00:02<00:00,  8.10it/s]Evaluating:  85%|████████▍ | 22/26 [00:02<00:00,  8.13it/s]Evaluating:  88%|████████▊ | 23/26 [00:02<00:00,  8.05it/s]Evaluating:  92%|█████████▏| 24/26 [00:02<00:00,  8.00it/s]Evaluating:  96%|█████████▌| 25/26 [00:03<00:00,  8.11it/s]Evaluating: 100%|██████████| 26/26 [00:03<00:00,  8.26it/s]
+10/09/2021 18:29:28 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:29:28 - INFO - __main__ -     f1 = 0.32170542635658916
+10/09/2021 18:29:28 - INFO - __main__ -     loss = 80.6575927734375
+10/09/2021 18:29:28 - INFO - __main__ -     precision = 0.3624454148471616
+10/09/2021 18:29:28 - INFO - __main__ -     recall = 0.289198606271777
+10/09/2021 18:29:28 - INFO - __main__ -   test f1: 0.32170542635658916, loss: 80.6575927734375
+10/09/2021 18:29:28 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-72
+10/09/2021 18:29:31 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-72
+10/09/2021 18:29:38 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-72
+10/09/2021 18:31:22 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:31:22 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:31:22 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:31:22 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:31:22 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.18it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.33it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.23it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.23it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.93it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.84it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.85it/s]Evaluating:  28%|██▊       | 8/29 [00:00<00:02,  7.97it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.06it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.12it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.31it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.24it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.24it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.26it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.28it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.36it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.11it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.18it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.07it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.92it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:00,  8.02it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  8.04it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.13it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.21it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.95it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.05it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  8.02it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.87it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.26it/s]
+10/09/2021 18:31:25 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:31:25 - INFO - __main__ -     f1 = 0.6307053941908713
+10/09/2021 18:31:25 - INFO - __main__ -     loss = 22.782112910829742
+10/09/2021 18:31:25 - INFO - __main__ -     precision = 0.7203791469194313
+10/09/2021 18:31:25 - INFO - __main__ -     recall = 0.5608856088560885
+10/09/2021 18:31:25 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-uncased_128
+10/09/2021 18:31:25 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:31:25 - INFO - __main__ -     Num examples = 810
+10/09/2021 18:31:25 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:31:25 - INFO - __main__ -     Mode = test
+Evaluating:   0%|          | 0/26 [00:00<?, ?it/s]Evaluating:   4%|▍         | 1/26 [00:00<00:03,  8.22it/s]Evaluating:   8%|▊         | 2/26 [00:00<00:02,  8.31it/s]Evaluating:  12%|█▏        | 3/26 [00:00<00:02,  8.05it/s]Evaluating:  15%|█▌        | 4/26 [00:00<00:02,  7.99it/s]Evaluating:  19%|█▉        | 5/26 [00:00<00:02,  8.04it/s]Evaluating:  23%|██▎       | 6/26 [00:00<00:02,  8.07it/s]Evaluating:  27%|██▋       | 7/26 [00:00<00:02,  8.04it/s]Evaluating:  31%|███       | 8/26 [00:00<00:02,  7.99it/s]Evaluating:  35%|███▍      | 9/26 [00:01<00:02,  8.00it/s]Evaluating:  38%|███▊      | 10/26 [00:01<00:02,  7.99it/s]Evaluating:  42%|████▏     | 11/26 [00:01<00:01,  7.97it/s]Evaluating:  46%|████▌     | 12/26 [00:01<00:01,  8.02it/s]Evaluating:  50%|█████     | 13/26 [00:01<00:01,  7.99it/s]Evaluating:  54%|█████▍    | 14/26 [00:01<00:01,  7.95it/s]Evaluating:  58%|█████▊    | 15/26 [00:01<00:01,  8.00it/s]Evaluating:  62%|██████▏   | 16/26 [00:01<00:01,  7.96it/s]Evaluating:  65%|██████▌   | 17/26 [00:02<00:01,  7.88it/s]Evaluating:  69%|██████▉   | 18/26 [00:02<00:01,  7.95it/s]Evaluating:  73%|███████▎  | 19/26 [00:02<00:00,  7.80it/s]Evaluating:  77%|███████▋  | 20/26 [00:02<00:00,  7.94it/s]Evaluating:  81%|████████  | 21/26 [00:02<00:00,  8.02it/s]Evaluating:  85%|████████▍ | 22/26 [00:02<00:00,  8.04it/s]Evaluating:  88%|████████▊ | 23/26 [00:02<00:00,  7.96it/s]Evaluating:  92%|█████████▏| 24/26 [00:03<00:00,  7.89it/s]Evaluating:  96%|█████████▌| 25/26 [00:03<00:00,  8.00it/s]Evaluating: 100%|██████████| 26/26 [00:03<00:00,  8.15it/s]
+10/09/2021 18:31:29 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:31:29 - INFO - __main__ -     f1 = 0.6168051708217913
+10/09/2021 18:31:29 - INFO - __main__ -     loss = 54.13420222355769
+10/09/2021 18:31:29 - INFO - __main__ -     precision = 0.656188605108055
+10/09/2021 18:31:29 - INFO - __main__ -     recall = 0.5818815331010453
+10/09/2021 18:31:29 - INFO - __main__ -   test f1: 0.6168051708217913, loss: 54.13420222355769
+10/09/2021 18:31:29 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-108
+10/09/2021 18:31:32 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-108
+10/09/2021 18:31:39 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-108
+10/09/2021 18:33:26 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:33:26 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:33:26 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:33:26 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:33:26 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  7.95it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.12it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.09it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.12it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.83it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.75it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.78it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.92it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.99it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.02it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.22it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.18it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.20it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.22it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.22it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.29it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.05it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.11it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.98it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.80it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.95it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.98it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.08it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.14it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.88it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.00it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.98it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.84it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.18it/s]
+10/09/2021 18:33:30 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:33:30 - INFO - __main__ -     f1 = 0.6932270916334662
+10/09/2021 18:33:30 - INFO - __main__ -     loss = 18.29144076643319
+10/09/2021 18:33:30 - INFO - __main__ -     precision = 0.7532467532467533
+10/09/2021 18:33:30 - INFO - __main__ -     recall = 0.6420664206642066
+10/09/2021 18:33:30 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-uncased_128
+10/09/2021 18:33:30 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:33:30 - INFO - __main__ -     Num examples = 810
+10/09/2021 18:33:30 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:33:30 - INFO - __main__ -     Mode = test
+Evaluating:   0%|          | 0/26 [00:00<?, ?it/s]Evaluating:   4%|▍         | 1/26 [00:00<00:03,  8.23it/s]Evaluating:   8%|▊         | 2/26 [00:00<00:02,  8.30it/s]Evaluating:  12%|█▏        | 3/26 [00:00<00:02,  8.03it/s]Evaluating:  15%|█▌        | 4/26 [00:00<00:02,  7.96it/s]Evaluating:  19%|█▉        | 5/26 [00:00<00:02,  8.00it/s]Evaluating:  23%|██▎       | 6/26 [00:00<00:02,  8.04it/s]Evaluating:  27%|██▋       | 7/26 [00:00<00:02,  8.01it/s]Evaluating:  31%|███       | 8/26 [00:00<00:02,  7.93it/s]Evaluating:  35%|███▍      | 9/26 [00:01<00:02,  7.89it/s]Evaluating:  38%|███▊      | 10/26 [00:01<00:02,  7.93it/s]Evaluating:  42%|████▏     | 11/26 [00:01<00:01,  7.93it/s]Evaluating:  46%|████▌     | 12/26 [00:01<00:01,  7.97it/s]Evaluating:  50%|█████     | 13/26 [00:01<00:01,  7.95it/s]Evaluating:  54%|█████▍    | 14/26 [00:01<00:01,  7.90it/s]Evaluating:  58%|█████▊    | 15/26 [00:01<00:01,  7.93it/s]Evaluating:  62%|██████▏   | 16/26 [00:02<00:01,  7.87it/s]Evaluating:  65%|██████▌   | 17/26 [00:02<00:01,  7.79it/s]Evaluating:  69%|██████▉   | 18/26 [00:02<00:01,  7.88it/s]Evaluating:  73%|███████▎  | 19/26 [00:02<00:00,  7.76it/s]Evaluating:  77%|███████▋  | 20/26 [00:02<00:00,  7.89it/s]Evaluating:  81%|████████  | 21/26 [00:02<00:00,  7.98it/s]Evaluating:  85%|████████▍ | 22/26 [00:02<00:00,  8.01it/s]Evaluating:  88%|████████▊ | 23/26 [00:02<00:00,  7.89it/s]Evaluating:  92%|█████████▏| 24/26 [00:03<00:00,  7.82it/s]Evaluating:  96%|█████████▌| 25/26 [00:03<00:00,  7.94it/s]Evaluating: 100%|██████████| 26/26 [00:03<00:00,  8.10it/s]
+10/09/2021 18:33:33 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:33:33 - INFO - __main__ -     f1 = 0.7078039927404718
+10/09/2021 18:33:33 - INFO - __main__ -     loss = 43.64400540865385
+10/09/2021 18:33:33 - INFO - __main__ -     precision = 0.7386363636363636
+10/09/2021 18:33:33 - INFO - __main__ -     recall = 0.6794425087108014
+10/09/2021 18:33:33 - INFO - __main__ -   test f1: 0.7078039927404718, loss: 43.64400540865385
+10/09/2021 18:33:33 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-144
+10/09/2021 18:33:37 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-144
+10/09/2021 18:33:42 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-144
+10/09/2021 18:35:29 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:35:29 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:35:29 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:35:29 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:35:29 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.13it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.22it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.01it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.08it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.83it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.79it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.82it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.96it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.02it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.08it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.28it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.22it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.23it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.21it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.19it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.22it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.02it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.09it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.96it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.81it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.95it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  8.00it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.10it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.16it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.90it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.02it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.94it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.78it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.19it/s]
+10/09/2021 18:35:33 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:35:33 - INFO - __main__ -     f1 = 0.7407407407407408
+10/09/2021 18:35:33 - INFO - __main__ -     loss = 17.50304754849138
+10/09/2021 18:35:33 - INFO - __main__ -     precision = 0.7094594594594594
+10/09/2021 18:35:33 - INFO - __main__ -     recall = 0.7749077490774908
+10/09/2021 18:35:33 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-uncased_128
+10/09/2021 18:35:33 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:35:33 - INFO - __main__ -     Num examples = 810
+10/09/2021 18:35:33 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:35:33 - INFO - __main__ -     Mode = test
+Evaluating:   0%|          | 0/26 [00:00<?, ?it/s]Evaluating:   4%|▍         | 1/26 [00:00<00:03,  8.26it/s]Evaluating:   8%|▊         | 2/26 [00:00<00:02,  8.37it/s]Evaluating:  12%|█▏        | 3/26 [00:00<00:02,  8.05it/s]Evaluating:  15%|█▌        | 4/26 [00:00<00:02,  7.93it/s]Evaluating:  19%|█▉        | 5/26 [00:00<00:02,  8.00it/s]Evaluating:  23%|██▎       | 6/26 [00:00<00:02,  8.06it/s]Evaluating:  27%|██▋       | 7/26 [00:00<00:02,  8.04it/s]Evaluating:  31%|███       | 8/26 [00:00<00:02,  8.00it/s]Evaluating:  35%|███▍      | 9/26 [00:01<00:02,  8.01it/s]Evaluating:  38%|███▊      | 10/26 [00:01<00:02,  7.96it/s]Evaluating:  42%|████▏     | 11/26 [00:01<00:01,  7.91it/s]Evaluating:  46%|████▌     | 12/26 [00:01<00:01,  7.96it/s]Evaluating:  50%|█████     | 13/26 [00:01<00:01,  7.94it/s]Evaluating:  54%|█████▍    | 14/26 [00:01<00:01,  7.90it/s]Evaluating:  58%|█████▊    | 15/26 [00:01<00:01,  7.91it/s]Evaluating:  62%|██████▏   | 16/26 [00:02<00:01,  7.90it/s]Evaluating:  65%|██████▌   | 17/26 [00:02<00:01,  7.83it/s]Evaluating:  69%|██████▉   | 18/26 [00:02<00:01,  7.92it/s]Evaluating:  73%|███████▎  | 19/26 [00:02<00:00,  7.79it/s]Evaluating:  77%|███████▋  | 20/26 [00:02<00:00,  7.91it/s]Evaluating:  81%|████████  | 21/26 [00:02<00:00,  7.98it/s]Evaluating:  85%|████████▍ | 22/26 [00:02<00:00,  8.01it/s]Evaluating:  88%|████████▊ | 23/26 [00:02<00:00,  7.88it/s]Evaluating:  92%|█████████▏| 24/26 [00:03<00:00,  7.81it/s]Evaluating:  96%|█████████▌| 25/26 [00:03<00:00,  7.93it/s]Evaluating: 100%|██████████| 26/26 [00:03<00:00,  8.11it/s]
+10/09/2021 18:35:36 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:35:36 - INFO - __main__ -     f1 = 0.7554833468724615
+10/09/2021 18:35:36 - INFO - __main__ -     loss = 42.87052095853365
+10/09/2021 18:35:36 - INFO - __main__ -     precision = 0.7077625570776256
+10/09/2021 18:35:36 - INFO - __main__ -     recall = 0.8101045296167247
+10/09/2021 18:35:36 - INFO - __main__ -   test f1: 0.7554833468724615, loss: 42.87052095853365
+10/09/2021 18:35:36 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-180
+10/09/2021 18:35:40 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-180
+10/09/2021 18:35:47 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-180
+10/09/2021 18:37:32 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:37:32 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:37:32 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:37:32 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:37:32 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.18it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.29it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.12it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.11it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.84it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.79it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.81it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.91it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.02it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.10it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.29it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.23it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.19it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.20it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.23it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.34it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.09it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.10it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.95it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.78it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.94it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.98it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.09it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.16it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.87it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.99it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.97it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.85it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.20it/s]
+10/09/2021 18:37:36 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:37:36 - INFO - __main__ -     f1 = 0.7347670250896058
+10/09/2021 18:37:36 - INFO - __main__ -     loss = 18.242949387122845
+10/09/2021 18:37:36 - INFO - __main__ -     precision = 0.7142857142857143
+10/09/2021 18:37:36 - INFO - __main__ -     recall = 0.7564575645756457
+10/09/2021 18:37:36 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-216
+10/09/2021 18:37:39 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-216
+10/09/2021 18:37:46 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-216
+10/09/2021 18:39:33 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:39:33 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:39:33 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:39:33 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:39:33 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.11it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.25it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.17it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.12it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.76it/s]Evaluating:  21%|██        | 6/29 [00:00<00:03,  7.66it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.66it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.82it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.93it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.01it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.22it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.18it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.18it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.21it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.23it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.28it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.01it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.08it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.97it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.84it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.97it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.96it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.00it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.06it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.84it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.94it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.92it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.80it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.16it/s]
+10/09/2021 18:39:37 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:39:37 - INFO - __main__ -     f1 = 0.724907063197026
+10/09/2021 18:39:37 - INFO - __main__ -     loss = 17.808732657596984
+10/09/2021 18:39:37 - INFO - __main__ -     precision = 0.7303370786516854
+10/09/2021 18:39:37 - INFO - __main__ -     recall = 0.7195571955719557
+10/09/2021 18:39:37 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-252
+10/09/2021 18:39:39 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-252
+10/09/2021 18:39:47 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-252
+10/09/2021 18:41:32 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:41:32 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:41:32 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:41:32 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:41:32 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.17it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.31it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.12it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.11it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.83it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.77it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.78it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.86it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.92it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  7.98it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.20it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.14it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.12it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.12it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.11it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.23it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.02it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.08it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.95it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.73it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.88it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.93it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.05it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.15it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.89it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.96it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.92it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.78it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.15it/s]
+10/09/2021 18:41:36 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:41:36 - INFO - __main__ -     f1 = 0.738970588235294
+10/09/2021 18:41:36 - INFO - __main__ -     loss = 18.39111328125
+10/09/2021 18:41:36 - INFO - __main__ -     precision = 0.7362637362637363
+10/09/2021 18:41:36 - INFO - __main__ -     recall = 0.7416974169741697
+10/09/2021 18:41:36 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-288
+10/09/2021 18:41:39 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-288
+10/09/2021 18:41:45 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-288
+10/09/2021 18:43:32 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:43:32 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:43:32 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:43:32 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:43:32 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.08it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.25it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.15it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.12it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.81it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.77it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.79it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.90it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.99it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.01it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.10it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.08it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.12it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.17it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.18it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.25it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.01it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.08it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.97it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.82it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.96it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.95it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.05it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.14it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.90it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.01it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.94it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.79it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.17it/s]
+10/09/2021 18:43:36 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:43:36 - INFO - __main__ -     f1 = 0.7531531531531531
+10/09/2021 18:43:36 - INFO - __main__ -     loss = 18.88142342403017
+10/09/2021 18:43:36 - INFO - __main__ -     precision = 0.7359154929577465
+10/09/2021 18:43:36 - INFO - __main__ -     recall = 0.7712177121771218
+10/09/2021 18:43:36 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_test_bert-base-uncased_128
+10/09/2021 18:43:36 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:43:36 - INFO - __main__ -     Num examples = 810
+10/09/2021 18:43:36 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:43:36 - INFO - __main__ -     Mode = test
+Evaluating:   0%|          | 0/26 [00:00<?, ?it/s]Evaluating:   4%|▍         | 1/26 [00:00<00:03,  8.25it/s]Evaluating:   8%|▊         | 2/26 [00:00<00:02,  8.32it/s]Evaluating:  12%|█▏        | 3/26 [00:00<00:02,  8.04it/s]Evaluating:  15%|█▌        | 4/26 [00:00<00:02,  7.93it/s]Evaluating:  19%|█▉        | 5/26 [00:00<00:02,  7.89it/s]Evaluating:  23%|██▎       | 6/26 [00:00<00:02,  7.97it/s]Evaluating:  27%|██▋       | 7/26 [00:00<00:02,  7.96it/s]Evaluating:  31%|███       | 8/26 [00:01<00:02,  7.93it/s]Evaluating:  35%|███▍      | 9/26 [00:01<00:02,  7.95it/s]Evaluating:  38%|███▊      | 10/26 [00:01<00:02,  7.96it/s]Evaluating:  42%|████▏     | 11/26 [00:01<00:01,  7.91it/s]Evaluating:  46%|████▌     | 12/26 [00:01<00:01,  7.93it/s]Evaluating:  50%|█████     | 13/26 [00:01<00:01,  7.91it/s]Evaluating:  54%|█████▍    | 14/26 [00:01<00:01,  7.88it/s]Evaluating:  58%|█████▊    | 15/26 [00:01<00:01,  7.94it/s]Evaluating:  62%|██████▏   | 16/26 [00:02<00:01,  7.90it/s]Evaluating:  65%|██████▌   | 17/26 [00:02<00:01,  7.78it/s]Evaluating:  69%|██████▉   | 18/26 [00:02<00:01,  7.79it/s]Evaluating:  73%|███████▎  | 19/26 [00:02<00:00,  7.69it/s]Evaluating:  77%|███████▋  | 20/26 [00:02<00:00,  7.82it/s]Evaluating:  81%|████████  | 21/26 [00:02<00:00,  7.89it/s]Evaluating:  85%|████████▍ | 22/26 [00:02<00:00,  7.95it/s]Evaluating:  88%|████████▊ | 23/26 [00:02<00:00,  7.89it/s]Evaluating:  92%|█████████▏| 24/26 [00:03<00:00,  7.80it/s]Evaluating:  96%|█████████▌| 25/26 [00:03<00:00,  7.92it/s]Evaluating: 100%|██████████| 26/26 [00:03<00:00,  8.07it/s]
+10/09/2021 18:43:39 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:43:39 - INFO - __main__ -     f1 = 0.7917012448132781
+10/09/2021 18:43:39 - INFO - __main__ -     loss = 43.27545635516827
+10/09/2021 18:43:39 - INFO - __main__ -     precision = 0.7559429477020603
+10/09/2021 18:43:39 - INFO - __main__ -     recall = 0.8310104529616724
+10/09/2021 18:43:39 - INFO - __main__ -   test f1: 0.7917012448132781, loss: 43.27545635516827
+10/09/2021 18:43:39 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-324
+10/09/2021 18:43:42 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-324
+10/09/2021 18:43:48 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-324
+10/09/2021 18:45:35 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:45:35 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:45:35 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:45:35 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:45:35 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.04it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.15it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.04it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.04it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.80it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.76it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.75it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.89it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.00it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.04it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.21it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.16it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.13it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.12it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.17it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.28it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.05it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.12it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.00it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.86it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.99it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  8.02it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.08it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.08it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.79it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.89it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.89it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.78it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.16it/s]
+10/09/2021 18:45:39 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:45:39 - INFO - __main__ -     f1 = 0.7256317689530686
+10/09/2021 18:45:39 - INFO - __main__ -     loss = 19.709750471443964
+10/09/2021 18:45:39 - INFO - __main__ -     precision = 0.7102473498233216
+10/09/2021 18:45:39 - INFO - __main__ -     recall = 0.7416974169741697
+10/09/2021 18:45:39 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-360
+10/09/2021 18:45:42 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-360
+10/09/2021 18:45:49 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-360
+10/09/2021 18:47:34 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:47:34 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:47:34 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:47:34 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:47:34 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.14it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.26it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.15it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.16it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.82it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.76it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.77it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.85it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.91it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  7.96it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.19it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.15it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.12it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.12it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.13it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.24it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.02it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.05it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.91it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.79it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.93it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.95it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  7.97it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.08it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.86it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.97it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.95it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.81it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.15it/s]
+10/09/2021 18:47:38 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:47:38 - INFO - __main__ -     f1 = 0.7301587301587302
+10/09/2021 18:47:38 - INFO - __main__ -     loss = 21.62523151266164
+10/09/2021 18:47:38 - INFO - __main__ -     precision = 0.6993243243243243
+10/09/2021 18:47:38 - INFO - __main__ -     recall = 0.7638376383763837
+10/09/2021 18:47:38 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-396
+10/09/2021 18:47:41 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-396
+10/09/2021 18:47:47 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-396
+10/09/2021 18:49:34 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:49:34 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:49:34 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:49:34 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:49:34 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.14it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.26it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.16it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.11it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.75it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.67it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.66it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.79it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.91it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.00it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.21it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.17it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.18it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.22it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.24it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.31it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.05it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.11it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.01it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.87it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.99it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.97it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.01it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.13it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.89it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.01it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.99it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.84it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.18it/s]
+10/09/2021 18:49:38 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:49:38 - INFO - __main__ -     f1 = 0.7201426024955437
+10/09/2021 18:49:38 - INFO - __main__ -     loss = 22.99409011314655
+10/09/2021 18:49:38 - INFO - __main__ -     precision = 0.696551724137931
+10/09/2021 18:49:38 - INFO - __main__ -     recall = 0.7453874538745388
+10/09/2021 18:49:38 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-432
+10/09/2021 18:49:41 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-432
+10/09/2021 18:49:47 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-432
+10/09/2021 18:51:32 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:51:32 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:51:32 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:51:32 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:51:32 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.08it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.24it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.15it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.11it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.82it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.77it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.78it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.91it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.01it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.08it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.27it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.20it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.19it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.17it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.18it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.28it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.04it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.11it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.00it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.82it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.89it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.94it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.06it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.16it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.92it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.01it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.93it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.78it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.18it/s]
+10/09/2021 18:51:36 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:51:36 - INFO - __main__ -     f1 = 0.7229357798165137
+10/09/2021 18:51:36 - INFO - __main__ -     loss = 21.399405643857758
+10/09/2021 18:51:36 - INFO - __main__ -     precision = 0.718978102189781
+10/09/2021 18:51:36 - INFO - __main__ -     recall = 0.7269372693726938
+10/09/2021 18:51:36 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-468
+10/09/2021 18:51:39 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-468
+10/09/2021 18:51:46 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-468
+10/09/2021 18:53:34 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:53:34 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:53:34 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:53:34 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:53:34 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.08it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.23it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.08it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.02it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.77it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.73it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.77it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.90it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.00it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.04it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.22it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.18it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.19it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.22it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.20it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.28it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.04it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.09it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.97it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.79it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.92it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.96it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.02it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.06it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.79it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.92it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.91it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.76it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.15it/s]
+10/09/2021 18:53:38 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:53:38 - INFO - __main__ -     f1 = 0.7302158273381295
+10/09/2021 18:53:38 - INFO - __main__ -     loss = 22.174918339170258
+10/09/2021 18:53:38 - INFO - __main__ -     precision = 0.712280701754386
+10/09/2021 18:53:38 - INFO - __main__ -     recall = 0.7490774907749077
+10/09/2021 18:53:38 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-504
+10/09/2021 18:53:41 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-504
+10/09/2021 18:53:47 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-504
+10/09/2021 18:55:35 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:55:35 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:55:35 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:55:35 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:55:35 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.08it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.25it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.16it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.12it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.82it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.78it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.80it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.92it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  7.98it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.05it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.25it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.21it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.20it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.20it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.22it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.31it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.07it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.13it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.98it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.80it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.88it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.94it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.07it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.18it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.93it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.02it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.96it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.78it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.19it/s]
+10/09/2021 18:55:38 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:55:38 - INFO - __main__ -     f1 = 0.7296296296296295
+10/09/2021 18:55:38 - INFO - __main__ -     loss = 22.795755320581897
+10/09/2021 18:55:38 - INFO - __main__ -     precision = 0.7323420074349443
+10/09/2021 18:55:38 - INFO - __main__ -     recall = 0.7269372693726938
+10/09/2021 18:55:38 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-540
+10/09/2021 18:55:42 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-540
+10/09/2021 18:55:49 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-540
+10/09/2021 18:57:34 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:57:34 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:57:34 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:57:34 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:57:34 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  8.14it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  8.28it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  8.18it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  8.18it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.88it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.77it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.76it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.90it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.01it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.08it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.27it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.19it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.19it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.23it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.24it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.29it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.00it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.06it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  7.97it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.82it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:01,  7.93it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  7.92it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.05it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.13it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.85it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  7.95it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  7.95it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.82it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.19it/s]
+10/09/2021 18:57:37 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:57:37 - INFO - __main__ -     f1 = 0.7302752293577982
+10/09/2021 18:57:37 - INFO - __main__ -     loss = 22.94750555630388
+10/09/2021 18:57:37 - INFO - __main__ -     precision = 0.7262773722627737
+10/09/2021 18:57:37 - INFO - __main__ -     recall = 0.7343173431734318
+10/09/2021 18:57:38 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-576
+10/09/2021 18:57:41 - INFO - __main__ -   Saving model checkpoint to ./ACE/checkpoint-576
+10/09/2021 18:57:48 - INFO - __main__ -   Saving optimizer and scheduler states to ./ACE/checkpoint-576
+10/09/2021 18:58:31 - INFO - __main__ -    global_step = 590, average loss = 25.13435159456932
+10/09/2021 18:58:31 - INFO - __main__ -   Saving model checkpoint to ./ACE
+10/09/2021 18:58:31 - INFO - transformers.configuration_utils -   Configuration saved in ./ACE/config.json
+10/09/2021 18:58:34 - INFO - transformers.modeling_utils -   Model weights saved in ./ACE/pytorch_model.bin
+10/09/2021 18:58:34 - INFO - transformers.tokenization_utils -   Model name './ACE' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc, bert-base-german-dbmdz-cased, bert-base-german-dbmdz-uncased, bert-base-finnish-cased-v1, bert-base-finnish-uncased-v1, bert-base-dutch-cased). Assuming './ACE' is a path, a model identifier, or url to a directory containing tokenizer files.
+10/09/2021 18:58:34 - INFO - transformers.tokenization_utils -   Didn't find file ./ACE/added_tokens.json. We won't load it.
+10/09/2021 18:58:34 - INFO - transformers.tokenization_utils -   loading file ./ACE/vocab.txt
+10/09/2021 18:58:34 - INFO - transformers.tokenization_utils -   loading file None
+10/09/2021 18:58:34 - INFO - transformers.tokenization_utils -   loading file ./ACE/special_tokens_map.json
+10/09/2021 18:58:34 - INFO - transformers.tokenization_utils -   loading file ./ACE/tokenizer_config.json
+10/09/2021 18:58:34 - INFO - __main__ -   Evaluate the following checkpoints: ['./ACE']
+10/09/2021 18:58:34 - INFO - transformers.configuration_utils -   loading configuration file ./ACE/config.json
+10/09/2021 18:58:34 - INFO - transformers.configuration_utils -   Model config BertConfig {
+  "_num_labels": 67,
+  "architectures": [
+    "BertCRFForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bad_words_ids": null,
+  "bos_token_id": null,
+  "decoder_start_token_id": null,
+  "do_sample": false,
+  "early_stopping": false,
+  "eos_token_id": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17",
+    "18": "LABEL_18",
+    "19": "LABEL_19",
+    "20": "LABEL_20",
+    "21": "LABEL_21",
+    "22": "LABEL_22",
+    "23": "LABEL_23",
+    "24": "LABEL_24",
+    "25": "LABEL_25",
+    "26": "LABEL_26",
+    "27": "LABEL_27",
+    "28": "LABEL_28",
+    "29": "LABEL_29",
+    "30": "LABEL_30",
+    "31": "LABEL_31",
+    "32": "LABEL_32",
+    "33": "LABEL_33",
+    "34": "LABEL_34",
+    "35": "LABEL_35",
+    "36": "LABEL_36",
+    "37": "LABEL_37",
+    "38": "LABEL_38",
+    "39": "LABEL_39",
+    "40": "LABEL_40",
+    "41": "LABEL_41",
+    "42": "LABEL_42",
+    "43": "LABEL_43",
+    "44": "LABEL_44",
+    "45": "LABEL_45",
+    "46": "LABEL_46",
+    "47": "LABEL_47",
+    "48": "LABEL_48",
+    "49": "LABEL_49",
+    "50": "LABEL_50",
+    "51": "LABEL_51",
+    "52": "LABEL_52",
+    "53": "LABEL_53",
+    "54": "LABEL_54",
+    "55": "LABEL_55",
+    "56": "LABEL_56",
+    "57": "LABEL_57",
+    "58": "LABEL_58",
+    "59": "LABEL_59",
+    "60": "LABEL_60",
+    "61": "LABEL_61",
+    "62": "LABEL_62",
+    "63": "LABEL_63",
+    "64": "LABEL_64",
+    "65": "LABEL_65",
+    "66": "LABEL_66"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "is_encoder_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_18": 18,
+    "LABEL_19": 19,
+    "LABEL_2": 2,
+    "LABEL_20": 20,
+    "LABEL_21": 21,
+    "LABEL_22": 22,
+    "LABEL_23": 23,
+    "LABEL_24": 24,
+    "LABEL_25": 25,
+    "LABEL_26": 26,
+    "LABEL_27": 27,
+    "LABEL_28": 28,
+    "LABEL_29": 29,
+    "LABEL_3": 3,
+    "LABEL_30": 30,
+    "LABEL_31": 31,
+    "LABEL_32": 32,
+    "LABEL_33": 33,
+    "LABEL_34": 34,
+    "LABEL_35": 35,
+    "LABEL_36": 36,
+    "LABEL_37": 37,
+    "LABEL_38": 38,
+    "LABEL_39": 39,
+    "LABEL_4": 4,
+    "LABEL_40": 40,
+    "LABEL_41": 41,
+    "LABEL_42": 42,
+    "LABEL_43": 43,
+    "LABEL_44": 44,
+    "LABEL_45": 45,
+    "LABEL_46": 46,
+    "LABEL_47": 47,
+    "LABEL_48": 48,
+    "LABEL_49": 49,
+    "LABEL_5": 5,
+    "LABEL_50": 50,
+    "LABEL_51": 51,
+    "LABEL_52": 52,
+    "LABEL_53": 53,
+    "LABEL_54": 54,
+    "LABEL_55": 55,
+    "LABEL_56": 56,
+    "LABEL_57": 57,
+    "LABEL_58": 58,
+    "LABEL_59": 59,
+    "LABEL_6": 6,
+    "LABEL_60": 60,
+    "LABEL_61": 61,
+    "LABEL_62": 62,
+    "LABEL_63": 63,
+    "LABEL_64": 64,
+    "LABEL_65": 65,
+    "LABEL_66": 66,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "min_length": 0,
+  "model_type": "bert",
+  "no_repeat_ngram_size": 0,
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "prefix": null,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "task_specific_params": null,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 30522
+}
+
+10/09/2021 18:58:34 - INFO - transformers.modeling_utils -   loading weights file ./ACE/pytorch_model.bin
+10/09/2021 18:58:37 - INFO - __main__ -   Loading features from cached file ./ACE05/cached_dev_bert-base-uncased_128
+10/09/2021 18:58:37 - INFO - __main__ -   ***** Running evaluation  *****
+10/09/2021 18:58:37 - INFO - __main__ -     Num examples = 903
+10/09/2021 18:58:37 - INFO - __main__ -     Batch size = 32
+10/09/2021 18:58:37 - INFO - __main__ -     Mode = dev
+Evaluating:   0%|          | 0/29 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/29 [00:00<00:03,  7.18it/s]Evaluating:   7%|▋         | 2/29 [00:00<00:03,  7.53it/s]Evaluating:  10%|█         | 3/29 [00:00<00:03,  7.78it/s]Evaluating:  14%|█▍        | 4/29 [00:00<00:03,  7.95it/s]Evaluating:  17%|█▋        | 5/29 [00:00<00:03,  7.76it/s]Evaluating:  21%|██        | 6/29 [00:00<00:02,  7.71it/s]Evaluating:  24%|██▍       | 7/29 [00:00<00:02,  7.76it/s]Evaluating:  28%|██▊       | 8/29 [00:01<00:02,  7.90it/s]Evaluating:  31%|███       | 9/29 [00:01<00:02,  8.01it/s]Evaluating:  34%|███▍      | 10/29 [00:01<00:02,  8.08it/s]Evaluating:  38%|███▊      | 11/29 [00:01<00:02,  8.28it/s]Evaluating:  41%|████▏     | 12/29 [00:01<00:02,  8.22it/s]Evaluating:  45%|████▍     | 13/29 [00:01<00:01,  8.23it/s]Evaluating:  48%|████▊     | 14/29 [00:01<00:01,  8.26it/s]Evaluating:  52%|█████▏    | 15/29 [00:01<00:01,  8.28it/s]Evaluating:  55%|█████▌    | 16/29 [00:01<00:01,  8.38it/s]Evaluating:  59%|█████▊    | 17/29 [00:02<00:01,  8.10it/s]Evaluating:  62%|██████▏   | 18/29 [00:02<00:01,  8.16it/s]Evaluating:  66%|██████▌   | 19/29 [00:02<00:01,  8.05it/s]Evaluating:  69%|██████▉   | 20/29 [00:02<00:01,  7.89it/s]Evaluating:  72%|███████▏  | 21/29 [00:02<00:00,  8.04it/s]Evaluating:  76%|███████▌  | 22/29 [00:02<00:00,  8.07it/s]Evaluating:  79%|███████▉  | 23/29 [00:02<00:00,  8.17it/s]Evaluating:  83%|████████▎ | 24/29 [00:02<00:00,  8.26it/s]Evaluating:  86%|████████▌ | 25/29 [00:03<00:00,  7.98it/s]Evaluating:  90%|████████▉ | 26/29 [00:03<00:00,  8.06it/s]Evaluating:  93%|█████████▎| 27/29 [00:03<00:00,  8.01it/s]Evaluating:  97%|█████████▋| 28/29 [00:03<00:00,  7.85it/s]Evaluating: 100%|██████████| 29/29 [00:03<00:00,  8.19it/s]
+10/09/2021 18:58:41 - INFO - __main__ -   ***** Eval results  *****
+10/09/2021 18:58:41 - INFO - __main__ -     f1 = 0.7302752293577982
+10/09/2021 18:58:41 - INFO - __main__ -     loss = 22.913296403556036
+10/09/2021 18:58:41 - INFO - __main__ -     precision = 0.7262773722627737
+10/09/2021 18:58:41 - INFO - __main__ -     recall = 0.7343173431734318
