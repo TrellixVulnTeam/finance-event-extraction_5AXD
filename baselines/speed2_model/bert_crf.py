@@ -1,9 +1,10 @@
-DEBUGGING=False
+DEBUGGING = False
 
 import logging
-from transformers.modeling_bert import BertModel, BertPreTrainedModel
-from transformers.configuration_bert import BertConfig
+
 from torch.nn import CrossEntropyLoss
+from transformers.configuration_bert import BertConfig
+from transformers.modeling_bert import BertModel, BertPreTrainedModel
 
 from crf import *
 from utils_maven import to_crf_pad, unpad_crf
@@ -46,8 +47,11 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
 
         self.bert = BertModel(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
-        self.num_label_tokens = input("please input num_label_tokens, e.g. 248")
-        self.num_types = input("please input num_label_tokens, e.g. 168")
+
+        # self.num_label_tokens = input("please input num_label_tokens, e.g. 248")
+        self.num_label_tokens = 37
+        # self.num_types = input("please input num_label_tokens, e.g. 168")
+        self.num_types = 18
         self.label_w = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
         self.label_dropout = nn.Dropout(config.hidden_dropout_prob)
         self.label_ffn = nn.Linear(self.num_types, config.num_labels)
@@ -70,33 +74,33 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
         sequence_output = self.dropout(sequence_output)
 
         if "_label_token_lens" in aux_inputs:
-            label_token_embs, st_idx = [], 1 # 1 as to skip [CLS]
+            label_token_embs, st_idx = [], 1  # 1 as to skip [CLS]
             for token_len in aux_inputs["_label_token_lens"]:
                 if token_len == 1:
-                    label_token_embs.append(sequence_output[:,st_idx,:])
+                    label_token_embs.append(sequence_output[:, st_idx, :])
                 else:
-                    assert token_len>0
-                    label_token_embs.append(torch.sum(sequence_output[:, st_idx:st_idx+token_len, :], dim=1))
-                st_idx = st_idx+token_len
+                    assert token_len > 0
+                    label_token_embs.append(torch.sum(sequence_output[:, st_idx:st_idx + token_len, :], dim=1))
+                st_idx = st_idx + token_len
             assert st_idx == self.num_label_tokens + 1
             assert len(label_token_embs) == self.num_types
-            label_token_embs = torch.stack(label_token_embs, 1).transpose(1,2) # (batch_size, hidden_size, num_types)
+            label_token_embs = torch.stack(label_token_embs, 1).transpose(1, 2)  # (batch_size, hidden_size, num_types)
 
             # (batch_size, len_cls_text_pad_tokens = max_seq_len, hidden_size)
-            text_token_embs = torch.cat((sequence_output[:,0:1,:], sequence_output[:, st_idx+1:, :]), 1)
-            if DEBUGGING: # debug printing
+            text_token_embs = torch.cat((sequence_output[:, 0:1, :], sequence_output[:, st_idx + 1:, :]), 1)
+            if DEBUGGING:  # debug printing
                 print("text_token_embs (batch_size, max_seq_len, hidden_size):", text_token_embs.size())
                 print("label_token_embs (batch_size, hidden_size, num_types):", label_token_embs.size())
 
             label_text_sims = torch.matmul(
                 self.label_w(text_token_embs),
                 label_token_embs
-            ) # (batch_size, max_seq_len, num_types)
-            aux_output = self.label_ffn(self.label_dropout(label_text_sims)) # (batch_size, max_seq_len, num_labels)
+            )  # (batch_size, max_seq_len, num_types)
+            aux_output = self.label_ffn(self.label_dropout(label_text_sims))  # (batch_size, max_seq_len, num_labels)
 
             sequence_output = text_token_embs
 
-            if DEBUGGING: # debug printing
+            if DEBUGGING:  # debug printing
                 print("label_text_sims (batch_size, max_seq_len, num_types):", label_text_sims.size())
                 print("aux_output (batch_size, max_seq_len, num_labels):", aux_output.size())
                 print(input("\n\ncontinue?"))
@@ -108,30 +112,41 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
         return feats, outputs, aux_output
 
     def forward(self, input_ids=None, attention_mask=None, token_type_ids=None,
-                position_ids=None, head_mask=None, inputs_embeds=None, labels=None, pad_token_label_id=None, **aux_inputs):
+                position_ids=None, head_mask=None, inputs_embeds=None, labels=None, pad_token_label_id=None,
+                **aux_inputs):
 
         if "label_input_ids" in aux_inputs:
             label_input_ids = aux_inputs["label_input_ids"]
             label_input_mask = aux_inputs["label_input_mask"]
             label_segment_ids = aux_inputs["label_segment_ids"]
 
-            assert self.num_label_tokens == len(label_input_ids) -2 # 2 as to exclude [CLS] and [SEP]
+            if self.num_label_tokens != len(label_input_ids) - 2:
+                print(aux_inputs)
+
+            assert self.num_label_tokens == len(label_input_ids) - 2  # 2 as to exclude [CLS] and [SEP]
 
             if DEBUGGING:
-                for _name, tensor_to_print in zip(["label_input_ids", "label_input_mask", "label_segment_ids", "text_input_ids", "attention_mask", "token_type_ids", "labels"],
-                    [label_input_ids, label_input_mask, label_segment_ids, input_ids[0], attention_mask[0], token_type_ids[0], labels[0]]):
+                for _name, tensor_to_print in zip(
+                        ["label_input_ids", "label_input_mask", "label_segment_ids", "text_input_ids", "attention_mask",
+                         "token_type_ids", "labels"],
+                        [label_input_ids, label_input_mask, label_segment_ids, input_ids[0], attention_mask[0],
+                         token_type_ids[0], labels[0]]):
                     try:
                         print(_name, "({}) \t".format(len(tensor_to_print)), tensor_to_print)
                     except:
                         print(_name, tensor_to_print)
                 print(input("\n\ncontinue?"))
-            bs = input_ids.size()[0] # batch size
-            input_ids = torch.cat((torch.stack(bs*[label_input_ids]), input_ids[:, 1:]), 1)
-            token_type_ids = torch.cat((torch.stack(bs*[label_segment_ids]), attention_mask.detach().clone()[:, 1:]), 1)
-            attention_mask_with_aux = torch.cat((torch.stack(bs*[label_input_mask]), attention_mask[:, 1:]), 1)
+            bs = input_ids.size()[0]  # batch size
+            input_ids = torch.cat((torch.stack(bs * [label_input_ids]), input_ids[:, 1:]), 1)
+            token_type_ids = torch.cat((torch.stack(bs * [label_segment_ids]), attention_mask.detach().clone()[:, 1:]),
+                                       1)
+            attention_mask_with_aux = torch.cat((torch.stack(bs * [label_input_mask]), attention_mask[:, 1:]), 1)
             if DEBUGGING:
-                for _name, tensor_to_print in zip(["label_input_ids", "label_input_mask", "label_segment_ids", "text_input_ids", "attention_mask", "token_type_ids", "labels"],
-                    [label_input_ids, label_input_mask, label_segment_ids, input_ids[0], attention_mask_with_aux[0], token_type_ids[0], labels[0]]):
+                for _name, tensor_to_print in zip(
+                        ["label_input_ids", "label_input_mask", "label_segment_ids", "text_input_ids", "attention_mask",
+                         "token_type_ids", "labels"],
+                        [label_input_ids, label_input_mask, label_segment_ids, input_ids[0], attention_mask_with_aux[0],
+                         token_type_ids[0], labels[0]]):
                     try:
                         print(_name, "({}) \t".format(len(tensor_to_print)), tensor_to_print)
                     except:
@@ -139,7 +154,7 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
                 print(input("\n\ncontinue?"))
 
         logits, outputs, aux_output = self._get_features(input_ids, attention_mask_with_aux, token_type_ids,
-                                             position_ids, head_mask, inputs_embeds, **aux_inputs)
+                                                         position_ids, head_mask, inputs_embeds, **aux_inputs)
 
         outputs = (logits,) + outputs[2:]  # add hidden states and attention if they are here
         if labels is not None:
@@ -167,14 +182,14 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
 
             # add contrastive loss
             cl_fn = CrossEntropyLoss()
-            active_cl_mask = (labels.view(-1) != -100) & (labels.view(-1) !=0)
+            active_cl_mask = (labels.view(-1) != -100) & (labels.view(-1) != 0)
             active_logits = aux_output.view(-1, self.num_labels)[active_cl_mask]
             active_labels = labels.view(-1)[active_cl_mask]
             try:
                 closs_weight = aux_inputs["closs_weight"] if "closs_weight" in aux_inputs else 1
                 if len(active_labels) > 0:
                     closs = closs_weight * cl_fn(active_logits, active_labels)
-                    #print("contrastive loss\t=", closs.item(), "\tcrf softmax loss\t=", loss.item())
+                    # print("contrastive loss\t=", closs.item(), "\tcrf softmax loss\t=", loss.item())
                 else:
                     closs = torch.tensor(0).cuda()
             except:
@@ -182,7 +197,7 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
                 print("active_labels", active_labels)
             loss += closs
 
-            if True: # L1 regularization for weight label_ffn to force sparcity
+            if True:  # L1 regularization for weight label_ffn to force sparcity
                 sparse_coef = 0.1
                 sloss = sparse_coef * torch.sum(torch.abs(self.label_ffn.weight))
                 loss += sloss
@@ -193,7 +208,6 @@ class BertCRFForTokenClassification(BertPreTrainedModel):
                 best_path = torch.argmax(aux_output, dim=2)
                 best_path[pad_mask is False] = labels[pad_mask is False]
             #####################################################
-
 
             outputs = (loss,) + outputs + (best_path,)
         else:

@@ -16,20 +16,17 @@
 """ BERT-CRF running for MAVEN """
 
 import argparse
+import csv
 import glob
-import logging
+import json
 import os
 import random
-import json
 
 import numpy as np
-import torch
 from seqeval.metrics import f1_score, precision_score, recall_score, classification_report
-
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset, Subset
 from torch.utils.data.distributed import DistributedSampler
-from tqdm import tqdm, trange
-
+# from tqdm import trange
 from transformers import (
     WEIGHTS_NAME,
     AdamW,
@@ -50,9 +47,9 @@ from transformers import (
     XLMRobertaTokenizer,
     get_linear_schedule_with_warmup,
 )
-from utils_maven import convert_examples_to_features, get_labels, read_examples_from_file, get_label_seed_list
+
 from bert_crf import *
-import csv
+from utils_maven import convert_examples_to_features, get_labels, read_examples_from_file, get_label_seed_list
 
 logger = logging.getLogger(__name__)
 
@@ -83,13 +80,13 @@ def set_seed(args):
 
 
 def get_aux_input_dict(path, tokenizer):
-#    is_bio_scheme = labels[0] == "O"
-#    if is_bio_scheme: # BIO class labels
-#        _labels = [cl[2:].replace('-', ' ') for cl in labels if cl.startswith('B')]
-#    else:
-#        raise NotImplementedError()
+    #    is_bio_scheme = labels[0] == "O"
+    #    if is_bio_scheme: # BIO class labels
+    #        _labels = [cl[2:].replace('-', ' ') for cl in labels if cl.startswith('B')]
+    #    else:
+    #        raise NotImplementedError()
     _labels = get_label_seed_list(path)
-#######
+    #######
     _label_words = " ".join(_labels)
     _label_tokens = [tokenizer.cls_token] + tokenizer.tokenize(_label_words) + [tokenizer.sep_token]
     _label_input_ids = tokenizer.convert_tokens_to_ids(_label_tokens)
@@ -98,11 +95,11 @@ def get_aux_input_dict(path, tokenizer):
     _label_token_lens = []
     for lt in _labels:
         _label_token_lens.append(len(tokenizer.tokenize(lt)))
-    if False: # debug printing
-        print("_labels ({}) \t".format(len(_labels)), _labels)
-        print("_label_tokens ({}) \t".format(len(_label_tokens)), _label_tokens)
-        print("_label_token_lens ({}) \t".format(len(_label_token_lens)), _label_token_lens)
-        print(input('\n\n'+'continue?'))
+    # if False:  # debug printing
+    #     print("_labels ({}) \t".format(len(_labels)), _labels)
+    #     print("_label_tokens ({}) \t".format(len(_label_tokens)), _label_tokens)
+    #     print("_label_token_lens ({}) \t".format(len(_label_token_lens)), _label_token_lens)
+    #     print(input('\n\n' + 'continue?'))
     _aux_input_dict = {
         "label_input_ids": torch.tensor(_label_input_ids, dtype=torch.long),
         "label_input_mask": torch.tensor(_label_input_mask, dtype=torch.long),
@@ -112,23 +109,21 @@ def get_aux_input_dict(path, tokenizer):
     return _aux_input_dict
 
 
-
 def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
     aux_input_dict = get_aux_input_dict(args.labels, tokenizer)
 
     """ Train the model """
-    #/if args.local_rank in [-1, 0]:
-        #tb_writer = SummaryWriter()
-
+    # /if args.local_rank in [-1, 0]:
+    # tb_writer = SummaryWriter()
 
     # Take only a portion if given the arg data_percentage
     if args.data_percentage <= 100:
         num_train_samples = int(len(train_dataset) * float(args.data_percentage) / 100.0)
         logger.info("Using only %d of the train set (%d -> %d samples)",
-            args.data_percentage,
-            len(train_dataset),
-            num_train_samples
-        )
+                    args.data_percentage,
+                    len(train_dataset),
+                    num_train_samples
+                    )
         train_dataset = Subset(train_dataset, np.arange(num_train_samples))
     else:
         raise ValueError("data percentage {}> 100".format(args.data_percentage))
@@ -140,7 +135,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
         sampler=train_sampler,
         batch_size=args.train_batch_size,
     )
-    best_dev_f1=0.0
+    best_dev_f1 = 0.0
     _will_save = True
     if args.max_steps > 0:
         t_total = args.max_steps
@@ -190,10 +185,11 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
     global_step = 0
     tr_loss, logging_loss = 0.0, 0.0
     model.zero_grad()
-    train_iterator = trange(int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0])
+    # train_iterator = trange(int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0])
+    train_iterator = int(args.num_train_epochs)
     set_seed(args)  # Added here for reproductibility (even between python 2 and 3)
-    for _ in train_iterator:
-        epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=args.local_rank not in [-1, 0])
+    for _ in range(train_iterator):
+        epoch_iterator = train_dataloader
         for step, batch in enumerate(epoch_iterator):
             model.train()
             batch = tuple(t.to(args.device) for t in batch)
@@ -204,7 +200,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                 inputs["token_type_ids"] = batch[2] if args.model_type in ["bert", "bertcrf",
                                                                            "xlnet"] else None  # XLM and RoBERTa don"t use segment_ids
 
-            inputs.update({k: (v.to(args.device) if not k.startswith('_') else v) for k,v in aux_input_dict.items()})
+            inputs.update({k: (v.to(args.device) if not k.startswith('_') else v) for k, v in aux_input_dict.items()})
             inputs.update({"closs_weight": args.closs_weight})
             outputs = model(pad_token_label_id=pad_token_label_id, **inputs)
             loss = outputs[0]  # model outputs are always tuple in pytorch-transformers (see doc)
@@ -229,37 +225,36 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
                 optimizer.step()
                 scheduler.step()  # Update learning rate schedule
-                #optimizer.step()
+                # optimizer.step()
                 model.zero_grad()
                 global_step += 1
 
                 if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
                     # Log metrics
                     if args.local_rank == -1 and args.evaluate_during_training:  # Only evaluate when single GPU otherwise metrics may not average well
-                        results, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="valid", prefix="valid,"+str(global_step))
-                        if True: #results['f1']>best_dev_f1:
-                            best_dev_f1=results['f1']
+                        results, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="valid",
+                                              prefix="valid," + str(global_step))
+                        if True:  # results['f1']>best_dev_f1:
+                            best_dev_f1 = results['f1']
                             _will_save = True
                         else:
                             _will_save = False
-                        #    results_test, _=evaluate(args, model, tokenizer, labels , pad_token_label_id, mode="test", prefix="test,"+str(global_step))
-                        #    logger.info(
-                        #        "test f1: %s, loss: %s",
-                        #        str(results_test['f1']),
-                        #        str(results_test['loss']),
-                        #    )
-                        #for key, value in results.items():
-                            #tb_writer.add_scalar("eval_{}".format(key), value, global_step)
-                    #tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
-                    #tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
+                        # results_test, _=evaluate(args, model, tokenizer, labels , pad_token_label_id, mode="test",
+                        # prefix="test,"+str(global_step)) logger.info( "test f1: %s, loss: %s", str(results_test[
+                        # 'f1']), str(results_test['loss']), ) for key, value in results.items():
+                        # tb_writer.add_scalar("eval_{}".format(key), value, global_step)
+                    # tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
+                    # tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
                     logging_loss = tr_loss
 
-                if args.local_rank in [-1, 0] and _will_save and args.save_steps > 0 and global_step % args.save_steps == 0:
+                if args.local_rank in [-1,
+                                       0] and _will_save and args.save_steps > 0 and global_step % args.save_steps == 0:
                     # Save model checkpoint
                     output_dir = os.path.join(args.output_dir, "checkpoint-{}".format(global_step))
                     if not os.path.exists(output_dir):
                         os.makedirs(output_dir)
-                    model_to_save = model.module if hasattr(model, "module") else model  # Take care of distributed/parallel training
+                    model_to_save = model.module if hasattr(model,
+                                                            "module") else model  # Take care of distributed/parallel training
 
                     logger.info("Saving model checkpoint to %s", output_dir)
 
@@ -316,7 +311,7 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
     out_label_ids = None
     sent_inputs = None
     model.eval()
-    for batch in tqdm(eval_dataloader, desc="Evaluating"):
+    for batch in eval_dataloader:
         batch = tuple(t.to(args.device) for t in batch)
 
         with torch.no_grad():
@@ -326,7 +321,7 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
             if args.model_type != "distilbert":
                 inputs["token_type_ids"] = batch[2] if args.model_type in ["bert", "bertcrf",
                                                                            "xlnet"] else None  # XLM and RoBERTa don"t use segment_ids
-            inputs.update({k:(v.to(args.device) if not k.startswith('_') else v) for k,v in aux_input_dict.items()})
+            inputs.update({k: (v.to(args.device) if not k.startswith('_') else v) for k, v in aux_input_dict.items()})
             outputs = model(pad_token_label_id=pad_token_label_id, **inputs)
             tmp_eval_loss, logits, best_path = outputs
 
@@ -357,7 +352,7 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
     preds_list = [[] for _ in range(out_label_ids.shape[0])]
     if _will_output_preds:
         sentences = [[] for _ in range(out_label_ids.shape[0])]
-        trues = [[] for _ in range(out_label_ids.shape[0])] # for wrong predictions only, else empty strings
+        trues = [[] for _ in range(out_label_ids.shape[0])]  # for wrong predictions only, else empty strings
 
     for i in range(out_label_ids.shape[0]):
         for j in range(out_label_ids.shape[1]):
@@ -382,7 +377,7 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
     for key in sorted(results.keys()):
         logger.info("  %s = %s", key, str(results[key]))
 
-    if results["f1"] > args.eval_by_class: # some threshold to avoid printing too low results
+    if results["f1"] > args.eval_by_class:  # some threshold to avoid printing too low results
         logger.info(classification_report(out_label_list, preds_list))
 
     if "," in str(prefix):
@@ -410,8 +405,8 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
     cached_features_file = os.path.join(
         args.data_dir,
         "cached_{}_{}_{}".format(mode,
-        list(filter(None,args.model_name_or_path.split("/"))).pop(),
-        str(args.max_seq_length))
+                                 list(filter(None, args.model_name_or_path.split("/"))).pop(),
+                                 str(args.max_seq_length))
     )
     if os.path.exists(cached_features_file) and not args.overwrite_cache:
         logger.info("Loading features from cached file %s", cached_features_file)
@@ -423,12 +418,13 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
             examples,
             labels,
             args.max_seq_length, tokenizer,
-            cls_token_at_end=bool(args.model_type in ["xlnet"]),# xlnet has a cls token at the end
+            cls_token_at_end=bool(args.model_type in ["xlnet"]),  # xlnet has a cls token at the end
             cls_token=tokenizer.cls_token,
             cls_token_segment_id=2 if args.model_type in ["xlnet"] else 0,
             sep_token=tokenizer.sep_token,
-            sep_token_extra=bool(args.model_type in ["roberta"]),# roberta uses an extra separator b/w pairs of sentences, cf. github.com/pytorch/fairseq/commit/1684e166e3da03f5b600dbb7855cb98ddfcd0805
-            pad_on_left=bool(args.model_type in ["xlnet"]), # pad on the left for xlnet
+            sep_token_extra=bool(args.model_type in ["roberta"]),
+            # roberta uses an extra separator b/w pairs of sentences, cf. github.com/pytorch/fairseq/commit/1684e166e3da03f5b600dbb7855cb98ddfcd0805
+            pad_on_left=bool(args.model_type in ["xlnet"]),  # pad on the left for xlnet
             pad_token=tokenizer.convert_tokens_to_ids([tokenizer.pad_token])[0],
             pad_token_segment_id=4 if args.model_type in ["xlnet"] else 0,
             pad_token_label_id=pad_token_label_id
@@ -532,10 +528,13 @@ def main():
                         help="For distributed training: local_rank")
     parser.add_argument("--server_ip", type=str, default="", help="For distant False.")
     parser.add_argument("--server_port", type=str, default="", help="For distant False.")
-    parser.add_argument("--eval_by_class", type=float, default=1, help="Threshold for printing the by-class performance during evaluation (value>=1 to turn off)")
-    parser.add_argument("--closs_weight", type=float, default=1, help="Relative weight for the contrastive loss term to the original crf loss")
+    parser.add_argument("--eval_by_class", type=float, default=1,
+                        help="Threshold for printing the by-class performance during evaluation (value>=1 to turn off)")
+    parser.add_argument("--closs_weight", type=float, default=1,
+                        help="Relative weight for the contrastive loss term to the original crf loss")
     parser.add_argument("--result_dir", type=str, default="", help="Path to write evaluation results as a csv path")
-    parser.add_argument("--save_dev_prediction", action="store_true", help="Output dev prediction for qualitative analysis")
+    parser.add_argument("--save_dev_prediction", action="store_true",
+                        help="Output dev prediction for qualitative analysis")
     parser.add_argument("--data_percentage", type=int, default=100, help="Percentage of training data")
     args = parser.parse_args()
 
@@ -568,7 +567,7 @@ def main():
     # Setup CUDA, GPU & distributed training
     if args.local_rank == -1 or args.no_cuda:
         device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
-        args.n_gpu = 1 if torch.cuda.is_available() and not args.no_cuda else 0 # force single gpu
+        args.n_gpu = 1 if torch.cuda.is_available() and not args.no_cuda else 0  # force single gpu
         logger.info({"n_gpu: ": args.n_gpu})
 
     else:  # Initializes the distributed backend which will take care of sychronizing nodes/GPUs
@@ -665,8 +664,9 @@ def main():
             global_step = checkpoint.split("-")[-1] if len(checkpoints) > 1 else ""
             model = model_class.from_pretrained(checkpoint)
             model.to(args.device)
-            result, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev", prefix=global_step,
-                _will_output_preds=args.save_dev_prediction)
+            result, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev",
+                                           prefix=global_step,
+                                           _will_output_preds=args.save_dev_prediction)
             if global_step:
                 result = {"{}_{}".format(global_step, k): v for k, v in result.items()}
             results.update(result)
@@ -689,36 +689,68 @@ def main():
                 writer.write("{} = {}\n".format(key, str(results[key])))
 
     if args.do_infer and args.local_rank in [-1, 0]:
-        tokenizer = tokenizer_class.from_pretrained(args.tokenizer_name if args.tokenizer_name else args.model_name_or_path, do_lower_case=args.do_lower_case)
+        tokenizer = tokenizer_class.from_pretrained(
+            args.tokenizer_name if args.tokenizer_name else args.model_name_or_path, do_lower_case=args.do_lower_case)
         model = model_class.from_pretrained(args.output_dir)
         model.to(args.device)
         result, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="test")
         # Save predictions
         output_test_predictions_file = os.path.join(args.output_dir, "results.jsonl")
         with open(output_test_predictions_file, "w") as writer:
-            Cnt=0
-            mavenTypes=["None", "Know", "Warning", "Catastrophe", "Placing", "Causation", "Arriving", "Sending", "Protest", "Preventing_or_letting", "Motion", "Damaging", "Destroying", "Death", "Perception_active", "Presence", "Influence", "Receiving", "Check", "Hostile_encounter", "Killing", "Conquering", "Releasing", "Attack", "Earnings_and_losses", "Choosing", "Traveling", "Recovering", "Using", "Coming_to_be", "Cause_to_be_included", "Process_start", "Change_event_time", "Reporting", "Bodily_harm", "Suspicion", "Statement", "Cause_change_of_position_on_a_scale", "Coming_to_believe", "Expressing_publicly", "Request", "Control", "Supporting", "Defending", "Building", "Military_operation", "Self_motion", "GetReady", "Forming_relationships", "Becoming_a_member", "Action", "Removing", "Surrendering", "Agree_or_refuse_to_act", "Participation", "Deciding", "Education_teaching", "Emptying", "Getting", "Besieging", "Creating", "Process_end", "Body_movement", "Expansion", "Telling", "Change", "Legal_rulings", "Bearing_arms", "Giving", "Name_conferral", "Arranging", "Use_firearm", "Committing_crime", "Assistance", "Surrounding", "Quarreling", "Expend_resource", "Motion_directional", "Bringing", "Communication", "Containing", "Manufacturing", "Social_event", "Robbery", "Competition", "Writing", "Rescuing", "Judgment_communication", "Change_tool", "Hold", "Being_in_operation", "Recording", "Carry_goods", "Cost", "Departing", "GiveUp", "Change_of_leadership", "Escaping", "Aiming", "Hindering", "Preserving", "Create_artwork", "Openness", "Connect", "Reveal_secret", "Response", "Scrutiny", "Lighting", "Criminal_investigation", "Hiding_objects", "Confronting_problem", "Renting", "Breathing", "Patrolling", "Arrest", "Convincing", "Commerce_sell", "Cure", "Temporary_stay", "Dispersal", "Collaboration", "Extradition", "Change_sentiment", "Commitment", "Commerce_pay", "Filling", "Becoming", "Achieve", "Practice", "Cause_change_of_strength", "Supply", "Cause_to_amalgamate", "Scouring", "Violence", "Reforming_a_system", "Come_together", "Wearing", "Cause_to_make_progress", "Legality", "Employment", "Rite", "Publishing", "Adducing", "Exchange", "Ratification", "Sign_agreement", "Commerce_buy", "Imposing_obligation", "Rewards_and_punishments", "Institutionalization", "Testing", "Ingestion", "Labeling", "Kidnapping", "Submitting_documents", "Prison", "Justifying", "Emergency", "Terrorism", "Vocalizations", "Risk", "Resolve_problem", "Revenge", "Limiting", "Research", "Having_or_lacking_access", "Theft", "Incident", "Award"]
+            Cnt = 0
+            mavenTypes = ["None", "Know", "Warning", "Catastrophe", "Placing", "Causation", "Arriving", "Sending",
+                          "Protest", "Preventing_or_letting", "Motion", "Damaging", "Destroying", "Death",
+                          "Perception_active", "Presence", "Influence", "Receiving", "Check", "Hostile_encounter",
+                          "Killing", "Conquering", "Releasing", "Attack", "Earnings_and_losses", "Choosing",
+                          "Traveling", "Recovering", "Using", "Coming_to_be", "Cause_to_be_included", "Process_start",
+                          "Change_event_time", "Reporting", "Bodily_harm", "Suspicion", "Statement",
+                          "Cause_change_of_position_on_a_scale", "Coming_to_believe", "Expressing_publicly", "Request",
+                          "Control", "Supporting", "Defending", "Building", "Military_operation", "Self_motion",
+                          "GetReady", "Forming_relationships", "Becoming_a_member", "Action", "Removing",
+                          "Surrendering", "Agree_or_refuse_to_act", "Participation", "Deciding", "Education_teaching",
+                          "Emptying", "Getting", "Besieging", "Creating", "Process_end", "Body_movement", "Expansion",
+                          "Telling", "Change", "Legal_rulings", "Bearing_arms", "Giving", "Name_conferral", "Arranging",
+                          "Use_firearm", "Committing_crime", "Assistance", "Surrounding", "Quarreling",
+                          "Expend_resource", "Motion_directional", "Bringing", "Communication", "Containing",
+                          "Manufacturing", "Social_event", "Robbery", "Competition", "Writing", "Rescuing",
+                          "Judgment_communication", "Change_tool", "Hold", "Being_in_operation", "Recording",
+                          "Carry_goods", "Cost", "Departing", "GiveUp", "Change_of_leadership", "Escaping", "Aiming",
+                          "Hindering", "Preserving", "Create_artwork", "Openness", "Connect", "Reveal_secret",
+                          "Response", "Scrutiny", "Lighting", "Criminal_investigation", "Hiding_objects",
+                          "Confronting_problem", "Renting", "Breathing", "Patrolling", "Arrest", "Convincing",
+                          "Commerce_sell", "Cure", "Temporary_stay", "Dispersal", "Collaboration", "Extradition",
+                          "Change_sentiment", "Commitment", "Commerce_pay", "Filling", "Becoming", "Achieve",
+                          "Practice", "Cause_change_of_strength", "Supply", "Cause_to_amalgamate", "Scouring",
+                          "Violence", "Reforming_a_system", "Come_together", "Wearing", "Cause_to_make_progress",
+                          "Legality", "Employment", "Rite", "Publishing", "Adducing", "Exchange", "Ratification",
+                          "Sign_agreement", "Commerce_buy", "Imposing_obligation", "Rewards_and_punishments",
+                          "Institutionalization", "Testing", "Ingestion", "Labeling", "Kidnapping",
+                          "Submitting_documents", "Prison", "Justifying", "Emergency", "Terrorism", "Vocalizations",
+                          "Risk", "Resolve_problem", "Revenge", "Limiting", "Research", "Having_or_lacking_access",
+                          "Theft", "Incident", "Award"]
             with open(os.path.join(args.data_dir, "test.jsonl"), "r") as fin:
-                lines=fin.readlines()
+                lines = fin.readlines()
                 for line in lines:
-                    doc=json.loads(line)
-                    res={}
-                    res['id']=doc['id']
-                    res['predictions']=[]
+                    doc = json.loads(line)
+                    res = {}
+                    res['id'] = doc['id']
+                    res['predictions'] = []
                     for mention in doc['candidates']:
-                        if mention['offset'][1]>len(predictions[Cnt+mention['sent_id']]):
-                            print(len(doc['content'][mention['sent_id']]['tokens']),len(predictions[Cnt+mention['sent_id']]))
-                            res['predictions'].append({"id":mention['id'],"type_id":0})
+                        if mention['offset'][1] > len(predictions[Cnt + mention['sent_id']]):
+                            print(len(doc['content'][mention['sent_id']]['tokens']),
+                                  len(predictions[Cnt + mention['sent_id']]))
+                            res['predictions'].append({"id": mention['id'], "type_id": 0})
                             continue
-                        is_NA=False if predictions[Cnt+mention['sent_id']][mention['offset'][0]].startswith("B") else True
+                        is_NA = False if predictions[Cnt + mention['sent_id']][mention['offset'][0]].startswith(
+                            "B") else True
                         if not is_NA:
-                            Type=predictions[Cnt+mention['sent_id']][mention['offset'][0]][2:]
-                            for i in range(mention['offset'][0]+1,mention['offset'][1]):
-                                if predictions[Cnt+mention['sent_id']][i][2:]!=Type:
-                                    is_NA=True
+                            Type = predictions[Cnt + mention['sent_id']][mention['offset'][0]][2:]
+                            for i in range(mention['offset'][0] + 1, mention['offset'][1]):
+                                if predictions[Cnt + mention['sent_id']][i][2:] != Type:
+                                    is_NA = True
                                     break
                             if not is_NA:
-                                res['predictions'].append({"id":mention['id'],"type_id":mavenTypes.index(Type)})
+                                res['predictions'].append({"id": mention['id'], "type_id": mavenTypes.index(Type)})
                             # elif Type == 'Process_end': # customise NA handling
                             #     res['predictions'].append({"id":mention['id'],"type_id":mavenTypes.index(Type)})
                             # elif predictions[Cnt+mention['sent_id']][mention['offset'][0]+1] == 'I-Process_start' and Type == 'Hold':
@@ -730,9 +762,9 @@ def main():
                             #     print([predictions[Cnt+mention['sent_id']][i] for i in range(mention['offset'][0], mention['offset'][1])], "\n")
                             # is_NA = False
                         if is_NA:
-                            res['predictions'].append({"id":mention['id'],"type_id":0})
-                    writer.write(json.dumps(res)+"\n")
-                    Cnt+=len(doc['content'])
+                            res['predictions'].append({"id": mention['id'], "type_id": 0})
+                    writer.write(json.dumps(res) + "\n")
+                    Cnt += len(doc['content'])
     return results
 
 
