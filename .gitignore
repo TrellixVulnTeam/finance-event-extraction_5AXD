@@ -1,7 +1,5 @@
+*/__pycache__/
 venv/
 .idea/
-ge11/
-ge11_csv/
-backup/
 *.jsonl
 *.json

@@ -36,7 +36,7 @@ def generate_gold_labels(folder_name, name, tokenized_folder):
                     if line[0] != "T":
                         continue
                     indicators = line.split("\t")[1].split()
-                    event_type = "B-" + indicators[0]
+                    event_type = indicators[0]
                     start = int(indicators[1])
                     end = int(indicators[2])
                     if str(start) not in start_token_dict:
@@ -48,8 +48,9 @@ def generate_gold_labels(folder_name, name, tokenized_folder):
                     start_index = start_token_dict[str(start)] - start_sentence_offsets[sent_index][1]
                     end_index = end_token_dict[str(end)] - start_sentence_offsets[sent_index][1]
 
-                    for token_index in range(start_index, end_index + 1):
-                        arr[sent_index][token_index] = event_type
+                    arr[sent_index][start_index] = "B-" + event_type
+                    for token_index in range(start_index + 1, end_index + 1):
+                        arr[sent_index][token_index] = "I-" + event_type
 
             label_arr.extend(arr)
             cnt += 1
